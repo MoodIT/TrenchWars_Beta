@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 03735bd348d66314aa018eac6e90d6de
+timeCreated: 1439380545
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GrunnerSprite
+    21300002: GrenaderSprite
+    21300004: FlamerSprite
+    21300006: Icons_3
+    21300008: StarGlow
+    21300010: Star
+    21300012: StarGrey
+    21300014: TimeBarSegment
+    21300016: TimeBarSprite
+    21300018: WaveComplete
+    21300020: Icons_15
+    21300022: Icons_16
+    21300024: Icons_17
+    21300026: TimeBarBack
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -5
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 100
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: GrunnerSprite
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1820
+        width: 150
+        height: 145
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GrenaderSprite
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1820
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FlamerSprite
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1820
+        width: 140
+        height: 148
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icons_3
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1828
+        width: 133
+        height: 149
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: StarGlow
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 1690
+        width: 177
+        height: 247
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1708
+        width: 141
+        height: 209
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: StarGrey
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 1708
+        width: 140
+        height: 209
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TimeBarSegment
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 1871
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TimeBarSprite
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 1838
+        width: 324
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WaveComplete
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1405
+        width: 1007
+        height: 108
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icons_15
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 438
+        width: 1199
+        height: 847
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icons_16
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 1152
+        width: 405
+        height: 126
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icons_17
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 1055
+        width: 408
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TimeBarBack
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 1801
+        width: 323
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

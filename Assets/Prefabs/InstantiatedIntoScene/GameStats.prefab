@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &113728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 440090}
+  - 114: {fileID: 11427878}
+  - 114: {fileID: 11485528}
+  m_Layer: 0
+  m_Name: GameStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440090
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.50998223, y: -.00979018211, z: .813490748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11427878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618919971ae4ee7488655c6755235679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandPoints: 0
+  counter: 0
+  winningCamT: {fileID: 419146, guid: 4b3a6ee37b6f1ca4b922fddeb0585f18, type: 2}
+  gameComplete: 0
+  vCanvas: {fileID: 0}
+  eGCanvas: {fileID: 0}
+--- !u!114 &11485528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c2f063c19d11e4fbd9af83ee364612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 10
+  curVel: {x: 0, y: 0, z: 0}
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .824753821
+      value: .39380455
+      inSlope: 1.35183978
+      outSlope: 1.35183978
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 4.40625095
+      outSlope: 4.40625095
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[1].inSlope
+      value: 1.35183978
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[1].outSlope
+      value: 1.35183978
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[1].time
+      value: .824753821
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[1].value
+      value: .39380455
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[2].inSlope
+      value: 4.40625095
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aCurve.m_Curve.Array.data[2].outSlope
+      value: 4.40625095
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: winningCamT
+      value: 
+      objectReference: {fileID: 419146, guid: 4b3a6ee37b6f1ca4b922fddeb0585f18, type: 2}
+    - target: {fileID: 0}
+      propertyPath: cooldown
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 113728}
+  m_IsPrefabParent: 1

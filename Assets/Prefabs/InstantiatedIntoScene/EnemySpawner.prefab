@@ -1,0 +1,731 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &160440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 419112}
+  - 114: {fileID: 11422246}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419112
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11422246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d0aa3a7f9d1224f8e68a9035f042c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyKeys:
+  - name: 
+    enemyType: 0
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 3
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 14.7299995
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 3
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 25.5350666
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 3
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 16.6972446
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 1
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 36.8089027
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 7
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 31.0781612
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 2
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 47.4053688
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 0
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 42.5396423
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 7
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 57.6774559
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 5
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 74.14785
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 3
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 70.8058701
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 2
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 83.7560349
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 5
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 87.0980148
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 0
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 40.832489
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 6
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 98.2727585
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 5
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 95.5574036
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 6
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 112.162865
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 7
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 106.941017
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 4
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 104.64341
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 5
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 111.014061
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 1
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 3.02634788
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 2
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 5.3239584
+  - name: 
+    enemyType: 2
+    power: 0
+    spawnPos:
+      mWidth: 15
+      mLength: 2
+      obj: {fileID: 0}
+    spawned: 0
+    health: 10
+    spawnTime: 4.07071638
+  _values:
+  - 8
+  - 5
+  - 1
+  bControl: {fileID: 0}
+  lengthInSeconds: 120
+  counter: 0
+  soldierEnemy: {fileID: 170462, guid: f4bfef2d44ed0c744a84c1ee16eddfc5, type: 2}
+  loopingSpawn: 0
+  gameStats: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: soldierEnemy
+      value: 
+      objectReference: {fileID: 170462, guid: f4bfef2d44ed0c744a84c1ee16eddfc5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[0].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[0].spawnPos.mLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[0].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[1].spawnPos.mWidth
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[1].spawnPos.mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.data[3]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _values.Array.data[4]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[1].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[2].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[2].spawnPos.mLength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[2].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[3].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[3].spawnPos.mLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[3].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[4].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[4].spawnPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[4].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _keys.Array.data[3].spawned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[0].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[0].spawnPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[1].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[1].spawnPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[2].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[2].spawnPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[2].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[1].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[0].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[0].name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lengthInSeconds
+      value: 119.510002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[0].spawnTime
+      value: 14.7299995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[1].spawnTime
+      value: 25.5350666
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[2].spawnTime
+      value: 16.6972446
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[3].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[3].spawnPos.mLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[3].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[3].spawnTime
+      value: 36.8089027
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[4].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[4].spawnPos.mLength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[4].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[4].spawnTime
+      value: 36.8089027
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[5].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[5].spawnPos.mLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[5].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[5].spawnTime
+      value: 47.4053688
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[5].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[6].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[6].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[6].spawnPos.mLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[6].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[6].spawnTime
+      value: 42.5396423
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[7].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[7].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[7].spawnPos.mLength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[7].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[7].spawnTime
+      value: 57.6774559
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[8].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[8].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[8].spawnPos.mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[8].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[8].spawnTime
+      value: 74.14785
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[3].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[4].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[9].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[9].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[9].spawnPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[9].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[9].spawnTime
+      value: 70.8058701
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[10].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[10].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[10].spawnPos.mLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[10].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[10].spawnTime
+      value: 83.7560349
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[11].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[11].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[11].spawnPos.mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[11].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[11].spawnTime
+      value: 87.0980148
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[12].spawnPos.mLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[13].spawnPos.mLength
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[12].spawnTime
+      value: 40.832489
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[13].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[13].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[13].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[13].spawnTime
+      value: 40.832489
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[12].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[12].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[12].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[2].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[1].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[14].spawnPos.mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[15].spawnPos.mLength
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[16].spawnPos.mLength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[17].spawnPos.mLength
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[18].spawnPos.mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[19].spawnPos.mLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[19].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[19].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[19].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[19].spawnTime
+      value: 2.921911
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[20].spawnPos.mLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[21].spawnPos.mLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[21].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[21].spawnPos.mWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[21].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _enemyKeys.Array.data[21].spawnTime
+      value: 1.66866887
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 160440}
+  m_IsPrefabParent: 1

@@ -1,0 +1,411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &158188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477944}
+  m_Layer: 0
+  m_Name: _Interactable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &161374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 433262}
+  m_Layer: 0
+  m_Name: _Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &166700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470204}
+  m_Layer: 0
+  m_Name: _Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &167046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 413322}
+  - 114: {fileID: 11485444}
+  - 114: {fileID: 11474138}
+  m_Layer: 0
+  m_Name: BlocksController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &181480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476876}
+  m_Layer: 0
+  m_Name: _NonInteractable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 477944}
+  - {fileID: 433262}
+  - {fileID: 476876}
+  - {fileID: 470204}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &433262
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413322}
+  m_RootOrder: 1
+--- !u!4 &470204
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413322}
+  m_RootOrder: 3
+--- !u!4 &476876
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413322}
+  m_RootOrder: 2
+--- !u!4 &477944
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413322}
+  m_RootOrder: 0
+--- !u!114 &11474138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63efb3897120f3c478e615ddfcef6e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digCostText: {fileID: 0}
+  dragging: 0
+  expectedCost: 0
+--- !u!114 &11485444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a875928ce9675f047951e7867b4d89ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uCon: {fileID: 0}
+  interactableBlockStates1D: 
+  interactableBlockObjs1D: []
+  intObjs: []
+  unitOccupiedBlocks: []
+  unitsOnBlocks: []
+  unitMovingOccupiedBlocks: []
+  enemyOccupiedBlocksTop: []
+  enemyOccupiedBlocksTrench: []
+  interactableBlocks1D: []
+  interactableGrids1D: []
+  aimAtBlocks: []
+  selectedBlocks: []
+  toBeDugBlocks: []
+  width: 18
+  length: 8
+  extraGroundWidth: 15
+  extraGroundLength: 20
+  spawned: 0
+  barracksBlockPos:
+    mWidth: 0
+    mLength: 3
+    obj: {fileID: 0}
+    unit: {fileID: 0}
+  enemyBarracksBlockPos:
+    mWidth: 12
+    mLength: 3
+    obj: {fileID: 0}
+    unit: {fileID: 0}
+  interactableHolder: {fileID: 158188}
+  nonInteractableHolder: {fileID: 181480}
+  groundHolder: {fileID: 161374}
+  gridHolder: {fileID: 166700}
+  bState: 0
+  startBlock: {x: 2, y: 2}
+  editorBlockAdd: {fileID: 197674, guid: c8496cb71b170c74c856919669c00656, type: 2}
+  editorBlockPrefabs:
+  - {fileID: 197674, guid: 3fa9461a0def6f444a83839626e0117a, type: 2}
+  - {fileID: 189664, guid: 1ac5acd61b0c29e4ab9a27633b5c8b98, type: 2}
+  - {fileID: 119652, guid: cc162acf455936a4ca4f433fd5170e8e, type: 2}
+  - {fileID: 119528, guid: bf85db63fe16ee547a2ccd6acef22808, type: 2}
+  - {fileID: 119652, guid: d84ad8080348e9b4aae5fd75f632411a, type: 2}
+  - {fileID: 119528, guid: 9199471ecf60a6642aa288df8602fea1, type: 2}
+  - {fileID: 130640, guid: 57ed8356ad2a7be46a801595101ad41c, type: 2}
+  - {fileID: 189664, guid: 7ddd0d8bff94a064bbf1430dc1573118, type: 2}
+  - {fileID: 197674, guid: c8496cb71b170c74c856919669c00656, type: 2}
+  editorBlockStates: 010000000400000004000000030000000400000003000000040000000400000003000000
+  blockType: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: occupiedBlocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: selectedBlocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: occupiedBlocks.Array.data[0].mWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: occupiedBlocks.Array.data[0].mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: occupiedBlocks.Array.data[1].mWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: occupiedBlocks.Array.data[1].mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startBlock.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: barracksBlockPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: width
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startBlock.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: selectedBlocks.Array.data[0].mWidth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: selectedBlocks.Array.data[0].mLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: gridHolder
+      value: 
+      objectReference: {fileID: 166700}
+    - target: {fileID: 0}
+      propertyPath: barracksBlockPos.mWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spawned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockAdd
+      value: 
+      objectReference: {fileID: 197674, guid: c8496cb71b170c74c856919669c00656, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 119528, guid: bf85db63fe16ee547a2ccd6acef22808, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 197674, guid: 3fa9461a0def6f444a83839626e0117a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 189664, guid: 1ac5acd61b0c29e4ab9a27633b5c8b98, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 119652, guid: cc162acf455936a4ca4f433fd5170e8e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 130640, guid: e018d75932fa4a64f868e6f3f9f1148b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 189664, guid: e095ecca5139a9d458ca783b1bd0ce58, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemyBarracksBlockPos.mWidth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemyBarracksBlockPos.mLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: length
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 143884, guid: cba3de67efc45174790e178d50187151, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[6]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[7]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[8]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 197674, guid: 0c17447fb30a5e246a7baa644d56f2c3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 197674, guid: 0c17447fb30a5e246a7baa644d56f2c3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 197674, guid: 0c17447fb30a5e246a7baa644d56f2c3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 197674, guid: 0c17447fb30a5e246a7baa644d56f2c3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: editorBlockPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 119652, guid: d84ad8080348e9b4aae5fd75f632411a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: editorBlockStates.Array.data[11]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: blockType
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 167046}
+  m_IsPrefabParent: 1

@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc87c22b947b494ea666a99a9c21127, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  uiCanvas: {fileID: 106698, guid: 723ad9e860583a34f9cdc61e60bfee12, type: 2}
+  uiController: {fileID: 160440, guid: 21cd8ec7a84c9d1438721dac24852fd0, type: 2}
+  selectStateButton: {fileID: 146702, guid: b8d68994bf10521498aeac8df1ae528d, type: 2}
+  digButton: {fileID: 153990, guid: cbe702c0a91c8d14fba2044bfdb73740, type: 2}
+  spawnGunnerUnitButton: {fileID: 160724, guid: 18842a0c3abfe44429998e8116c7e352,
+    type: 2}
+  spawnFlamerUnitButton: {fileID: 125738, guid: 1fc57b4659af74e4686382c349ed33ae,
+    type: 2}
+  spawnGrenaderUnitButton: {fileID: 125738, guid: 8fdf157f7cdb1274dad6a4e2cdf79d3d,
+    type: 2}
+  restartLevelButton: {fileID: 193204, guid: 41ef42c981a7e9e47a127858b85bf08d, type: 2}
+  restartSpawnButton: {fileID: 180212, guid: 3d50ace413d233147800c03eaf95d865, type: 2}
+  timelinePrefab: {fileID: 157352, guid: d7699838531d7a24a9c3d2d9ddbed1ea, type: 2}
+  enemyTimelineIcon: {fileID: 137816, guid: 19c95340be3f6ae48b1de888b70ad7f3, type: 2}
+  endGameCanvas: {fileID: 128120, guid: c8a313f7ecc50da4fb930822c13d1127, type: 2}
+  victoryCanvas: {fileID: 178208, guid: f1f5ab6214d3fc24c8a9a62fdcb029ed, type: 2}
+  pauseMenuCanvas: {fileID: 106216, guid: 109ab99255a84d344b5d895725fec3dc, type: 2}
+  commandPointText: {fileID: 143660, guid: 77641d6f2644e0e4ebfcc6568632e906, type: 2}
+  attackButton: {fileID: 167126, guid: 497a8f44cbee41048ba0ebf37d161fff, type: 2}
+  pointGainText: {fileID: 191566, guid: 648c11b766f76ee49b6f653019557227, type: 2}
+  pauseButton: {fileID: 126316, guid: a5881e79966085946884406b56ae6529, type: 2}
+  goToLevelButton: {fileID: 118022, guid: be8475b2144ee5a4090e39ee710d837b, type: 2}
+  mineSpawnButton: {fileID: 162166, guid: 2d8a93adc4c38f845a71e6dc46e47524, type: 2}
+  bombSpawnButton: {fileID: 115076, guid: d3aa6a128c3bd724192f515e0cea1503, type: 2}
+  waveTextObj: {fileID: 119066, guid: 7843fe163267dd047b1ba520c1bcdb23, type: 2}
+  centerOfScreenObj: {fileID: 119066, guid: 7843fe163267dd047b1ba520c1bcdb23, type: 2}
+  blockController: {fileID: 167046, guid: 2437d34d108b3cf42a2aed8d20e4d194, type: 2}
+  standardBlock: {fileID: 197674, guid: 3fa9461a0def6f444a83839626e0117a, type: 2}
+  destroyedBlock: {fileID: 197674, guid: 0c17447fb30a5e246a7baa644d56f2c3, type: 2}
+  groundBlock: {fileID: 197674, guid: 90e875dd41c1d1a44831d65ff3a7dc29, type: 2}
+  nonInteractableStandardBlock: {fileID: 197674, guid: aea08895fe4b6684da52f3a3471b7d81,
+    type: 2}
+  nonWalkableBlock: {fileID: 197674, guid: 3fa9461a0def6f444a83839626e0117a, type: 2}
+  endGameBlock: {fileID: 197674, guid: f4793212f1ff5264ab4597774297a4b9, type: 2}
+  standardBlockMud: {fileID: 197674, guid: c8496cb71b170c74c856919669c00656, type: 2}
+  groundBlockMud: {fileID: 197674, guid: f52aab7bdcfc1674ea5066435d11a545, type: 2}
+  nonInteractableStandardBlockMud: {fileID: 143884, guid: 16edd2a52b180684c9207fa228756736,
+    type: 2}
+  nonWalkableBlockMud: {fileID: 197674, guid: 186179895fea09b49b18b16a640075ba, type: 2}
+  standardBlockIce: {fileID: 197674, guid: c3f9404738f37e241abcb5ba401bbd7b, type: 2}
+  groundBlockIce: {fileID: 197674, guid: 18609c058b8aa344ca81675d8b4ce162, type: 2}
+  nonInteractableStandardBlockIce: {fileID: 143884, guid: cba3de67efc45174790e178d50187151,
+    type: 2}
+  nonWalkableBlockIce: {fileID: 197674, guid: bd0e72dacb7c548459c247889ebbfc14, type: 2}
+  blockStartColorGrass: {r: .97647059, g: .733333349, b: .572549045, a: 1}
+  blockStartColorMud: {r: 1, g: 1, b: 1, a: 0}
+  blockStartColorIce: {r: .933333337, g: .933333337, b: .933333337, a: 1}
+  blockSelectedColorGrass: {r: .833502829, g: .985294104, b: .760704994, a: 0}
+  blockSelectedColorMud: {r: .779411793, g: .678546727, b: .527249157, a: 0}
+  blockSelectedColorIce: {r: .762218833, g: .942235351, b: .977941155, a: 0}
+  gridObj: {fileID: 126990, guid: 414b907e15d831546927355e92263a55, type: 2}
+  gridColorWalkable: {r: .397058845, g: .850304186, b: 1, a: 1}
+  gridColorOccupied: {r: 1, g: .397058845, b: .397058845, a: 1}
+  gridColorStandard: {r: 1, g: 1, b: 1, a: .209000006}
+  blockDragColorCenterPositive: {r: .235294133, g: .890196145, b: .53725493, a: 1}
+  blockDragColorAroundPositive: {r: .619607866, g: .866666734, b: .641757965, a: 1}
+  blockDragColorCenterNegative: {r: .845588207, g: .248702392, b: .248702392, a: 1}
+  blockDragColorAroundNegative: {r: .79411763, g: .537197232, b: .537197232, a: 1}
+  arrowPrefab: {fileID: 109944, guid: e9317e46a3e8fcd4e931a1bb041335a5, type: 2}
+  groundHeight: .649999976
+  unitController: {fileID: 160440, guid: 6a1f6695fcac19046af4bdec2bc86d25, type: 2}
+  gunnerUnit: {fileID: 105322, guid: 52434b736138647459ffdbb67c688b9e, type: 2}
+  flamerUnit: {fileID: 150344, guid: 6b1da7ae618f9d54883c28fbaf98f194, type: 2}
+  grenaderUnit: {fileID: 122162, guid: c594282c2cc9d9746a827deab93a0826, type: 2}
+  diggerUnit: {fileID: 150344, guid: 9ccfbf59c789e0e4a9c0e35da19358e8, type: 2}
+  unitHealthUI: {fileID: 175150, guid: ebc84e04f6b396a448e369ecd2f32473, type: 2}
+  enemySpawner: {fileID: 160440, guid: d8b362905524d784083f2049b40a4083, type: 2}
+  enemyHealthUI: {fileID: 175150, guid: 5824053f3aa8db04291f49328cb7e125, type: 2}
+  grenaderEnemy: {fileID: 170462, guid: f4bfef2d44ed0c744a84c1ee16eddfc5, type: 2}
+  flamethrowerEnemy: {fileID: 170462, guid: ba939ce761b70884383c727be0551427, type: 2}
+  gunnerEnemy: {fileID: 170462, guid: 732d6769e4b41204d977f3f7c1af7f15, type: 2}
+  grenade: {fileID: 158286, guid: df34d239933af074b9aa05ae131fc545, type: 2}
+  gunShot: {fileID: 111466, guid: 0d29189721b170049baa6fed64505d40, type: 2}
+  flameBullet: {fileID: 111466, guid: 146e2d7953b0f5847a8d81d64a162985, type: 2}
+  enemyGrenade: {fileID: 158286, guid: df34d239933af074b9aa05ae131fc545, type: 2}
+  enemyGunShot: {fileID: 111466, guid: 88c2707df3423d243a7f3c9ae187c4ea, type: 2}
+  enemyFlameBullet: {fileID: 111466, guid: 9da72cd97efd8784c919185471bd5228, type: 2}
+  friendlyBarracks: {fileID: 148052, guid: 84c646340ee9017438d7daf0ac68b0f8, type: 2}
+  enemyBarracks: {fileID: 148052, guid: 8c7f40c3595cb8a4fb177be51c08852f, type: 2}
+  commander: {fileID: 170462, guid: e6886b567a81c504588b154ed514ec22, type: 2}
+  gameStats: {fileID: 113728, guid: 2c3ae93f210904d488f371c584a40e0b, type: 2}
+  startCommandPoints: 20
+  blockCost: 15
+  gunnerCost: 10
+  maxGunners: 5
+  flamerCost: 40
+  maxFlamers: 2
+  grenaderCost: 30
+  maxGrenaders: 2
+  commandPointPickup: 15
+  mineCost: 50
+  bombCost: 50
+  commandPointPrefab1: {fileID: 181992, guid: 79bf6b3957404d045950240788f9c471, type: 2}
+  commandPointUIText: 'Command Points: '
+  obstacleControls: {fileID: 173522, guid: ace6e29885f74e34db7c776931651df3, type: 2}
+  mine: {fileID: 155120, guid: ddd221faaebffca489cacc085a7b6c47, type: 2}
+  bomb: {fileID: 155120, guid: 3b62a4b964c3eb44abd516f0b0930c28, type: 2}
+  objectiveController: {fileID: 173522, guid: d7d8ea6ff05073546aeea8c9c8f5d8db, type: 2}
+  flagTakeOverColor: {r: .772058845, g: .2272719, b: .119214989, a: 1}
+  diggingEffect: {fileID: 169762, guid: 9f02702a660ea4c80810f07145a5f6fd, type: 2}
+  diggingEffectIce: {fileID: 141536, guid: 138a7927b43984f47a9904b9cc4983b9, type: 2}
+  grenadeEffect: {fileID: 181204, guid: f15c89c080fb7d74091f5d48e5430105, type: 2}
+  unitPlacementCircle: {fileID: 190624, guid: f6a586f6a6fa9fc489ac292584d7973b, type: 2}
+  greyscale: {fileID: 2100000, guid: a0d08292e0c679043a1c50dc70e8ef71, type: 2}
+  coloredSprite: {fileID: 2100000, guid: 99c2d12fba0fdab41ae014dd8aace61e, type: 2}
+  audioController: {fileID: 121334, guid: 0f22cbac31a01ff46bd79675d0328310, type: 2}
+  audioSourceObj: {fileID: 173274, guid: 8a37e67cc3240914a854eb13ea8f24ef, type: 2}
+  ambientSound1: {fileID: 8300000, guid: 058bf728eab1ef24291a641b956e216a, type: 3}
+  ambientSound2: {fileID: 8300000, guid: 47d41d2dbf9fb4b4cbddd4b3b22fa5cb, type: 3}
+  endGameClip: {fileID: 8300000, guid: 32ed3ff7cf32d1f479bd851394c779fe, type: 3}
+  winGameClip: {fileID: 8300000, guid: 9ba3aed16e7bb724690794a091d5c0db, type: 3}
+  winGameClip2: {fileID: 8300000, guid: 453f95f8e8a4d9c4dbc556181801ac32, type: 3}
+  shotSound: {fileID: 8300000, guid: 1ed7a6d22be5508498847cfa724a0899, type: 3}
+  flamerSound: {fileID: 8300000, guid: 09462dfdae40d49459aab2fa5b2c8703, type: 3}
+  grenadeHitSound: {fileID: 8300000, guid: 79a615ae5382ccc419decefa393af730, type: 3}
