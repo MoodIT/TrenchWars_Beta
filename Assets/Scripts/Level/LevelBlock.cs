@@ -13,10 +13,50 @@ public class LevelBlock : MonoBehaviour
     private LevelBuilder builderRef = null;
     public LevelBuilder BuilderRef { get { return builderRef; } set { builderRef = value; } }
 
-    private Transform mesh = null;
+    [SerializeField]
+    private GameObject mesh = null;
 
     public bool IsDigged { get; private set; }
     public bool IsSelected { get; set; }
+
+    [SerializeField]
+    private bool hasPlayer = false; //TEST!!
+    public bool HasPlayer { get { return hasPlayer; } }
+    //public bool HasPlayer { get; }
+
+    [SerializeField]
+    private bool isWalkable = true;
+    public bool IsWalkable
+    {
+        get
+        {
+            if (!isWalkable)
+                return false;
+
+            foreach (LevelObstacle obstacle in obstacles)
+            {
+                if (!obstacle.isWalkable)
+                    return false;
+            }
+            return true;
+        }
+    }
+
+    public float WalkSpeedModifier
+    {
+        get
+        {
+            float modi = 1.0f;
+
+            foreach (LevelObstacle obstacle in obstacles)
+            {
+                if (modi > obstacle.WalkSpeedModifier)
+                    modi = obstacle.WalkSpeedModifier;
+            }
+
+            return modi;
+        }
+    }
 
     [SerializeField]
     private bool isDiggable = true;
@@ -42,6 +82,7 @@ public class LevelBlock : MonoBehaviour
 
     public List<LevelObstacle> obstacles = new List<LevelObstacle>();
 
+/*    //remove
     [Serializable]
     public class BlockSideGraphics
     {
@@ -52,6 +93,10 @@ public class LevelBlock : MonoBehaviour
         [SerializeField]
         private GameObject graphics = null;
         public GameObject Graphics { get { return graphics; } }
+
+        [SerializeField]
+        private int chance = 10;
+        public int Chance { get { return chance; } }
     }
 
     [Header("Decorations")]
@@ -60,30 +105,39 @@ public class LevelBlock : MonoBehaviour
 
     [SerializeField]
     private List<BlockSideGraphics> edgeGraphicPrefabs = null;
+    //---*/
 
     private List<GameObject> blockDecorations = new List<GameObject>();
 
     void Awake ()
     {
-        mesh = transform.FindChild("Mesh");
-        if (mesh == null)
-            Debug.LogError("ERROR - Cant find mesh");
-    }
+        if (mesh != null && !mesh.activeSelf)
+            IsDigged = true;
 
-	void Start ()
-    {
         if (BuilderRef != null)
             BuilderRef.RegisterBlock(this);
-
-        RegisterObstacle();
     }
-	
+
+    void Start ()
+    {
+        RegisterObstacles();
+    }
+
+    public void Initialize()
+    {
+        if (IsDigged)
+        {
+            AddNeighborEdgeGraphics();
+            AddNeighborSideGraphics();
+        }
+    }
+
     void OnTriggerEnter(Collider obj)
     {
         Debug.LogError("Trigger");
     }
 
-    public void RegisterObstacle()
+    public void RegisterObstacles()
     {
         Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << builderRef.ObstacleLayer);
         for (int i = 0; i < collisions.Length; i++)
@@ -91,43 +145,42 @@ public class LevelBlock : MonoBehaviour
             Debug.Log("Found " + collisions[i].gameObject.name + " on blockID: " + BlockID);
             LevelObstacle obstacle = collisions[i].gameObject.GetComponent<LevelObstacle>();
             if (obstacle)
-            {
                 obstacles.Add(obstacle);
-            }
         }
     }
 
-    public void CreateEdgeGraphics(LevelBuilder.Side side)
+    public void CreateGraphics(List<LevelBuilder.BlockSideGraphics> graphics, LevelBuilder.Side side)
     {
-        List<BlockSideGraphics> edgeVariations = new List<BlockSideGraphics>();
-        foreach(BlockSideGraphics bside in edgeGraphicPrefabs)
+        int totalChance = 0;
+        List<LevelBuilder.BlockSideGraphics> variations = new List<LevelBuilder.BlockSideGraphics>();
+        foreach(LevelBuilder.BlockSideGraphics bside in graphics)
         {
             if (bside.Side == side && bside.Graphics != null)
-                edgeVariations.Add(bside);
+            {
+                variations.Add(bside);
+                totalChance += bside.Chance;
+            }
         }
 
-        GameObject prefab = edgeVariations[UnityEngine.Random.Range(0, edgeVariations.Count)].Graphics;
+        //chose random prefab
+        GameObject prefab = null;
+        int rand = UnityEngine.Random.Range(0, totalChance);
+        int curChance = 0;
+        foreach(LevelBuilder.BlockSideGraphics graphic in variations)
+        {
+            curChance += graphic.Chance;
+            if (curChance > rand)
+            {
+                prefab = graphic.Graphics;
+                break;
+            }
+        }
+
         if(prefab != null)
         {
             GameObject obj = Instantiate(prefab, transform.position, transform.rotation, transform) as GameObject;
             blockDecorations.Add(obj);
-        }
-    }
-
-    public void CreateSideGraphics(LevelBuilder.Side side)
-    {
-        List<BlockSideGraphics> sideVariations = new List<BlockSideGraphics>();
-        foreach (BlockSideGraphics bside in sideGraphicPrefabs)
-        {
-            if (bside.Side == side && bside.Graphics != null)
-                sideVariations.Add(bside);
-        }
-
-        GameObject prefab = sideVariations[UnityEngine.Random.Range(0, sideVariations.Count)].Graphics;
-        if (prefab != null)
-        {
-            GameObject obj = Instantiate(prefab, transform.position, transform.rotation, transform) as GameObject;
-            blockDecorations.Add(obj);
+            Debug.Log("CREATE " + obj.name);
         }
     }
     
@@ -135,27 +188,26 @@ public class LevelBlock : MonoBehaviour
     {
         LevelBlock left = builderRef.GetNeighbor(LevelBuilder.Side.Left, BlockID);
         if (left != null && !left.IsDigged)
-            left.CreateEdgeGraphics(LevelBuilder.Side.Left);
+            left.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Left);
 
         LevelBlock right = builderRef.GetNeighbor(LevelBuilder.Side.Right, BlockID);
         if (right != null && !right.IsDigged)
-            right.CreateEdgeGraphics(LevelBuilder.Side.Right);
+            right.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Right);
 
         LevelBlock up = builderRef.GetNeighbor(LevelBuilder.Side.Up, BlockID);
         if (up != null && !up.IsDigged)
-            up.CreateEdgeGraphics(LevelBuilder.Side.Up);
+            up.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Up);
 
         LevelBlock down = builderRef.GetNeighbor(LevelBuilder.Side.Down, BlockID);
         if (down != null && !down.IsDigged)
-            down.CreateEdgeGraphics(LevelBuilder.Side.Down);
-
+            down.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Down);
     }
 
     private void AddNeighborSideGraphics()
     {
         LevelBlock up = builderRef.GetNeighbor(LevelBuilder.Side.Up, BlockID);
         if (up != null && !up.IsDigged)
-            up.CreateSideGraphics(LevelBuilder.Side.Up);
+            up.CreateGraphics(builderRef.SideGraphicPrefabs, LevelBuilder.Side.Up);
     }
 
     public void Dig()

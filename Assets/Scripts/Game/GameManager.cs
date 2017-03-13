@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelBuilder levelBuilder = null;
 
+    private LevelBlock curSelected = null;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
                     {
                         if (!block.IsSelected)
                         {
+                            if (curSelected != null)
+                                curSelected.IsSelected = false;
                             block.IsSelected = true;
                             Debug.Log(block.name + " Selected");
                         }
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour
                         {
                             block.IsSelected = false;
                             block.Dig();
+                            curSelected = null;
+
                             Debug.Log(block.name + " Digged");
                         }
                     }

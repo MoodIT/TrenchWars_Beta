@@ -135,19 +135,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockID: -1
   builderRef: {fileID: 0}
+  mesh: {fileID: 1251822130341542}
+  hasPlayer: 0
+  isWalkable: 1
   isDiggable: 1
   obstacles: []
   sideGraphicPrefabs:
   - side: 2
     graphics: {fileID: 1178961943129320, guid: 52374b50767926f469fe08f33749d4b0, type: 2}
+    chance: 10
   - side: 2
     graphics: {fileID: 1963769588568188, guid: 64a9938de6d3dc043a0ce55c6fe4ff59, type: 2}
+    chance: 1
   edgeGraphicPrefabs:
   - side: 0
     graphics: {fileID: 1943677568567842, guid: 16f1554578604234d85dad824b841ca8, type: 2}
+    chance: 10
   - side: 1
     graphics: {fileID: 1395634828233656, guid: 6a98188d09a64f7459a9773a7cc4f3d6, type: 2}
+    chance: 10
   - side: 2
     graphics: {fileID: 1140919045773040, guid: db66c3505504c4841a612cf84ea74a2a, type: 2}
+    chance: 10
   - side: 3
     graphics: {fileID: 1389083796569960, guid: ba625588b16a7874eb60e334323a8c41, type: 2}
+    chance: 10

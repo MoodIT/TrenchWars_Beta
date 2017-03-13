@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,10 @@ public class LevelBuilder : MonoBehaviour
     private Transform levelBlocks = null;
 
     [SerializeField]
+    private Transform projectiles = null;
+    public Transform ProjectileParent { get { return projectiles; } }
+
+    [SerializeField]
     private bool createBlocks = false;
     [SerializeField]
     private Vector2 levelSize = Vector2.zero;
@@ -19,6 +23,7 @@ public class LevelBuilder : MonoBehaviour
 
     public int ObstacleLayer { get; private set; }
     public int BlockLayer { get; private set; }
+    public int EnemyLayer { get; private set; }
 
     public enum Side
     {
@@ -28,10 +33,36 @@ public class LevelBuilder : MonoBehaviour
         Down = 3,
     }
 
+    [Serializable]
+    public class BlockSideGraphics
+    {
+        [SerializeField]
+        private LevelBuilder.Side side = 0;
+        public LevelBuilder.Side Side { get { return side; } }
+
+        [SerializeField]
+        private GameObject graphics = null;
+        public GameObject Graphics { get { return graphics; } }
+
+        [SerializeField]
+        private int chance = 10;
+        public int Chance { get { return chance; } }
+    }
+
+    [Header("Block decorations")]
+    [SerializeField]
+    private List<BlockSideGraphics> sideGraphicPrefabs = null;
+    public List<BlockSideGraphics> SideGraphicPrefabs { get { return sideGraphicPrefabs; } }
+
+    [SerializeField]
+    private List<BlockSideGraphics> edgeGraphicPrefabs = null;
+    public List<BlockSideGraphics> EdgeGraphicPrefabs { get { return edgeGraphicPrefabs; } }
+
     void Awake()
     {
         ObstacleLayer = LayerMask.NameToLayer("Obstacle");
         BlockLayer = LayerMask.NameToLayer("Block");
+        EnemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
     // Use this for initialization
@@ -39,6 +70,13 @@ public class LevelBuilder : MonoBehaviour
     {
         if (createBlocks)
             BuildGrid();
+
+        //initialize all blocks
+        foreach (LevelBlock block in levelBlockDic.Values)
+        {
+            if (block != null)
+                block.Initialize();
+        }
 	}
 	
     private void BuildGrid()

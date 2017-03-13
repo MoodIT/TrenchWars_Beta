@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4647967067521946}
   - component: {fileID: 212742818021561988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barbwire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4448205361652614}
   - component: {fileID: 114042879596427006}
   - component: {fileID: 136782351181527442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barbwire_x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4940978284171964}
   - component: {fileID: 212121227274698654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wood_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4851212660848008}
   - component: {fileID: 212237460044530750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wood_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4417866093099904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553366508913062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 5.02, y: 0.65, z: 1.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4417866093099904}
@@ -172,6 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  walkSpeedModifier: 0.2
+  damage: 0
+  blockWalking: 0
   blockDigging: 1
 --- !u!136 &136782351181527442
 CapsuleCollider:
