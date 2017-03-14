@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164801806058114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.69, y: 0.5, z: -0.096}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4183530648250496}
@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628227669396982}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.51, y: 0, z: 0}
-  m_LocalScale: {x: 0.19783853, y: 0.19783846, z: 0.19783846}
+  m_LocalPosition: {x: -0.4, y: 1.19, z: -0.06}
+  m_LocalScale: {x: -0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 4121531861028382}
   m_RootOrder: 0
@@ -135,6 +135,10 @@ MonoBehaviour:
   range: 3
   projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
     type: 2}
+  ShootState: Stand_Shoot
+  ShootParamName: Shoot
+  DieParamName: Die
+  bulletFireEventTime: 0.5
 --- !u!212 &212443864368302768
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -166,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87dd199e13fe54acaafe3557e6c2f0c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96714636611e3304ca298b6a2f4c51a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

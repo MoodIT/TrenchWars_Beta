@@ -15,6 +15,22 @@ public class Enemy_RifleMan : Enemy_Base
 
     private Coroutine stateThread = null;
 
+    [Header("AnimStates")]
+    [SerializeField]
+    private string ShootState = "Stand_Shoot";
+
+    [Header("AnimParams")]
+    [SerializeField]
+    private string walkParamName = "Walk";
+    [SerializeField]
+    private string shootParamName = "Shoot";
+    [SerializeField]
+    private string dieParamName = "Die";
+
+    [Header("AnimEvents")]
+    [SerializeField]
+    private float bulletFireEventTime = 0.5f;
+
     void Start()
     {
         EvaluateState();
@@ -109,7 +125,7 @@ public class Enemy_RifleMan : Enemy_Base
                 stateThread = StartCoroutine(CombatCloseState());
                 break;
             case CharacterState.Dying:
-                stateThread = StartCoroutine(WaitBeforeRemove(5));
+                stateThread = StartCoroutine(DieState(5));
                 break;
             default:
                 Debug.LogError("ERROR - Unhandled state " + newState, gameObject);
@@ -126,19 +142,35 @@ public class Enemy_RifleMan : Enemy_Base
 
     private IEnumerator CombatRangeState()
     {
-        if(projectilePrefab != null)
+        anim.SetTrigger(shootParamName);
+        anim.ResetTrigger(walkParamName);
+
+        yield return new WaitForSeconds(bulletFireEventTime);
+
+        if (projectilePrefab != null)
         {
             Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + (new Vector3(-1, 1, 0)), Quaternion.identity, BuilderRef.ProjectileParent);
             bullet.Owner = this;
             bullet.Direction = -transform.right;
         }
-        yield return new WaitForSeconds(0.5f);
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(ShootState))
+        {
+            while (true)
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                    break;
+                yield return null;
+            }
+        }
+
         EvaluateState();
-        yield return null;
     }
 
     private IEnumerator MoveState(LevelBuilder.Side dir)
     {
+        anim.SetTrigger(walkParamName);
+
         //calc vectors
         Vector3 fromPos = CurBlock.transform.position;
         Vector3 toPos = NextBlock.transform.position;
@@ -174,8 +206,10 @@ public class Enemy_RifleMan : Enemy_Base
         EvaluateState();
     }
 
-    private IEnumerator WaitBeforeRemove(int waitSec)
+    private IEnumerator DieState(int waitSec)
     {
+        anim.SetTrigger(dieParamName);
+
         yield return new WaitForSeconds(waitSec);
         Destroy(gameObject);
     }

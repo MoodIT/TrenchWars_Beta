@@ -21,6 +21,8 @@ public class Enemy_Base : MonoBehaviour
     public LevelBlock CurBlock { get; set; }
     public LevelBlock NextBlock { get; set; }
 
+    protected Animator anim = null;
+
     public enum CharacterState : int
     {
         Spawning = 0,
@@ -33,6 +35,11 @@ public class Enemy_Base : MonoBehaviour
     }
 
     public CharacterState state { get; protected set; }
+
+    void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
 
     virtual public void EvaluateState()
     {
