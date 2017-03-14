@@ -132,11 +132,6 @@ public class LevelBlock : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider obj)
-    {
-        Debug.LogError("Trigger");
-    }
-
     public void RegisterObstacles()
     {
         Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << builderRef.ObstacleLayer);

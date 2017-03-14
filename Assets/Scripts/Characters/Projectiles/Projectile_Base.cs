@@ -10,6 +10,6 @@ public class Projectile_Base : MonoBehaviour
     [SerializeField]
     protected int speed = 1;
 
-    public Enemy_Base Owner { get; set; }
+    public Character_Base Owner { get; set; }
     public Vector3 Direction { get; set; }
 }

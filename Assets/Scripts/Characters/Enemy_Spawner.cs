@@ -71,7 +71,7 @@ public class Enemy_Spawner : MonoBehaviour
             }
 
             spawnEnemyDef def = enemyPrefabs[spawnIdx];
-            Enemy_Base block = Instantiate(def.enemyPrefab, transform.position, Quaternion.identity, enemyParent).GetComponent<Enemy_Base>();
+            Enemy_Base block = Instantiate(def.enemyPrefab, Vector3.zero, Quaternion.identity, enemyParent).GetComponent<Enemy_Base>();
             block.BuilderRef = builderRef;
             block.CurBlock = startBlock;
 

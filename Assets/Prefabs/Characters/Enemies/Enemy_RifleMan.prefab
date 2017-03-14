@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4121531861028382}
   - component: {fileID: 114094065096471130}
   - component: {fileID: 65999257705720826}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_RifleMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 212443864368302768}
   - component: {fileID: 54026383280098828}
   - component: {fileID: 95059818889852774}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628227669396982}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.4, y: 1.19, z: -0.06}
+  m_LocalPosition: {x: -0.4, y: 1.19, z: 0.5}
   m_LocalScale: {x: -0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 4121531861028382}
@@ -95,11 +95,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164801806058114}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: -0.6, y: 0.5, z: 0.5}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!95 &95059818889852774
 Animator:
   serializedVersion: 3
@@ -135,9 +135,11 @@ MonoBehaviour:
   range: 3
   projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
     type: 2}
+  projectileOffset: {x: -1.4, y: 1.55, z: 0}
   ShootState: Stand_Shoot
-  ShootParamName: Shoot
-  DieParamName: Die
+  walkParamName: Walk
+  shootParamName: Shoot
+  dieParamName: Die
   bulletFireEventTime: 0.5
 --- !u!212 &212443864368302768
 SpriteRenderer:
@@ -170,7 +172,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96714636611e3304ca298b6a2f4c51a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 470881802f09d9046892ef8280d0e329, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

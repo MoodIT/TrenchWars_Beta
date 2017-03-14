@@ -122,19 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   builderRef: {fileID: 0}
   enemyParent: {fileID: 0}
-  initialDelay: 2
-  enemyPrefabs:
-  - enemyPrefab: {fileID: 114094065096471130, guid: d65d63f93dfc9a34ba1f8c16331a9b13,
-      type: 2}
-    spawnCount: 1
-    spawnDelay: 5
-  - enemyPrefab: {fileID: 114094065096471130, guid: d65d63f93dfc9a34ba1f8c16331a9b13,
-      type: 2}
-    spawnCount: 1
-    spawnDelay: 5
-  - enemyPrefab: {fileID: 114094065096471130, guid: d65d63f93dfc9a34ba1f8c16331a9b13,
-      type: 2}
-    spawnCount: 1
-    spawnDelay: 5
+  initialDelay: 0
+  enemyPrefabs: []
   repeatCount: 0
   mesh: {fileID: 1770882010525688}

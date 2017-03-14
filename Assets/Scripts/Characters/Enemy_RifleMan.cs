@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Enemy_RifleMan : Enemy_Base
 {
+    private Coroutine stateThread = null;
+
     [SerializeField]
     private CharacterState initialState = CharacterState.Moving;
 
     [SerializeField]
     private int range = 3;
 
+    [Header("Projectiles")]
     [SerializeField]
     private Projectile_Base projectilePrefab = null;
 
-    private Coroutine stateThread = null;
+    [SerializeField]
+    private Vector3 projectileOffset = Vector3.zero;
 
     [Header("AnimStates")]
     [SerializeField]
@@ -34,6 +38,11 @@ public class Enemy_RifleMan : Enemy_Base
     void Start()
     {
         EvaluateState();
+    }
+
+    public override void Die()
+    {
+        ChangeState(CharacterState.Dying);
     }
 
     public override void EvaluateState()
@@ -143,13 +152,12 @@ public class Enemy_RifleMan : Enemy_Base
     private IEnumerator CombatRangeState()
     {
         anim.SetTrigger(shootParamName);
-        anim.ResetTrigger(walkParamName);
 
         yield return new WaitForSeconds(bulletFireEventTime);
 
         if (projectilePrefab != null)
         {
-            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + (new Vector3(-1, 1, 0)), Quaternion.identity, BuilderRef.ProjectileParent);
+            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + projectileOffset, Quaternion.identity, BuilderRef.ProjectileParent);
             bullet.Owner = this;
             bullet.Direction = -transform.right;
         }
@@ -164,6 +172,7 @@ public class Enemy_RifleMan : Enemy_Base
             }
         }
 
+        anim.ResetTrigger(shootParamName);
         EvaluateState();
     }
 
@@ -203,6 +212,8 @@ public class Enemy_RifleMan : Enemy_Base
         }
 
         CurBlock = NextBlock;
+
+        anim.ResetTrigger(walkParamName);
         EvaluateState();
     }
 

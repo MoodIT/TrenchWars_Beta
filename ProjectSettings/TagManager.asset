@@ -20,9 +20,9 @@ TagManager:
   - Block
   - Obstacle
   - Ground
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Projectile
   - 
   - 
   - 
