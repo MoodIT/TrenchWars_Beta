@@ -10,10 +10,6 @@ public class LevelBlock : MonoBehaviour
     public int BlockID { get { return blockID; } set { blockID = value; } }
 
     [SerializeField]
-    private LevelBuilder builderRef = null;
-    public LevelBuilder BuilderRef { get { return builderRef; } set { builderRef = value; } }
-
-    [SerializeField]
     private GameObject mesh = null;
 
     public bool IsDigged { get; private set; }
@@ -114,8 +110,7 @@ public class LevelBlock : MonoBehaviour
         if (mesh != null && !mesh.activeSelf)
             IsDigged = true;
 
-        if (BuilderRef != null)
-            BuilderRef.RegisterBlock(this);
+        GameManager.Instance.Builder.RegisterBlock(this);
     }
 
     void Start ()
@@ -134,7 +129,7 @@ public class LevelBlock : MonoBehaviour
 
     public void RegisterObstacles()
     {
-        Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << builderRef.ObstacleLayer);
+        Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << GameManager.Instance.Builder.ObstacleLayer);
         for (int i = 0; i < collisions.Length; i++)
         {
             Debug.Log("Found " + collisions[i].gameObject.name + " on blockID: " + BlockID);
@@ -181,28 +176,40 @@ public class LevelBlock : MonoBehaviour
     
     private void AddNeighborEdgeGraphics()
     {
-        LevelBlock left = builderRef.GetNeighbor(LevelBuilder.Side.Left, BlockID);
+        LevelBlock left = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Left, BlockID);
         if (left != null && !left.IsDigged)
-            left.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Left);
+            left.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Left);
 
-        LevelBlock right = builderRef.GetNeighbor(LevelBuilder.Side.Right, BlockID);
+        LevelBlock right = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Right, BlockID);
         if (right != null && !right.IsDigged)
-            right.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Right);
+            right.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Right);
 
-        LevelBlock up = builderRef.GetNeighbor(LevelBuilder.Side.Up, BlockID);
+        LevelBlock up = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Up, BlockID);
         if (up != null && !up.IsDigged)
-            up.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Up);
+            up.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Up);
 
-        LevelBlock down = builderRef.GetNeighbor(LevelBuilder.Side.Down, BlockID);
+        LevelBlock down = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Down, BlockID);
         if (down != null && !down.IsDigged)
-            down.CreateGraphics(builderRef.EdgeGraphicPrefabs, LevelBuilder.Side.Down);
+            down.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Down);
     }
 
     private void AddNeighborSideGraphics()
     {
-        LevelBlock up = builderRef.GetNeighbor(LevelBuilder.Side.Up, BlockID);
+        LevelBlock left = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Left, BlockID);
+        if (left != null && !left.IsDigged)
+            left.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Left);
+
+        LevelBlock right = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Right, BlockID);
+        if (right != null && !right.IsDigged)
+            right.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Right);
+
+        LevelBlock up = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Up, BlockID);
         if (up != null && !up.IsDigged)
-            up.CreateGraphics(builderRef.SideGraphicPrefabs, LevelBuilder.Side.Up);
+            up.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Up);
+
+        LevelBlock down = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Down, BlockID);
+        if (down != null && !down.IsDigged)
+            down.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Down);
     }
 
     public void Dig()

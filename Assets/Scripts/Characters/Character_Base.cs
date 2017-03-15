@@ -30,7 +30,6 @@ public class Character_Base : MonoBehaviour
         ChangeState(CharacterState.Dying);
     }
 
-    public LevelBuilder BuilderRef { get; set; }
     public LevelBlock CurBlock { get; set; }
     public LevelBlock NextBlock { get; set; }
 

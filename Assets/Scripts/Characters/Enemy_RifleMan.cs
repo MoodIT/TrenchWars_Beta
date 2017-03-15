@@ -12,6 +12,9 @@ public class Enemy_RifleMan : Enemy_Base
     [SerializeField]
     private int range = 3;
 
+    [SerializeField]
+    private int coins = 10;
+
     [Header("Projectiles")]
     [SerializeField]
     private Projectile_Base projectilePrefab = null;
@@ -40,11 +43,6 @@ public class Enemy_RifleMan : Enemy_Base
         EvaluateState();
     }
 
-    public override void Die()
-    {
-        ChangeState(CharacterState.Dying);
-    }
-
     public override void EvaluateState()
     {
         if (state == CharacterState.Dying)
@@ -56,7 +54,7 @@ public class Enemy_RifleMan : Enemy_Base
             return;
         }
 
-        LevelBlock next = BuilderRef.GetNeighbor(LevelBuilder.Side.Left, CurBlock.BlockID);
+        LevelBlock next = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Left, CurBlock.BlockID);
         if (next == null)
         {
             ChangeState(CharacterState.Idle, true);
@@ -77,7 +75,7 @@ public class Enemy_RifleMan : Enemy_Base
         {
             if (!next.IsWalkable)
             {
-                next = BuilderRef.GetNeighbor(LevelBuilder.Side.Down, CurBlock.BlockID);
+                next = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Down, CurBlock.BlockID);
                 if (next.IsWalkable)
                 {
                     NextBlock = next;
@@ -86,7 +84,7 @@ public class Enemy_RifleMan : Enemy_Base
                 }
                 else
                 {
-                    next = BuilderRef.GetNeighbor(LevelBuilder.Side.Up, CurBlock.BlockID);
+                    next = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Up, CurBlock.BlockID);
                     if (next.IsWalkable)
                     {
                         NextBlock = next;
@@ -157,7 +155,7 @@ public class Enemy_RifleMan : Enemy_Base
 
         if (projectilePrefab != null)
         {
-            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + projectileOffset, Quaternion.identity, BuilderRef.ProjectileParent);
+            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + projectileOffset, Quaternion.identity, GameManager.Instance.Builder.ProjectileParent);
             bullet.Owner = this;
             bullet.Direction = -transform.right;
         }
@@ -220,6 +218,8 @@ public class Enemy_RifleMan : Enemy_Base
     private IEnumerator DieState(int waitSec)
     {
         anim.SetTrigger(dieParamName);
+
+        GameManager.Instance.AddCoins(coins);
 
         yield return new WaitForSeconds(waitSec);
         Destroy(gameObject);

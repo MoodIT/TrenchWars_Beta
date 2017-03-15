@@ -39,7 +39,8 @@ public class Player_RifleMan : Character_Base
 
     void Start()
     {
-        BuilderRef = FindObjectOfType<LevelBuilder>();
+        //register
+        GameManager.Instance.AddPlayer(this);
 
         EvaluateState();
     }
@@ -124,7 +125,7 @@ public class Player_RifleMan : Character_Base
 
         if (projectilePrefab != null)
         {
-            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + projectileOffset, Quaternion.identity, BuilderRef.ProjectileParent);
+            Projectile_Base bullet = Instantiate(projectilePrefab, transform.position + projectileOffset, Quaternion.identity, GameManager.Instance.Builder.ProjectileParent);
             bullet.Owner = this;
             bullet.Direction = transform.right;
         }

@@ -5,9 +5,6 @@ using UnityEngine;
 public class Enemy_Spawner : MonoBehaviour
 {
     [SerializeField]
-    protected LevelBuilder builderRef = null;
-
-    [SerializeField]
     protected Transform enemyParent = null;
 
     [SerializeField]
@@ -43,7 +40,7 @@ public class Enemy_Spawner : MonoBehaviour
         if (mesh != null)
             mesh.SetActive(false);
 
-        Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << builderRef.BlockLayer);
+        Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << GameManager.Instance.Builder.BlockLayer);
         if (collisions.Length == 0 || collisions.Length > 1)
             Debug.LogError("ERROR - Spawner cant fint startblock", gameObject);
         else
@@ -72,7 +69,6 @@ public class Enemy_Spawner : MonoBehaviour
 
             spawnEnemyDef def = enemyPrefabs[spawnIdx];
             Enemy_Base block = Instantiate(def.enemyPrefab, Vector3.zero, Quaternion.identity, enemyParent).GetComponent<Enemy_Base>();
-            block.BuilderRef = builderRef;
             block.CurBlock = startBlock;
 
             spawnCount++;

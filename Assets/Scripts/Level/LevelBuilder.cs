@@ -88,7 +88,6 @@ public class LevelBuilder : MonoBehaviour
             {
                 LevelBlock block = Instantiate(levelBlockPrefab, new Vector3(basePos.x + x, 0, basePos.z + z), Quaternion.identity, levelBlocks).GetComponent<LevelBlock>();
                 block.BlockID = z + (x * (int)levelSize.y);
-                block.BuilderRef = this;
                 block.name = "LevelBlock_" + block.BlockID;
 
                 if (x == 0 || x == levelSize.x - 1 || z == 0 || z == levelSize.y - 1)
