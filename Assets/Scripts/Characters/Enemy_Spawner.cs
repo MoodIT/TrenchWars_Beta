@@ -5,9 +5,6 @@ using UnityEngine;
 public class Enemy_Spawner : MonoBehaviour
 {
     [SerializeField]
-    protected Transform enemyParent = null;
-
-    [SerializeField]
     private float initialDelay = 0;
 
     [System.Serializable]
@@ -68,8 +65,8 @@ public class Enemy_Spawner : MonoBehaviour
             }
 
             spawnEnemyDef def = enemyPrefabs[spawnIdx];
-            Enemy_Base block = Instantiate(def.enemyPrefab, Vector3.zero, Quaternion.identity, enemyParent).GetComponent<Enemy_Base>();
-            block.CurBlock = startBlock;
+            Enemy_Base enemy = Instantiate(def.enemyPrefab, Vector3.zero, Quaternion.identity, GameManager.Instance.Builder.EnemyParent).GetComponent<Enemy_Base>();
+            enemy.CurBlock = startBlock;
 
             spawnCount++;
             timeToNextSpawn = def.spawnDelay;

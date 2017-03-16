@@ -5,19 +5,30 @@ using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
+    [Header("Parent Folders")]
     [SerializeField]
-    private GameObject levelBlockPrefab = null;
-    [SerializeField]
-    private Transform levelBlocks = null;
+    protected Transform levelBlockParent = null;
+    public Transform LevelBlockParent { get { return LevelBlockParent; } }
 
     [SerializeField]
-    private Transform projectiles = null;
-    public Transform ProjectileParent { get { return projectiles; } }
+    protected Transform enemyParent = null;
+    public Transform EnemyParent { get { return enemyParent; } }
 
+    [SerializeField]
+    protected Transform playerParent = null;
+    public Transform PlayerParent { get { return playerParent; } }
+
+    [SerializeField]
+    private Transform projectileParent = null;
+    public Transform ProjectileParent { get { return projectileParent; } }
+
+    [Header("Level Building")]
     [SerializeField]
     private bool createBlocks = false;
     [SerializeField]
     private Vector2 levelSize = Vector2.zero;
+    [SerializeField]
+    private GameObject levelBlockPrefab = null;
 
     private Dictionary<int, LevelBlock> levelBlockDic = new Dictionary<int, LevelBlock>();
 
@@ -86,7 +97,7 @@ public class LevelBuilder : MonoBehaviour
         {
             for (int z = 0; z < levelSize.y; z++)
             {
-                LevelBlock block = Instantiate(levelBlockPrefab, new Vector3(basePos.x + x, 0, basePos.z + z), Quaternion.identity, levelBlocks).GetComponent<LevelBlock>();
+                LevelBlock block = Instantiate(levelBlockPrefab, new Vector3(basePos.x + x, 0, basePos.z + z), Quaternion.identity, LevelBlockParent).GetComponent<LevelBlock>();
                 block.BlockID = z + (x * (int)levelSize.y);
                 block.name = "LevelBlock_" + block.BlockID;
 

@@ -70,8 +70,8 @@ public class Player_RifleMan : Character_Base
 
     public override void ChangeState(CharacterState newState, bool force = false)
     {
-//        if (!force && newState == state)
-//            return;
+        if (!force && newState == state)
+            return;
 
         if (stateThread != null)
             StopCoroutine(stateThread);
@@ -190,6 +190,8 @@ public class Player_RifleMan : Character_Base
         anim.SetTrigger(dieParamName);
 
         yield return new WaitForSeconds(waitSec);
+
+        GameManager.Instance.RemovePlayer(this);
         Destroy(gameObject);
     }
 }

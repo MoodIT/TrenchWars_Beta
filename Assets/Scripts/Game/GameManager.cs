@@ -9,56 +9,39 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     private LevelBlock curSelected = null;
+
     private bool gameEnded = false;
+    public bool IsGameRunning { get { return !gameEnded; } }
 
     [SerializeField]
     private LevelBuilder levelBuilder = null;
     public LevelBuilder Builder { get { return levelBuilder; } }
 
+    [SerializeField]
+    private HUDManager hudManager = null;
+    public HUDManager HUD { get { return hudManager; } }
+
     [Header("Initial Data")]
     [SerializeField]
     private int supplies = 0;
+    public int Supplies { get { return supplies; } }
 
     [SerializeField]
     private int maxTrensies = 1;
     public int MaxTrensies { get { return maxTrensies; } }
 
+    private GameObject waitingToSpawn = null;
+
     HashSet<Character_Base> Trensies = new HashSet<Character_Base>();
 
     [SerializeField]
     private int coins = 0;
+    public int Coins { get { return coins; } }
 
     [SerializeField]
     private int gameTimeSec = 100;
-
     private float timeLeft = float.MaxValue;
 
-    [Header("Ingame HUD")]
-    [SerializeField]
-    private Text uiSupplies = null;
-
-    [SerializeField]
-    private Text uiTrensies = null;
-    [SerializeField]
-    private Animator animTrensies = null;
-
-    [SerializeField]
-    private Text uiCoins = null;
-    [SerializeField]
-    private Animator animCoins = null;
-
-    [SerializeField]
-    private Text uiTime = null;
-
-    [SerializeField]
-    private RectTransform uiTimeNeedle = null;
-
-    [SerializeField]
-    private List<Image> uiStarsEmpty = null;
-
-    [SerializeField]
-    private Image uiProgress = null;
-       
     public GameManager()
     {
         Instance = this;
@@ -66,31 +49,52 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UpdateUI();
         timeLeft = gameTimeSec;
+
+        //Init HUD
+        HUD.UpdateTimer(timeLeft, gameTimeSec);
+        HUD.UpdateCoins();
+        HUD.UpdateSupplies();
+        HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
 
     void Update()
     {
-        if (gameEnded)
+        if (!IsGameRunning)
             return;
 
-        UpdateUI_Timer();
+        timeLeft -= Time.deltaTime;
+        hudManager.UpdateTimer(timeLeft, gameTimeSec);
+
+        if (timeLeft <= 0)
+        {
+            gameEnded = true;
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.LogError("ClickStart!");
+
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << levelBuilder.BlockLayer);
             if (hit)
             {
+                Debug.LogError("ClickHit!");
                 LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
                 if(block)
                 {
-                    if (!block.IsDiggable)
+                    if(block.IsDigged)
                     {
-                        Debug.Log(block.name + " Blocked");
+                        if(waitingToSpawn != null)
+                        {
+                            Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
+                            player.CurBlock = block;
+                            waitingToSpawn = null;
+                            Debug.LogError("Created!");
+                        }
                     }
-                    else
+                    else if (block.IsDiggable)
                     {
                         if (!block.IsSelected)
                         {
@@ -114,44 +118,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateUI_Timer()
-    {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0)
-        {
-            gameEnded = true;
-            uiStarsEmpty[0].enabled = true;
-            uiTime.text = "0:00";
-            return;
-        }
-
-        uiTime.text = (int)Math.Floor(timeLeft / 60f) + ":" + ((int)(timeLeft % 60)).ToString("00");
-
-        float pctDone = timeLeft / (float)gameTimeSec;
-        uiTimeNeedle.rotation = Quaternion.Euler(0, 0, 360f * (1 - pctDone));
-
-        uiProgress.fillAmount = pctDone;
-
-        if (pctDone < 0.5f && !uiStarsEmpty[2].enabled)
-            uiStarsEmpty[2].enabled = true;
-        else if (pctDone < 0.25f && !uiStarsEmpty[1].enabled)
-            uiStarsEmpty[1].enabled = true;
-    }
-
-    private void UpdateUI()
-    {
-        uiSupplies.text = supplies.ToString();
-        uiTrensies.text = Trensies.Count + "/" + maxTrensies;
-        uiCoins.text = coins.ToString();
-    }
-
     public void AddPlayer(Character_Base player)
     {
         Trensies.Add(player);
 
-        StartCoroutine(PlayUIAnim(animTrensies, "newValue", "UI_HUD_ValueIncrease"));
-
-        UpdateUI();
+        HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
 
     public void RemovePlayer(Character_Base player)
@@ -159,45 +130,40 @@ public class GameManager : MonoBehaviour
         if(Trensies.Contains(player))
             Trensies.Remove(player);
 
-        UpdateUI();
+        HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
 
     public void AddCoins(int count)
     {
         coins += count;
-
-        StartCoroutine(PlayUIAnim(animCoins, "newValue", "UI_HUD_ValueIncrease"));
-
-        UpdateUI();
+        HUD.UpdateCoins();
     }
 
-    private IEnumerator PlayUIAnim(Animator anim, string triggerName, string newStateName)
+    //Button events
+    public void OnBuyTrensie(GameObject info)
     {
-        anim.SetBool(triggerName, true);
-
-        while(true)
+        if (waitingToSpawn != null)
         {
-            yield return null;
-
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                break;
+            Debug.LogError("waiting to place");
+            return;
         }
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName(newStateName))
+        UnitCard unit = info.GetComponent<UnitCard>();
+        if (coins - unit.Cost < 0)
         {
-            while (true)
-            {
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                    break;
-                yield return null;
-            }
+            Debug.LogError("not enough money");
+            return;
         }
 
-        anim.SetBool(triggerName, false);
-    }
+        if(Trensies.Count >= MaxTrensies)
+        {
+            Debug.LogError("too many trensies");
+            return;
+        }
 
-    public void OnPause()
-    {
-        Debug.Log("GAME PAUSE!");
+        coins -= unit.Cost;
+
+        HUD.UpdateCoins();
+        waitingToSpawn = unit.CharacterPrefab;
     }
 }
