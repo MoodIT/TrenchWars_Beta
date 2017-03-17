@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
-    private LevelBlock curSelected = null;
-
     private bool gameEnded = false;
     public bool IsGameRunning { get { return !gameEnded; } }
 
@@ -31,6 +29,15 @@ public class GameManager : MonoBehaviour
     public int MaxTrensies { get { return maxTrensies; } }
 
     private GameObject waitingToSpawn = null;
+    public void SpawnWaitingTrensies(LevelBlock block)
+    {
+        if (waitingToSpawn != null)
+        {
+            Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
+            player.CurBlock = block;
+            waitingToSpawn = null;
+        }
+    }
 
     HashSet<Character_Base> Trensies = new HashSet<Character_Base>();
 
@@ -71,22 +78,19 @@ public class GameManager : MonoBehaviour
             gameEnded = true;
             return;
         }
-
-        if (Input.GetMouseButtonDown(0))
+    }
+/*        if (Input.GetMouseButtonDown(0))
         {
-            Debug.LogError("ClickStart!");
-
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << levelBuilder.BlockLayer);
             if (hit)
             {
-                Debug.LogError("ClickHit!");
                 LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
-                if(block)
+                if (block)
                 {
-                    if(block.IsDigged)
+                    if (block.IsDigged)
                     {
-                        if(waitingToSpawn != null)
+                        if (waitingToSpawn != null)
                         {
                             Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
                             player.CurBlock = block;
@@ -98,26 +102,98 @@ public class GameManager : MonoBehaviour
                     {
                         if (!block.IsSelected)
                         {
-                            if (curSelected != null)
-                                curSelected.IsSelected = false;
-                            block.IsSelected = true;
-                            Debug.Log(block.name + " Selected");
-                        }
-                        else
-                        {
-                            block.IsSelected = false;
-                            block.Dig();
-                            curSelected = null;
+                            if (curSelected.Count != 0)
+                                DeselectAllBlocks();//clear selection
+                            else if (block.Cost <= coins && IsNeighborDiggable(block.BlockID))
+                            {//start new selection
+                                block.IsSelected = true;
+                                curSelected.Add(block);
+                                selectedCost += block.Cost;
 
-                            Debug.Log(block.name + " Digged");
+                                blockSel = StartCoroutine(BlockSelector());
+                            }
+                        }
+                        else if (curSelected.Count != 0)
+                        {//check if we have hit the dig block
+                            if (block == curSelected[curSelected.Count - 1])
+                                StartCoroutine(DigSelectedBlocks());
                         }
                     }
                 }
                 Debug.Log("Hit " + hitInfo.transform.gameObject.name + "    " + hitInfo.distance);
             }
         }
+        else if (Input.GetMouseButtonUp(0) && blockSel != null)
+        {
+            StopCoroutine(blockSel);
+            blockSel = null;
+        }
     }
 
+    private IEnumerator BlockSelector(float delay = 0.1f)
+    {
+        while(Input.GetMouseButton(0))
+        {
+            RaycastHit hitInfo = new RaycastHit();
+            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << levelBuilder.BlockLayer);
+            if (hit)
+            {
+                LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
+                if (block && block.IsDiggable && !block.IsSelected && (block.Cost + selectedCost) <= coins && IsNeighborDiggable(block.BlockID))
+                {
+                    block.IsSelected = true;
+                    curSelected.Add(block);
+                    selectedCost += block.Cost;
+
+                    blockSel = StartCoroutine(BlockSelector());
+                }
+            }
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    private IEnumerator DigSelectedBlocks(float delay = 0.2f)
+    {
+        foreach (LevelBlock block in curSelected)
+        {
+            coins -= block.Cost;
+            HUD.UpdateCoins();
+
+            block.Dig();
+            block.IsSelected = false;
+
+            yield return new WaitForSeconds(delay);
+        }
+
+        curSelected.Clear();
+        selectedCost = 0;
+    }
+
+    private bool IsNeighborDiggable(int blockID)
+    {
+        LevelBlock left = Builder.GetNeighbor(LevelBuilder.Side.Left, blockID);
+        if (left.IsDigged || left.IsSelected)
+            return true;
+        LevelBlock up = Builder.GetNeighbor(LevelBuilder.Side.Up, blockID);
+        if (up.IsDigged || up.IsSelected)
+            return true;
+        LevelBlock down = Builder.GetNeighbor(LevelBuilder.Side.Down, blockID);
+        if (down.IsDigged || down.IsSelected)
+            return true;
+        LevelBlock right = Builder.GetNeighbor(LevelBuilder.Side.Right, blockID);
+        if (right.IsDigged || right.IsSelected)
+            return true;
+        return false;
+    }
+
+    private void DeselectAllBlocks()
+    {
+        foreach (LevelBlock block in curSelected)
+            block.IsSelected = false;
+        curSelected.Clear();
+        selectedCost = 0;
+    }
+    */
     public void AddPlayer(Character_Base player)
     {
         Trensies.Add(player);

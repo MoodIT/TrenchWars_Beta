@@ -4,16 +4,36 @@ using UnityEngine;
 
 public class LevelBlock : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject mesh = null;
+    private MeshRenderer meshRender = null;
+
+    [SerializeField]
+    private Material normalMaterial = null;
+    [SerializeField]
+    private Material selMaterial = null;
+
     [Header("BlockData")]
     [SerializeField]
     private int blockID = -1;
     public int BlockID { get { return blockID; } set { blockID = value; } }
 
     [SerializeField]
-    private GameObject mesh = null;
+    private int cost = 10;
+    public int Cost { get { return cost; } }
 
     public bool IsDigged { get; private set; }
-    public bool IsSelected { get; set; }
+
+    public bool isSelected = false;
+    public bool IsSelected
+    {
+        get { return isSelected; }
+        set
+        {
+            isSelected = value;
+            mesh.transform.position += (isSelected ? Vector3.up : -Vector3.up) * .2f;
+        }
+    }
 
     [SerializeField]
     private bool hasPlayer = false; //TEST!!
@@ -78,43 +98,22 @@ public class LevelBlock : MonoBehaviour
 
     public List<LevelObstacle> obstacles = new List<LevelObstacle>();
 
-/*    //remove
-    [Serializable]
-    public class BlockSideGraphics
-    {
-        [SerializeField]
-        private LevelBuilder.Side side = 0;
-        public LevelBuilder.Side Side { get { return side; } }
-
-        [SerializeField]
-        private GameObject graphics = null;
-        public GameObject Graphics { get { return graphics; } }
-
-        [SerializeField]
-        private int chance = 10;
-        public int Chance { get { return chance; } }
-    }
-
-    [Header("Decorations")]
-    [SerializeField]
-    private List<BlockSideGraphics> sideGraphicPrefabs = null;
-
-    [SerializeField]
-    private List<BlockSideGraphics> edgeGraphicPrefabs = null;
-    //---*/
-
     private List<GameObject> blockDecorations = new List<GameObject>();
 
     void Awake ()
     {
-        if (mesh != null && !mesh.activeSelf)
-            IsDigged = true;
+        if (mesh != null)
+        {
+            if (!mesh.activeSelf)
+                IsDigged = true;
 
-        GameManager.Instance.Builder.RegisterBlock(this);
+            meshRender = mesh.GetComponent<MeshRenderer>();
+        }
     }
 
     void Start ()
     {
+        GameManager.Instance.Builder.RegisterBlock(this);
         RegisterObstacles();
     }
 
