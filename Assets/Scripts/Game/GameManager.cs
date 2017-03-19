@@ -126,14 +126,12 @@ public class GameManager : MonoBehaviour
             {
                 if(node.block == goalblock)
                 {
-                    Debug.LogError("FOUND GOAL");
                     nextBlock = node;
                     Stack<LevelBlock> path = new Stack<LevelBlock>();
                     while(nextBlock.prev != null)
                     {
                         path.Push(nextBlock.block);
                         nextBlock = nextBlock.prev;
-                        Debug.LogError("BLOCK " + nextBlock.block.BlockID);
                     }
                     selPlayer.MoveTo(path.ToArray());
                     return;
@@ -188,10 +186,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (!skip)
-            {
-                Debug.LogError("ADDING " + block.BlockID);
                 newNodes.Add(node);
-            }
         }
     }
 
