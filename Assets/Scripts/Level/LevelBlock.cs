@@ -109,11 +109,12 @@ public class LevelBlock : MonoBehaviour
 
             meshRender = mesh.GetComponent<MeshRenderer>();
         }
+
+        GameManager.Instance.Builder.RegisterBlock(this);
     }
 
     void Start ()
     {
-        GameManager.Instance.Builder.RegisterBlock(this);
         RegisterObstacles();
     }
 
@@ -213,8 +214,7 @@ public class LevelBlock : MonoBehaviour
 
     public void Dig()
     {
-        //disable collison and remove graphics
-        GetComponent<BoxCollider>().enabled = false;
+        //remove graphics
         mesh.gameObject.SetActive(false);
         foreach (GameObject obj in blockDecorations)
             obj.SetActive(false);

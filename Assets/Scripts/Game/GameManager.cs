@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private bool gameEnded = false;
     public bool IsGameRunning { get { return !gameEnded; } }
 
+    private Character_Base selPlayer = null;
+
     [SerializeField]
     private LevelBuilder levelBuilder = null;
     public LevelBuilder Builder { get { return levelBuilder; } }
@@ -31,12 +33,12 @@ public class GameManager : MonoBehaviour
     private GameObject waitingToSpawn = null;
     public void SpawnWaitingTrensies(LevelBlock block)
     {
-        if (waitingToSpawn != null)
-        {
-            Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
-            player.CurBlock = block;
-            waitingToSpawn = null;
-        }
+        if (waitingToSpawn == null)
+            return;
+
+        Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
+        player.CurBlock = block;
+        waitingToSpawn = null;
     }
 
     HashSet<Character_Base> Trensies = new HashSet<Character_Base>();
@@ -78,122 +80,121 @@ public class GameManager : MonoBehaviour
             gameEnded = true;
             return;
         }
-    }
-/*        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << levelBuilder.BlockLayer);
+            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << Builder.PlayerLayer);
             if (hit)
             {
-                LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
-                if (block)
+                Character_Base player = hitInfo.collider.GetComponent<Character_Base>();
+                if (player)
                 {
-                    if (block.IsDigged)
-                    {
-                        if (waitingToSpawn != null)
-                        {
-                            Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
-                            player.CurBlock = block;
-                            waitingToSpawn = null;
-                            Debug.LogError("Created!");
-                        }
-                    }
-                    else if (block.IsDiggable)
-                    {
-                        if (!block.IsSelected)
-                        {
-                            if (curSelected.Count != 0)
-                                DeselectAllBlocks();//clear selection
-                            else if (block.Cost <= coins && IsNeighborDiggable(block.BlockID))
-                            {//start new selection
-                                block.IsSelected = true;
-                                curSelected.Add(block);
-                                selectedCost += block.Cost;
+                    selPlayer = player;
 
-                                blockSel = StartCoroutine(BlockSelector());
-                            }
-                        }
-                        else if (curSelected.Count != 0)
-                        {//check if we have hit the dig block
-                            if (block == curSelected[curSelected.Count - 1])
-                                StartCoroutine(DigSelectedBlocks());
-                        }
-                    }
                 }
-                Debug.Log("Hit " + hitInfo.transform.gameObject.name + "    " + hitInfo.distance);
             }
-        }
-        else if (Input.GetMouseButtonUp(0) && blockSel != null)
-        {
-            StopCoroutine(blockSel);
-            blockSel = null;
+            else
+                selPlayer = null;
         }
     }
 
-    private IEnumerator BlockSelector(float delay = 0.1f)
+    class BlockNode
     {
-        while(Input.GetMouseButton(0))
-        {
-            RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << levelBuilder.BlockLayer);
-            if (hit)
+        public float dist = float.MaxValue;
+        public LevelBlock block = null;
+        public BlockNode prev = null;
+    }
+
+    public void MoveSelPlayer(LevelBlock goalblock)
+    {
+        if (selPlayer == null)
+            return;
+
+        List<BlockNode> newNodes = new List<BlockNode>();
+        List<BlockNode> usedNodes = new List<BlockNode>();
+
+        BlockNode start = new BlockNode();
+        start.block = selPlayer.CurBlock;
+        start.dist = (goalblock.transform.position - start.block.transform.position).sqrMagnitude; ;
+        newNodes.Add(start);
+
+        while(newNodes.Count > 0)
+        {//find next block
+            BlockNode nextBlock = null;
+            foreach (BlockNode node in newNodes)
             {
-                LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
-                if (block && block.IsDiggable && !block.IsSelected && (block.Cost + selectedCost) <= coins && IsNeighborDiggable(block.BlockID))
+                if(node.block == goalblock)
                 {
-                    block.IsSelected = true;
-                    curSelected.Add(block);
-                    selectedCost += block.Cost;
+                    Debug.LogError("FOUND GOAL");
+                    nextBlock = node;
+                    Stack<LevelBlock> path = new Stack<LevelBlock>();
+                    while(nextBlock.prev != null)
+                    {
+                        path.Push(nextBlock.block);
+                        nextBlock = nextBlock.prev;
+                        Debug.LogError("BLOCK " + nextBlock.block.BlockID);
+                    }
+                    selPlayer.MoveTo(path.ToArray());
+                    return;
+                }
 
-                    blockSel = StartCoroutine(BlockSelector());
+                if (nextBlock == null || node.dist < nextBlock.dist)
+                    nextBlock = node;
+            }
+            newNodes.Remove(nextBlock);
+
+            //add new nodes
+            LevelBlock up = Builder.GetNeighbor(LevelBuilder.Side.Up, nextBlock.block.BlockID);
+            AddNextNode(up, goalblock, nextBlock, newNodes, usedNodes);
+            LevelBlock down = Builder.GetNeighbor(LevelBuilder.Side.Down, nextBlock.block.BlockID);
+            AddNextNode(down, goalblock, nextBlock, newNodes, usedNodes);
+            LevelBlock left = Builder.GetNeighbor(LevelBuilder.Side.Left, nextBlock.block.BlockID);
+            AddNextNode(left, goalblock, nextBlock, newNodes, usedNodes);
+            LevelBlock right = Builder.GetNeighbor(LevelBuilder.Side.Right, nextBlock.block.BlockID);
+            AddNextNode(right, goalblock, nextBlock, newNodes, usedNodes);
+
+            usedNodes.Add(nextBlock);
+        }
+        Debug.LogError("No Path");
+    }
+
+    private void AddNextNode(LevelBlock block, LevelBlock goal, BlockNode cur, List<BlockNode> newNodes, List<BlockNode> usedNodes)
+    {
+        if (block.IsDigged)
+        {
+            BlockNode node = new BlockNode();
+            node.dist = (goal.transform.position - block.transform.position).sqrMagnitude;
+            node.block = block;
+            node.prev = cur;
+
+            bool skip = false;
+            foreach (BlockNode openNode in newNodes)
+            {
+                if (openNode.block.BlockID == block.BlockID && openNode.dist <= node.dist)
+                {
+                    skip = true;
+                    break;
                 }
             }
-            yield return new WaitForSeconds(delay);
+
+            foreach (BlockNode usedNode in usedNodes)
+            {
+                if (usedNode.block.BlockID == block.BlockID && usedNode.dist <= node.dist)
+                {
+                    skip = true;
+                    break;
+                }
+            }
+
+            if (!skip)
+            {
+                Debug.LogError("ADDING " + block.BlockID);
+                newNodes.Add(node);
+            }
         }
     }
 
-    private IEnumerator DigSelectedBlocks(float delay = 0.2f)
-    {
-        foreach (LevelBlock block in curSelected)
-        {
-            coins -= block.Cost;
-            HUD.UpdateCoins();
-
-            block.Dig();
-            block.IsSelected = false;
-
-            yield return new WaitForSeconds(delay);
-        }
-
-        curSelected.Clear();
-        selectedCost = 0;
-    }
-
-    private bool IsNeighborDiggable(int blockID)
-    {
-        LevelBlock left = Builder.GetNeighbor(LevelBuilder.Side.Left, blockID);
-        if (left.IsDigged || left.IsSelected)
-            return true;
-        LevelBlock up = Builder.GetNeighbor(LevelBuilder.Side.Up, blockID);
-        if (up.IsDigged || up.IsSelected)
-            return true;
-        LevelBlock down = Builder.GetNeighbor(LevelBuilder.Side.Down, blockID);
-        if (down.IsDigged || down.IsSelected)
-            return true;
-        LevelBlock right = Builder.GetNeighbor(LevelBuilder.Side.Right, blockID);
-        if (right.IsDigged || right.IsSelected)
-            return true;
-        return false;
-    }
-
-    private void DeselectAllBlocks()
-    {
-        foreach (LevelBlock block in curSelected)
-            block.IsSelected = false;
-        curSelected.Clear();
-        selectedCost = 0;
-    }
-    */
     public void AddPlayer(Character_Base player)
     {
         Trensies.Add(player);

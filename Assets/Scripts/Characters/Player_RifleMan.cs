@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_RifleMan : Character_Base
 {
     private Coroutine stateThread = null;
+    private LevelBlock[] movePath = null;
 
     [SerializeField]
     private CharacterState initialState = CharacterState.Moving;
@@ -144,45 +145,45 @@ public class Player_RifleMan : Character_Base
         EvaluateState();
     }
 
+    public override void MoveTo(LevelBlock[] path)
+    {
+        movePath = path;
+        ChangeState(CharacterState.Moving);
+    }
+
     private IEnumerator MoveState(LevelBuilder.Side dir)
     {
         anim.SetTrigger(walkParamName);
         yield return null;
 
-        anim.ResetTrigger(walkParamName);
-/*        //calc vectors
-        Vector3 fromPos = CurBlock.transform.position;
-        Vector3 toPos = NextBlock.transform.position;
+        for (int i = 0; i < movePath.Length; i++)
+        {
+            NextBlock = movePath[i];
 
-        if (NextBlock.IsDigged && !CurBlock.IsDigged)
-        {//go down
-            fromPos.y = transform.position.y - 1;
-            toPos.y = transform.position.y - 1;
-        }
-        else if (!NextBlock.IsDigged && CurBlock.IsDigged)
-        {//go up
-            fromPos.y = transform.position.y + 1;
-            toPos.y = transform.position.y + 1;
-        }
-        else
+            //calc vectors
+            Vector3 fromPos = CurBlock.transform.position;
+            Vector3 toPos = NextBlock.transform.position;
             fromPos.y = toPos.y = transform.position.y;
 
-        //make sure we are centered
-        transform.position = fromPos;
+            //make sure we are centered
+            transform.position = fromPos;
 
-        //move to next
-        Vector3 toNext = toPos - fromPos;
-        float stepCount = toNext.magnitude / (moveSpeed * Time.fixedDeltaTime * NextBlock.WalkSpeedModifier);
-        Vector3 step = toNext / stepCount;
-        while (stepCount > 0)
-        {
-            stepCount--;
-            transform.position += step;
-            yield return null;
+            //move to next
+            Vector3 toNext = toPos - fromPos;
+            float stepCount = toNext.magnitude / (moveSpeed * Time.fixedDeltaTime * NextBlock.WalkSpeedModifier);
+            Vector3 step = toNext / stepCount;
+            while (stepCount > 0)
+            {
+                stepCount--;
+                transform.position += step;
+                yield return null;
+            }
+
+            CurBlock = NextBlock;
         }
 
-        CurBlock = NextBlock;
-        EvaluateState();*/
+        anim.ResetTrigger(walkParamName);
+        EvaluateState();
     }
 
     private IEnumerator DieState(int waitSec)

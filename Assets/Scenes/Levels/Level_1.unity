@@ -4061,7 +4061,7 @@ MonoBehaviour:
   hudManager: {fileID: 52750226}
   supplies: 0
   maxTrensies: 5
-  coins: 200
+  coins: 2000
   gameTimeSec: 300
 --- !u!4 &294733757
 Transform:
@@ -8345,7 +8345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1454701778983794, guid: 90a79aa92f7b46b48ba658251cf626d8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114756230694117144, guid: 90a79aa92f7b46b48ba658251cf626d8,
         type: 2}
@@ -9622,7 +9622,7 @@ Prefab:
     - target: {fileID: 224487708987689158, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -655.25
+      value: -656.0708
       objectReference: {fileID: 0}
     - target: {fileID: 224893582587804902, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -9642,7 +9642,7 @@ Prefab:
     - target: {fileID: 224893582587804902, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -655.25
+      value: -656.0708
       objectReference: {fileID: 0}
     - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -9662,7 +9662,7 @@ Prefab:
     - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -655.25
+      value: -656.0708
       objectReference: {fileID: 0}
     - target: {fileID: 114261208982121678, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -25716,7 +25716,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1050026621241564, guid: afe1af4be2d97aa449599e5bea5049e3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afe1af4be2d97aa449599e5bea5049e3, type: 2}

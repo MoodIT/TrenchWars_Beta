@@ -30,6 +30,8 @@ public class Character_Base : MonoBehaviour
         ChangeState(CharacterState.Dying);
     }
 
+    public bool IsSelected { get; set; }
+
     public LevelBlock CurBlock { get; set; }
     public LevelBlock NextBlock { get; set; }
 
@@ -56,9 +58,10 @@ public class Character_Base : MonoBehaviour
     }
 
     virtual public void EvaluateState()
-    {
+    { }
 
-    }
+    virtual public void MoveTo(LevelBlock[] path)
+    { }
 
     virtual public void ChangeState(CharacterState newState, bool force = false)
     {

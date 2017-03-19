@@ -47,6 +47,7 @@ public class LevelBuilder : MonoBehaviour
     public int ObstacleLayer { get; private set; }
     public int BlockLayer { get; private set; }
     public int EnemyLayer { get; private set; }
+    public int PlayerLayer { get; private set; }
 
     public enum Side
     {
@@ -86,6 +87,7 @@ public class LevelBuilder : MonoBehaviour
         ObstacleLayer = LayerMask.NameToLayer("Obstacle");
         BlockLayer = LayerMask.NameToLayer("Block");
         EnemyLayer = LayerMask.NameToLayer("Enemy");
+        PlayerLayer = LayerMask.NameToLayer("Player");
     }
 
     // Use this for initialization
@@ -114,7 +116,10 @@ public class LevelBuilder : MonoBehaviour
                 if (block)
                 {
                     if (block.IsDigged)
+                    {
                         GameManager.Instance.SpawnWaitingTrensies(block);
+                        GameManager.Instance.MoveSelPlayer(block);
+                    }
                     else if (block.IsDiggable)
                     {
                         if (!block.IsSelected)
@@ -147,7 +152,6 @@ public class LevelBuilder : MonoBehaviour
 
             LevelBlock lastBlock = curSelected[curSelected.Count-1];
             digShovel = Instantiate(shovelGraphicPrefab, lastBlock.transform.position, Quaternion.identity, lastBlock.transform);
-
         }
     }
 
@@ -215,6 +219,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void DeselectAllBlocks()
     {
+        Destroy(digShovel);
         foreach (LevelBlock block in curSelected)
             block.IsSelected = false;
         curSelected.Clear();
