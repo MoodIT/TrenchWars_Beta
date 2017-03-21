@@ -18,11 +18,6 @@ public class HUDManager : MonoBehaviour
     private Animator animTrensies = null;
 
     [SerializeField]
-    private Text uiCoins = null;
-    [SerializeField]
-    private Animator animCoins = null;
-
-    [SerializeField]
     private Text uiTime = null;
 
     [SerializeField]
@@ -68,13 +63,6 @@ public class HUDManager : MonoBehaviour
         StartCoroutine(PlayUIAnim(animTrensies, "newValue", "UI_HUD_ValueIncrease"));
 
         uiTrensies.text = count + "/" + total;
-    }
-
-    public void UpdateCoins()
-    {
-        StartCoroutine(PlayUIAnim(animCoins, "newValue", "UI_HUD_ValueIncrease"));
-
-        uiCoins.text = GameManager.Instance.Coins.ToString();
     }
 
     private IEnumerator PlayUIAnim(Animator anim, string triggerName, string newStateName)

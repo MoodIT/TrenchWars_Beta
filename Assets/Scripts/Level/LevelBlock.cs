@@ -9,9 +9,7 @@ public class LevelBlock : MonoBehaviour
     private MeshRenderer meshRender = null;
 
     [SerializeField]
-    private Material normalMaterial = null;
-    [SerializeField]
-    private Material selMaterial = null;
+    private GameObject selection = null;
 
     [Header("BlockData")]
     [SerializeField]
@@ -31,7 +29,7 @@ public class LevelBlock : MonoBehaviour
         set
         {
             isSelected = value;
-            mesh.transform.position += (isSelected ? Vector3.up : -Vector3.up) * .2f;
+            selection.SetActive(value);
         }
     }
 
@@ -110,11 +108,17 @@ public class LevelBlock : MonoBehaviour
             meshRender = mesh.GetComponent<MeshRenderer>();
         }
 
-        GameManager.Instance.Builder.RegisterBlock(this);
+        selection.SetActive(false);
+
+        if(!GameManager.Instance.Builder.IsCreatingBlocks)
+            GameManager.Instance.Builder.RegisterBlock(this);
     }
 
     void Start ()
     {
+        if (GameManager.Instance.Builder.IsCreatingBlocks)
+            GameManager.Instance.Builder.RegisterBlock(this);
+
         RegisterObstacles();
     }
 

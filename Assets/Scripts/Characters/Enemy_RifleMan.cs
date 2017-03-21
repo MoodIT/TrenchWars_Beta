@@ -219,7 +219,7 @@ public class Enemy_RifleMan : Enemy_Base
     {
         anim.SetTrigger(dieParamName);
 
-        GameManager.Instance.AddCoins(coins);
+        GameManager.Instance.AddSupplies(coins);
 
         yield return new WaitForSeconds(waitSec);
         Destroy(gameObject);

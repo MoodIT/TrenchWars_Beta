@@ -17,7 +17,7 @@ public class CameraControl : MonoBehaviour {
 	public Vector3 refVel;
 	void Start () 
 	{
-		bControl = GameController.instance.blockController.GetComponent<BlockControl>();
+//TODO		bControl = GameController.instance.blockController.GetComponent<BlockControl>();
 		StartCoroutine(FixToAspect());
 	}
 	

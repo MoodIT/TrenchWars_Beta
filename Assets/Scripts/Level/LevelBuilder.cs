@@ -10,12 +10,37 @@ public class LevelBuilder : MonoBehaviour
     private int selectedCost = 0;
     private Coroutine blockSel = null;
     private GameObject digShovel = null;
+    private bool isSelecting = false;
+    private bool isDigging = false;
 
     [Header("Effects")]
     [SerializeField]
     private GameObject shovelGraphicPrefab = null;
     [SerializeField]
     private GameObject dibEffectPredab = null;
+    [SerializeField]
+    private GameObject selectionBlockPrefab = null;
+    [SerializeField]
+    private GameObject selectionGroundPrefab = null;
+
+    [Serializable]
+    public class PlaceCharacterEffect
+    {
+        [SerializeField]
+        private Character_Base.CharacterType type = Character_Base.CharacterType.Rifleman;
+        public Character_Base.CharacterType Type { get { return type; } }
+
+        [SerializeField]
+        private GameObject placeGraphicsPrefab = null;
+        public GameObject PlaceGraphicsPrefab { get { return placeGraphicsPrefab; } }
+    }
+    [SerializeField]
+    private List<PlaceCharacterEffect> placeCharactersEffect = new List<PlaceCharacterEffect>();
+
+    private Dictionary<Character_Base.CharacterType, GameObject> dicPlaceCharacterEffect = new Dictionary<Character_Base.CharacterType, GameObject>();
+    private GameObject selectionBlock = null;
+    private GameObject selectionGround = null;
+    private GameObject selectionCharacterPlacement = null;
 
     [Header("Parent Folders")]
     [SerializeField]
@@ -37,6 +62,8 @@ public class LevelBuilder : MonoBehaviour
     [Header("Level Building")]
     [SerializeField]
     private bool createBlocks = false;
+    public bool IsCreatingBlocks { get { return createBlocks; } }
+
     [SerializeField]
     private Vector2 levelSize = Vector2.zero;
     [SerializeField]
@@ -88,6 +115,22 @@ public class LevelBuilder : MonoBehaviour
         BlockLayer = LayerMask.NameToLayer("Block");
         EnemyLayer = LayerMask.NameToLayer("Enemy");
         PlayerLayer = LayerMask.NameToLayer("Player");
+
+        selectionBlock = Instantiate(selectionBlockPrefab, transform);
+        selectionBlock.SetActive(false);
+        selectionGround = Instantiate(selectionGroundPrefab, transform);
+        selectionGround.SetActive(false);
+
+        foreach(PlaceCharacterEffect effect in placeCharactersEffect)
+        {
+            if (effect != null)
+            {
+                GameObject gfx = Instantiate(effect.PlaceGraphicsPrefab, transform);
+                gfx.SetActive(false);
+
+                dicPlaceCharacterEffect.Add(effect.Type, gfx);
+            }
+        }
     }
 
     // Use this for initialization
@@ -115,28 +158,18 @@ public class LevelBuilder : MonoBehaviour
                 LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
                 if (block)
                 {
-                    if (block.IsDigged)
-                    {
-                        GameManager.Instance.SpawnWaitingTrensies(block);
-                        GameManager.Instance.MoveSelPlayer(block);
-                    }
-                    else if (block.IsDiggable)
+                    if (block.IsDiggable)
                     {
                         if (!block.IsSelected)
                         {
                             if (curSelected.Count != 0)
                                 DeselectAllBlocks();//clear selection
-                            else if (block.Cost <= GameManager.Instance.Coins && IsNeighborDiggable(block.BlockID))
-                            {//start new selection
-                                block.IsSelected = true;
-                                curSelected.Add(block);
-                                selectedCost += block.Cost;
-
-                                blockSel = StartCoroutine(BlockSelector());
-                            }
+                            else if(!isDigging)
+                                isSelecting = true;
                         }
                         else if (curSelected.Count != 0)
                         {//check if we have hit the dig block
+                            isDigging = true;
                             if (block == curSelected[curSelected.Count - 1])
                                 StartCoroutine(DigSelectedBlocks());
                         }
@@ -144,14 +177,43 @@ public class LevelBuilder : MonoBehaviour
                 }
                 Debug.Log("Hit " + hitInfo.transform.gameObject.name + "    " + hitInfo.distance);
             }
-        }
-        else if (Input.GetMouseButtonUp(0) && blockSel != null)
-        {
-            StopCoroutine(blockSel);
-            blockSel = null;
 
-            LevelBlock lastBlock = curSelected[curSelected.Count-1];
-            digShovel = Instantiate(shovelGraphicPrefab, lastBlock.transform.position, Quaternion.identity, lastBlock.transform);
+            blockSel = StartCoroutine(BlockSelector());
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            isSelecting = false;
+            if (blockSel != null)
+            {
+                StopCoroutine(blockSel);
+                blockSel = null;
+
+                if (curSelected.Count > 0 && !isDigging)
+                {
+                    LevelBlock lastBlock = curSelected[curSelected.Count - 1];
+                    digShovel = Instantiate(shovelGraphicPrefab, lastBlock.transform.position, Quaternion.identity, lastBlock.transform);
+                }
+            }
+
+            if (GameManager.Instance.HasSelPlayer || GameManager.Instance.SpawningPlayer)
+            {
+                RaycastHit hitInfo = new RaycastHit();
+                bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << BlockLayer);
+                if (hit)
+                {
+                    LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
+
+                    if (block.IsDigged)
+                    {
+                        GameManager.Instance.SpawnWaitingTrensies(block);
+                        GameManager.Instance.MoveSelPlayer(block);
+                    }
+                }
+            }
+            selectionGround.SetActive(false);
+
+            if(selectionCharacterPlacement != null)
+                selectionCharacterPlacement.SetActive(false);
         }
     }
 
@@ -164,17 +226,48 @@ public class LevelBuilder : MonoBehaviour
             if (hit)
             {
                 LevelBlock block = hitInfo.collider.GetComponent<LevelBlock>();
-                if (block && 
-                    block.IsDiggable && 
-                    !block.IsSelected && 
-                    (block.Cost + selectedCost) <= GameManager.Instance.Coins && 
-                    IsNeighborDiggable(block.BlockID))
-                {
-                    block.IsSelected = true;
-                    curSelected.Add(block);
-                    selectedCost += block.Cost;
 
-                    blockSel = StartCoroutine(BlockSelector());
+                if (block)
+                {
+                    if (block.IsDigged)
+                    {
+                        if (GameManager.Instance.SpawningPlayer != null)
+                        {
+                            if(selectionCharacterPlacement == null)
+                            {
+                                Character_Base character = GameManager.Instance.SpawningPlayer.GetComponent<Character_Base>();
+                                selectionCharacterPlacement = dicPlaceCharacterEffect[character.Type];
+                            }
+
+                            selectionGround.SetActive(true);
+                            selectionCharacterPlacement.SetActive(true);
+
+                            selectionGround.transform.position = block.transform.position;
+                            selectionCharacterPlacement.transform.position = block.transform.position;
+                        }
+                        else if (GameManager.Instance.HasSelPlayer)
+                        {
+                            selectionGround.SetActive(true);
+                            selectionGround.transform.position = block.transform.position;
+                        }
+                    }
+                    else
+                    {
+                        selectionGround.SetActive(false);
+                        if (selectionCharacterPlacement != null)
+                            selectionCharacterPlacement.SetActive(false);
+                    }
+
+                    if (isSelecting &&
+                        block.IsDiggable &&
+                        !block.IsSelected &&
+                        (block.Cost + selectedCost) <= GameManager.Instance.Supplies &&
+                        IsNeighborDiggable(block.BlockID))
+                    {
+                        block.IsSelected = true;
+                        curSelected.Add(block);
+                        selectedCost += block.Cost;
+                    }
                 }
             }
             yield return new WaitForSeconds(delay);
@@ -186,7 +279,7 @@ public class LevelBuilder : MonoBehaviour
         Destroy(digShovel);
         foreach (LevelBlock block in curSelected)
         {
-            GameManager.Instance.AddCoins(-block.Cost);
+            GameManager.Instance.AddSupplies(-block.Cost);
 
             block.Dig();
             block.IsSelected = false;
@@ -198,6 +291,7 @@ public class LevelBuilder : MonoBehaviour
 
         curSelected.Clear();
         selectedCost = 0;
+        isDigging = false;
     }
 
     private bool IsNeighborDiggable(int blockID)
@@ -224,6 +318,7 @@ public class LevelBuilder : MonoBehaviour
             block.IsSelected = false;
         curSelected.Clear();
         selectedCost = 0;
+        isSelecting = false;
     }
 
     private void BuildGrid()

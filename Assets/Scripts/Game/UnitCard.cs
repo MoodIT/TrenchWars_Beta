@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UnitCard : MonoBehaviour
@@ -22,7 +24,7 @@ public class UnitCard : MonoBehaviour
     {
         uiCost.text = cost.ToString();
 
-        Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(delegate { GameManager.Instance.OnBuyTrensie(gameObject); } );
+        EventTrigger eventTgr = GetComponent<EventTrigger>();
+        Helpers.AddEventTrigger(eventTgr, () => { GameManager.Instance.OnBuyTrensie(gameObject); }, EventTriggerType.PointerDown);
     }
 }

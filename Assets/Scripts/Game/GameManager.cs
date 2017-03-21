@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning { get { return !gameEnded; } }
 
     private Character_Base selPlayer = null;
+    public bool HasSelPlayer { get { return selPlayer != null; } }
 
     [SerializeField]
     private LevelBuilder levelBuilder = null;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public int MaxTrensies { get { return maxTrensies; } }
 
     private GameObject waitingToSpawn = null;
+    public GameObject SpawningPlayer { get { return waitingToSpawn; } }
     public void SpawnWaitingTrensies(LevelBlock block)
     {
         if (waitingToSpawn == null)
@@ -44,10 +46,6 @@ public class GameManager : MonoBehaviour
     HashSet<Character_Base> Trensies = new HashSet<Character_Base>();
 
     [SerializeField]
-    private int coins = 0;
-    public int Coins { get { return coins; } }
-
-    [SerializeField]
     private int gameTimeSec = 100;
     private float timeLeft = float.MaxValue;
 
@@ -56,13 +54,16 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    void Awake()
+    {
+    }
+
     void Start()
     {
         timeLeft = gameTimeSec;
 
         //Init HUD
         HUD.UpdateTimer(timeLeft, gameTimeSec);
-        HUD.UpdateCoins();
         HUD.UpdateSupplies();
         HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
@@ -91,7 +92,6 @@ public class GameManager : MonoBehaviour
                 if (player)
                 {
                     selPlayer = player;
-
                 }
             }
             else
@@ -205,10 +205,10 @@ public class GameManager : MonoBehaviour
         HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
 
-    public void AddCoins(int count)
+    public void AddSupplies(int count)
     {
-        coins += count;
-        HUD.UpdateCoins();
+        supplies += count;
+        HUD.UpdateSupplies();
     }
 
     //Button events
@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
         }
 
         UnitCard unit = info.GetComponent<UnitCard>();
-        if (coins - unit.Cost < 0)
+        if (supplies - unit.Cost < 0)
         {
             Debug.LogError("not enough money");
             return;
@@ -233,9 +233,9 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        coins -= unit.Cost;
+        supplies -= unit.Cost;
 
-        HUD.UpdateCoins();
+        HUD.UpdateSupplies();
         waitingToSpawn = unit.CharacterPrefab;
     }
 }

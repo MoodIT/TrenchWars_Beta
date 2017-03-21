@@ -7,9 +7,12 @@ public class Character_Base : MonoBehaviour
     public enum CharacterType : int
     {
         Rifleman = 0,
+        Flamer = 1,
+        Grenadier = 2,
     }
     [SerializeField]
     protected CharacterType type = CharacterType.Rifleman;
+    public CharacterType Type { get { return type; } }
 
     [SerializeField]
     protected float moveSpeed = 1;
