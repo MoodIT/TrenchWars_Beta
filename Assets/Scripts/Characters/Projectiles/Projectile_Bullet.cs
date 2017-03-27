@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Projectile_Bullet : Projectile_Base
 {
+    [SerializeField]
+    protected int speed = 1;
+
     private bool hit = false;
 
     void Update()

@@ -9,6 +9,7 @@ public class LevelObstacle : MonoBehaviour
         Blocker = 0,
         Barbwire = 1,
         Decoration = 2,
+        Mine = 3,
     }
     [SerializeField]
     private obstacleType type = obstacleType.Blocker;
