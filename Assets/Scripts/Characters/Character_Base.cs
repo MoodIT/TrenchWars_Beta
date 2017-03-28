@@ -23,7 +23,7 @@ public class Character_Base : MonoBehaviour
     public void AddDamage(int amount, Character_Base from = null)
     {
         health -= amount;
-        Debug.Log(name + " health: " + health, gameObject);
+//        Debug.Log(name + " health: " + health, gameObject);
         if (health <= 0)
             Die();
     }

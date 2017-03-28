@@ -12,6 +12,7 @@ public class LevelObstacle : MonoBehaviour
         Decoration = 2,
         Mine = 3,
         GameState = 4,
+        Flag = 5,
     }
     [SerializeField]
     private obstacleType type = obstacleType.Blocker;
@@ -59,7 +60,7 @@ public class LevelObstacle : MonoBehaviour
         if (canActivate == Activators.None || (character.IsPlayer && canActivate == Activators.Enemies) || (!character.IsPlayer && canActivate == Activators.Players))
             return;
 
-        ParticleManager.instance.CreateEffect(activateEffect, transform.position, Quaternion.identity);
+        ParticleManager.instance.CreateEffect(activateEffect, transform.localPosition, Quaternion.identity);
 
         character.AddDamage(Math.Abs(Damage));
 

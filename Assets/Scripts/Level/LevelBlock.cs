@@ -126,8 +126,8 @@ public class LevelBlock : MonoBehaviour
     {
         if (IsDigged)
         {
-            AddNeighborEdgeGraphics();
-            AddNeighborSideGraphics();
+            AddNeighborGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs);
+            AddNeighborGraphics(GameManager.Instance.Builder.SideGraphicPrefabs);
         }
     }
 
@@ -180,46 +180,27 @@ public class LevelBlock : MonoBehaviour
         {
             GameObject obj = Instantiate(prefab, transform.position, transform.rotation, transform) as GameObject;
             blockDecorations.Add(obj);
-            Debug.Log("CREATE " + obj.name);
+//            Debug.Log("CREATE " + obj.name);
         }
     }
     
-    private void AddNeighborEdgeGraphics()
+    private void AddNeighborGraphics(List<LevelBuilder.BlockSideGraphics> gfxList)
     {
         LevelBlock left = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Left, BlockID);
         if (left != null && !left.IsDigged)
-            left.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Left);
+            left.CreateGraphics(gfxList, LevelBuilder.Side.Left);
 
         LevelBlock right = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Right, BlockID);
         if (right != null && !right.IsDigged)
-            right.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Right);
+            right.CreateGraphics(gfxList, LevelBuilder.Side.Right);
 
         LevelBlock up = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Up, BlockID);
         if (up != null && !up.IsDigged)
-            up.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Up);
+            up.CreateGraphics(gfxList, LevelBuilder.Side.Up);
 
         LevelBlock down = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Down, BlockID);
         if (down != null && !down.IsDigged)
-            down.CreateGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs, LevelBuilder.Side.Down);
-    }
-
-    private void AddNeighborSideGraphics()
-    {
-        LevelBlock left = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Left, BlockID);
-        if (left != null && !left.IsDigged)
-            left.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Left);
-
-        LevelBlock right = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Right, BlockID);
-        if (right != null && !right.IsDigged)
-            right.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Right);
-
-        LevelBlock up = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Up, BlockID);
-        if (up != null && !up.IsDigged)
-            up.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Up);
-
-        LevelBlock down = GameManager.Instance.Builder.GetNeighbor(LevelBuilder.Side.Down, BlockID);
-        if (down != null && !down.IsDigged)
-            down.CreateGraphics(GameManager.Instance.Builder.SideGraphicPrefabs, LevelBuilder.Side.Down);
+            down.CreateGraphics(gfxList, LevelBuilder.Side.Down);
     }
 
     public void Dig()
@@ -230,10 +211,10 @@ public class LevelBlock : MonoBehaviour
             obj.SetActive(false);
 
         //Add edge graphics to neighbors
-        AddNeighborEdgeGraphics();
+        AddNeighborGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs);
 
         //Add side graphics to neighbors
-        AddNeighborSideGraphics();
+        AddNeighborGraphics(GameManager.Instance.Builder.SideGraphicPrefabs);
 
         IsDigged = true;
     }

@@ -75,6 +75,7 @@ public class LevelBuilder : MonoBehaviour
     public int BlockLayer { get; private set; }
     public int EnemyLayer { get; private set; }
     public int PlayerLayer { get; private set; }
+    public int SupplyDropLayer { get; private set; }
 
     public enum Side
     {
@@ -115,6 +116,7 @@ public class LevelBuilder : MonoBehaviour
         BlockLayer = LayerMask.NameToLayer("Block");
         EnemyLayer = LayerMask.NameToLayer("Enemy");
         PlayerLayer = LayerMask.NameToLayer("Player");
+        SupplyDropLayer = LayerMask.NameToLayer("SupplyDrop");
 
         selectionBlock = Instantiate(selectionBlockPrefab, transform);
         selectionBlock.SetActive(false);
@@ -175,7 +177,7 @@ public class LevelBuilder : MonoBehaviour
                         }
                     }
                 }
-                Debug.Log("Hit " + hitInfo.transform.gameObject.name + "    " + hitInfo.distance);
+//                Debug.Log("Hit " + hitInfo.transform.gameObject.name + "    " + hitInfo.distance);
             }
 
             blockSel = StartCoroutine(BlockSelector());
@@ -381,4 +383,16 @@ public class LevelBuilder : MonoBehaviour
             return null;
         return levelBlockDic[Helpers.convXY_BlockID(coords, levelSize)];
     } 
+
+    public LevelBlock GetRandomBlock()
+    {
+        List<LevelBlock> blockList = new List<LevelBlock>();
+        foreach(LevelBlock block in levelBlockDic.Values)
+        {
+            if (block.IsDiggable)
+                blockList.Add(block);
+        }
+
+        return blockList[UnityEngine.Random.Range(0, blockList.Count-1)];
+    }
 }

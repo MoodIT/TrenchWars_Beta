@@ -141,6 +141,90 @@ MonoBehaviour:
   shootParamName: Shoot
   dieParamName: Die
   bulletFireEventTime: 0.5
+  jumpDown:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.0058517456
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.35214776
+      value: 0.0046284497
+      inSlope: -0.008232892
+      outSlope: -0.008232892
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5100721
+      value: 0.10025354
+      inSlope: 2.1624317
+      outSlope: 2.1624317
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.7455036
+      value: -0.010502763
+      inSlope: -9.942723
+      outSlope: -9.942723
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.8273384
+      value: -0.9858509
+      inSlope: -0.01575443
+      outSlope: -0.01575443
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.99925077
+      value: -0.99268854
+      inSlope: 0.15768984
+      outSlope: 0.15768984
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  jumpUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: -0.9995271
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.17390263
+      value: -0.9935513
+      inSlope: 0.059696026
+      outSlope: 0.059696026
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3345445
+      value: -0.5329297
+      inSlope: 9.0891
+      outSlope: 9.0891
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5919712
+      value: 0.42719898
+      inSlope: -3.5797234
+      outSlope: -3.5797234
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.6864454
+      value: 0.0077649825
+      inSlope: -0.024785193
+      outSlope: -0.024785193
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9964222
+      value: -0.002131343
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   range: 3
 --- !u!212 &212443864368302768
 SpriteRenderer:

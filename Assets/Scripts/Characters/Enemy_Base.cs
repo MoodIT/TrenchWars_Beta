@@ -35,6 +35,13 @@ public class Enemy_Base : Character_Base
     [SerializeField]
     protected float bulletFireEventTime = 0.5f;
 
+    [Header("Jumping")]
+    [SerializeField]
+    protected AnimationCurve jumpDown = null;
+
+    [SerializeField]
+    protected AnimationCurve jumpUp = null;
+
     public override bool IsPlayer { get { return false; } }
 
     public override void ChangeState(CharacterState newState, bool force = false)
@@ -45,7 +52,7 @@ public class Enemy_Base : Character_Base
         if (stateThread != null)
             StopCoroutine(stateThread);
 
-        Debug.Log("ChangeState " + state + "->" + newState);
+//        Debug.Log("ChangeState " + state + "->" + newState);
         state = newState;
         switch (state)
         {
@@ -155,20 +162,16 @@ public class Enemy_Base : Character_Base
     {
         anim.SetTrigger(walkParamName);
 
+        AnimationCurve walkCurve = null;
+
         //calc vectors
         Vector3 fromPos = CurBlock.transform.position;
         Vector3 toPos = NextBlock.transform.position;
 
         if (NextBlock.IsDigged && !CurBlock.IsDigged)
-        {//go down
-            fromPos.y = transform.position.y - 1;
-            toPos.y = transform.position.y - 1;
-        }
+            walkCurve = jumpDown;
         else if (!NextBlock.IsDigged && CurBlock.IsDigged)
-        {//go up
-            fromPos.y = transform.position.y + 1;
-            toPos.y = transform.position.y + 1;
-        }
+            walkCurve = jumpUp;
         else
             fromPos.y = toPos.y = transform.position.y;
 
@@ -177,12 +180,20 @@ public class Enemy_Base : Character_Base
 
         //move to next
         Vector3 toNext = toPos - fromPos;
-        float stepCount = toNext.magnitude / (moveSpeed * Time.fixedDeltaTime * NextBlock.WalkSpeedModifier);
-        Vector3 step = toNext / stepCount;
-        while (stepCount > 0)
+        float stepCountTotal = toNext.magnitude / (moveSpeed * Time.fixedDeltaTime * NextBlock.WalkSpeedModifier);
+        Vector3 step = toNext / stepCountTotal;
+        float stepsLeft = stepCountTotal;
+        while (stepsLeft > 0)
         {
-            stepCount--;
+            stepsLeft--;
             transform.position += step;
+
+            if (walkCurve != null)
+            {
+                float yOffset = walkCurve.Evaluate(1f - (stepsLeft / stepCountTotal));
+                transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
+            }
+
             yield return null;
         }
 
