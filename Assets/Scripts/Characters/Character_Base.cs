@@ -20,7 +20,7 @@ public class Character_Base : MonoBehaviour
     [SerializeField]
     protected int health = 5;
 
-    public void AddDamage(int amount, Character_Base from)
+    public void AddDamage(int amount, Character_Base from = null)
     {
         health -= amount;
         Debug.Log(name + " health: " + health, gameObject);

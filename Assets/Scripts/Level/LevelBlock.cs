@@ -142,6 +142,12 @@ public class LevelBlock : MonoBehaviour
                 obstacles.Add(obstacle);
         }
     }
+    
+    public void Activate(Character_Base character)
+    {
+        foreach (LevelObstacle obstacle in obstacles)
+            obstacle.Activate(character);
+    }
 
     public void CreateGraphics(List<LevelBuilder.BlockSideGraphics> graphics, LevelBuilder.Side side)
     {

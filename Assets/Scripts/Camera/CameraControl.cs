@@ -18,7 +18,7 @@ public class CameraControl : MonoBehaviour {
 	void Start () 
 	{
 //TODO		bControl = GameController.instance.blockController.GetComponent<BlockControl>();
-		StartCoroutine(FixToAspect());
+//TODO		StartCoroutine(FixToAspect());
 	}
 	
 

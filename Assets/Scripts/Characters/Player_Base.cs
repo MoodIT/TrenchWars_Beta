@@ -146,6 +146,7 @@ public class Player_Base : Character_Base
             }
 
             CurBlock = NextBlock;
+            CurBlock.Activate(this);
         }
 
         anim.ResetTrigger(walkParamName);

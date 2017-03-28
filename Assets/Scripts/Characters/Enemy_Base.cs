@@ -187,6 +187,7 @@ public class Enemy_Base : Character_Base
         }
 
         CurBlock = NextBlock;
+        CurBlock.Activate(this);
 
         anim.ResetTrigger(walkParamName);
         EvaluateState();
