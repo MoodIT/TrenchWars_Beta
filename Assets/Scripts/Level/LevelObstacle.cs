@@ -11,6 +11,7 @@ public class LevelObstacle : MonoBehaviour
         Barbwire = 1,
         Decoration = 2,
         Mine = 3,
+        GameState = 4,
     }
     [SerializeField]
     private obstacleType type = obstacleType.Blocker;
@@ -48,27 +49,9 @@ public class LevelObstacle : MonoBehaviour
     [SerializeField]
     private Activators canActivate = Activators.None;
 
-    [Header("Debug")]
-    [SerializeField]
-    private bool debugActivate = false;
-
     private bool activated = false;
 
-    private void Awake()
-    {
-        debugActivate = false;
-    }
-
-    private void Update()
-    {
-        if (debugActivate)
-        {
-            GameObject effect = ParticleManager.instance.CreateEffect(activateEffect, Vector3.zero, Quaternion.identity);
-            debugActivate = false;
-        }
-    }
-
-    public void Activate(Character_Base character)
+    public virtual void Activate(Character_Base character)
     {
         if (activated)
             return;

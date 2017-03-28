@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelObstacleState : LevelObstacle
+public class LevelObstacleGameFail : LevelObstacle
 {
+
 }

@@ -18,9 +18,16 @@ public class GameManager : MonoBehaviour
     private LevelBuilder levelBuilder = null;
     public LevelBuilder Builder { get { return levelBuilder; } }
 
+    [Header("HUD")]
     [SerializeField]
     private HUDManager hudManager = null;
     public HUDManager HUD { get { return hudManager; } }
+
+    [SerializeField]
+    private GameObject winScreen = null;
+
+    [SerializeField]
+    private GameObject failScreen = null;
 
     [Header("Initial Data")]
     [SerializeField]
@@ -78,7 +85,7 @@ public class GameManager : MonoBehaviour
 
         if (timeLeft <= 0)
         {
-            gameEnded = true;
+            GameFailed();
             return;
         }
 
@@ -237,5 +244,21 @@ public class GameManager : MonoBehaviour
 
         HUD.UpdateSupplies();
         waitingToSpawn = unit.CharacterPrefab;
+    }
+
+    public void GameFailed()
+    {
+        if (failScreen != null)
+            failScreen.SetActive(true);
+
+        gameEnded = true;
+    }
+
+    public void GameWon()
+    {
+        if (winScreen != null)
+            winScreen.SetActive(true);
+
+        gameEnded = true;
     }
 }
