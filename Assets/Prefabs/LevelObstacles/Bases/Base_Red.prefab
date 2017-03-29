@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceffb89b6315e6941b24419eb14c2acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 7
   walkSpeedModifier: 1
   damage: 0
   blockWalking: 0
