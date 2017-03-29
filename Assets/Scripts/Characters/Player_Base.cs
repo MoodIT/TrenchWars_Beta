@@ -43,6 +43,12 @@ public class Player_Base : Character_Base
             return;
         }
 
+        if (movePath != null)
+        {
+            ChangeState(CharacterState.Moving);
+            return;
+        }
+
         if (state == CharacterState.Combat_Ranged)
         {
             ChangeState(CharacterState.Idle);
@@ -63,7 +69,7 @@ public class Player_Base : Character_Base
         if (stateThread != null)
             StopCoroutine(stateThread);
 
-        Debug.Log("ChangeState " + state + "->" + newState);
+//        Debug.Log("ChangeState " + state + "->" + newState);
         state = newState;
         switch (state)
         {
@@ -149,6 +155,7 @@ public class Player_Base : Character_Base
             CurBlock.Activate(this);
         }
 
+        movePath = null;
         anim.ResetTrigger(walkParamName);
         EvaluateState();
     }

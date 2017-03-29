@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelObstacle : MonoBehaviour
 {
-    enum obstacleType : int
+    public enum obstacleType : int
     {
         Blocker = 0,
         Barbwire = 1,
@@ -13,32 +13,35 @@ public class LevelObstacle : MonoBehaviour
         Mine = 3,
         GameState = 4,
         Flag = 5,
+        Activator = 6,
+        Base = 7,
     }
     [SerializeField]
-    private obstacleType type = obstacleType.Blocker;
+    protected obstacleType type = obstacleType.Blocker;
+    public obstacleType Type { get { return type; } }
 
     [SerializeField]
-    private float walkSpeedModifier = 1;
+    protected float walkSpeedModifier = 1;
     public float WalkSpeedModifier { get { return walkSpeedModifier; } }
 
     [SerializeField]
-    private int damage = 0;
+    protected int damage = 0;
     public int Damage { get { return damage; } }
 
     [SerializeField]
-    private bool blockWalking = false;
+    protected bool blockWalking = false;
     public bool isWalkable { get { return !blockWalking; } }
 
     [SerializeField]
-    private bool blockDigging = false;
+    protected bool blockDigging = false;
     public bool IsDiggable { get { return !blockDigging; } }
 
     [Header("Activation")]
     [SerializeField]
-    private GameObject activateEffect = null;
+    protected GameObject activateEffect = null;
 
     [SerializeField]
-    private bool removeAfterActivation = false;
+    protected bool removeAfterActivation = false;
 
     public enum Activators
     {
@@ -48,9 +51,10 @@ public class LevelObstacle : MonoBehaviour
         None = 3,
     }
     [SerializeField]
-    private Activators canActivate = Activators.None;
+    protected Activators canActivate = Activators.None;
 
-    private bool activated = false;
+    protected bool activated = false;
+    public bool IsActivated { get { return activated; } }
 
     public virtual void Activate(Character_Base character)
     {

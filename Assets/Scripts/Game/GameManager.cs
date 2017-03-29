@@ -18,6 +18,28 @@ public class GameManager : MonoBehaviour
     private LevelBuilder levelBuilder = null;
     public LevelBuilder Builder { get { return levelBuilder; } }
 
+    public LevelBlock BasePlacement { private get; set; }
+
+    private HashSet<LevelObstacleFlag> flagDic = new HashSet<LevelObstacleFlag>();
+    public void RegisterFlag(LevelObstacleFlag flag)
+    {
+        if (!flagDic.Contains(flag))
+            flagDic.Add(flag);
+    }
+
+    public void FlagActivated(LevelObstacleFlag flag)
+    {
+        //check if game is done
+        int activeCount = 0;
+        foreach(LevelObstacle flagObj in flagDic)
+        {
+            if (flagObj.IsActivated)
+                activeCount++;
+        }
+        if (activeCount >= flagDic.Count)
+            GameWon();
+    }
+
     [Header("Supplies")]
     [SerializeField]
     private GameObject supplyDropPrefab = null;
@@ -56,8 +78,12 @@ public class GameManager : MonoBehaviour
         if (waitingToSpawn == null)
             return;
 
-        Character_Base player = Instantiate(waitingToSpawn, block.transform.position - Vector3.up * .5f, Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
-        player.CurBlock = block;
+        Character_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
+        player.CurBlock = BasePlacement;
+
+        selPlayer = player;
+        MoveSelPlayer(block);
+
         waitingToSpawn = null;
     }
 
@@ -195,7 +221,7 @@ public class GameManager : MonoBehaviour
 
     private void AddNextNode(LevelBlock block, LevelBlock goal, BlockNode cur, List<BlockNode> newNodes, List<BlockNode> usedNodes)
     {
-        if (block.IsDigged)
+        if (block != null && block.IsDigged)
         {
             BlockNode node = new BlockNode();
             node.dist = (goal.transform.position - block.transform.position).sqrMagnitude;

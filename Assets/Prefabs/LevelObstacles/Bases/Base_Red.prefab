@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4029556116523948}
   - component: {fileID: 114331276439401376}
-  - component: {fileID: 65616461389364200}
+  - component: {fileID: 135157598579048300}
   m_Layer: 9
   m_Name: Base_Red
   m_TagString: Untagged
@@ -97,8 +97,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439178402273708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11, y: 2.48, z: 0.36}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.54, y: 2.4, z: 3.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4512711899174506}
@@ -125,8 +125,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538360098285828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.33, y: 0, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 0.72}
   m_Children:
   - {fileID: 4622158251218976}
   - {fileID: 4701653157071346}
@@ -160,18 +160,6 @@ Transform:
   m_Father: {fileID: 4512711899174506}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.6980004}
---- !u!65 &65616461389364200
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439178402273708}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.17, y: 0.2, z: 2.5}
-  m_Center: {x: 0, y: -2.5, z: 0.2}
 --- !u!114 &114331276439401376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,7 +172,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  walkSpeedModifier: 1
+  damage: 0
+  blockWalking: 0
   blockDigging: 1
+  activateEffect: {fileID: 0}
+  removeAfterActivation: 0
+  canActivate: 3
+--- !u!135 &135157598579048300
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439178402273708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: -1.49, y: -2.41, z: 0.19}
 --- !u!212 &212059659934196024
 SpriteRenderer:
   m_ObjectHideFlags: 1

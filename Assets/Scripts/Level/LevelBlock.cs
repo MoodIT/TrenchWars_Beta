@@ -139,7 +139,11 @@ public class LevelBlock : MonoBehaviour
             Debug.Log("Found " + collisions[i].gameObject.name + " on blockID: " + BlockID);
             LevelObstacle obstacle = collisions[i].gameObject.GetComponent<LevelObstacle>();
             if (obstacle)
+            {
                 obstacles.Add(obstacle);
+                if (obstacle.Type == LevelObstacle.obstacleType.Base)
+                    GameManager.Instance.BasePlacement = this;
+            }
         }
     }
     
