@@ -113,18 +113,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 1
-  health: 5
+  moveSpeed: 1.5
+  health: 8
   initialState: 10
-  range: 3
-  projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
-    type: 2}
-  projectileOffset: {x: 1.2, y: 1.2, z: 0.6}
   ShootState: Stand_Shoot
   walkParamName: Walk
   shootParamName: Shoot
   dieParamName: Die
   idleParamName: Idle
+  projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
+    type: 2}
+  projectileOffset: {x: 1.2, y: 1.2, z: 0.6}
+  muzzleFlashEffectPrefab: {fileID: 0}
   bulletFireEventTime: 0.5
 --- !u!212 &212213432528307780
 SpriteRenderer:
