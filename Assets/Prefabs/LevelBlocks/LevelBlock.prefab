@@ -166,7 +166,7 @@ MonoBehaviour:
   mesh: {fileID: 1251822130341542}
   selection: {fileID: 1459501347682070}
   blockID: -1
-  cost: 10
+  cost: 15
   isSelected: 0
   hasPlayer: 0
   isWalkable: 1
