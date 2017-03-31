@@ -29,7 +29,7 @@ public class Player_Base : Character_Base
         //register
         GameManager.Instance.AddPlayer(this);
 
-        EvaluateState();
+        Initialize();
     }
 
     public override void EvaluateState()
@@ -37,7 +37,7 @@ public class Player_Base : Character_Base
         if (state == CharacterState.Dying)
             return;
 
-        if (health <= 0)
+        if (curHealth <= 0)
         {
             ChangeState(CharacterState.Dying);
             return;
@@ -49,21 +49,21 @@ public class Player_Base : Character_Base
             return;
         }
 
-        if (state == CharacterState.Combat_Ranged)
+        if (GameManager.Instance.EnemyInRange(CurBlock.BlockID, range))
         {
-            ChangeState(CharacterState.Idle);
+            ChangeState(CharacterState.Combat_Ranged);
             return;
         }
         else
         {
-            ChangeState(CharacterState.Combat_Ranged);
+            ChangeState(CharacterState.Idle);
             return;
         }
     }
 
     public override void ChangeState(CharacterState newState, bool force = false)
     {
-        if (!force && newState == state)
+        if (state == CharacterState.Dying)
             return;
 
         if (stateThread != null)
@@ -136,6 +136,8 @@ public class Player_Base : Character_Base
             Vector3 fromPos = CurBlock.transform.position;
             Vector3 toPos = NextBlock.transform.position;
             fromPos.y = toPos.y = transform.position.y;
+
+            SetSortingOrder(NextBlock.GetBlockSortingOrder() + 10);
 
             //make sure we are centered
             transform.position = fromPos;

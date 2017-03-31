@@ -18,13 +18,34 @@ public class Character_Base : MonoBehaviour
     protected float moveSpeed = 1;
 
     [SerializeField]
-    protected int health = 5;
+    protected int range = 5;
+
+    [SerializeField]
+    private int health = 5;
+    protected int curHealth = 0;
+
+    [SerializeField]
+    protected int delayRemoveCorpse = 2;
+
+    [SerializeField]
+    protected SpriteRenderer healthBar = null;
+
+    protected void Initialize()
+    {
+        curHealth = health;
+        EvaluateState();
+    }
 
     public void AddDamage(int amount, Character_Base from = null)
     {
-        health -= amount;
-//        Debug.Log(name + " health: " + health, gameObject);
-        if (health <= 0)
+        if (amount == 0)
+            return;
+
+        curHealth -= amount;
+
+        healthBar.transform.localScale = new Vector3((float)curHealth / (float)health, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+//        Debug.Log(name + " health: " + curHealth, gameObject);
+        if (curHealth <= 0)
             Die();
     }
 
@@ -37,6 +58,15 @@ public class Character_Base : MonoBehaviour
 
     public LevelBlock CurBlock { get; set; }
     public LevelBlock NextBlock { get; set; }
+
+    public void SetSortingOrder(int order)
+    {
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in sprites)
+            sprite.sortingOrder = order;
+
+        healthBar.sortingOrder += 1;
+    }
 
     virtual public bool IsPlayer { get { return true; } }
 

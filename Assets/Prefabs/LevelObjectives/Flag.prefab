@@ -192,7 +192,7 @@ MonoBehaviour:
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
   canActivate: 0
-  activateObj: {fileID: 0}
+  activateObj: {fileID: 114796842043035986}
 --- !u!114 &114796842043035986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2abe860f382d2944d829f65a6ca8cbe1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,8 +254,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1839803971
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300010, guid: df70e1f892da3477e9c3f204e774d932, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2abe860f382d2944d829f65a6ca8cbe1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,7 +289,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300020, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

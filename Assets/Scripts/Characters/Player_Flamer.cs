@@ -9,8 +9,6 @@ public class Player_Flamer : Player_Base
 
     [SerializeField]
     protected Vector3 flameOffset = Vector3.zero;
-    [SerializeField]
-    private int range = 1;
 
     [Header("AnimEvents")]
     [SerializeField]

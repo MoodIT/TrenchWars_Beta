@@ -56,6 +56,15 @@ public class LevelObstacle : MonoBehaviour
     protected bool activated = false;
     public bool IsActivated { get { return activated; } }
 
+    public void SetSortingOrder(int order)
+    {
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sprite in sprites)
+        {
+            sprite.sortingOrder = order;
+        }
+    }
+
     public virtual void Activate(Character_Base character)
     {
         if (activated)

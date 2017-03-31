@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,7 +88,8 @@ public class GameManager : MonoBehaviour
         waitingToSpawn = null;
     }
 
-    HashSet<Character_Base> Trensies = new HashSet<Character_Base>();
+    HashSet<Player_Base> Trensies = new HashSet<Player_Base>();
+    HashSet<Enemy_Base> Enemies = new HashSet<Enemy_Base>();
 
     [SerializeField]
     private int gameTimeSec = 100;
@@ -252,19 +254,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPlayer(Character_Base player)
+    public void AddPlayer(Player_Base player)
     {
         Trensies.Add(player);
 
         HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
     }
 
-    public void RemovePlayer(Character_Base player)
+    public void RemovePlayer(Player_Base player)
     {
         if(Trensies.Contains(player))
             Trensies.Remove(player);
 
         HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
+    }
+
+    public void AddEnemy(Enemy_Base enemy)
+    {
+        Enemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(Enemy_Base enemy)
+    {
+        if (Enemies.Contains(enemy))
+            Enemies.Remove(enemy);
     }
 
     public void AddSupplies(int count)
@@ -299,6 +312,28 @@ public class GameManager : MonoBehaviour
 
         HUD.UpdateSupplies();
         waitingToSpawn = unit.CharacterPrefab;
+    }
+
+    public bool PlayerInRange(int fromID, int range)
+    {
+        foreach(Player_Base character in Trensies)
+        {
+            Vector2 dist = Helpers.CalcBlockDistance(fromID, character.CurBlock.BlockID, Builder.LevelSize);
+            if (Mathf.Abs(dist.x) < range && dist.y == 0)
+                return true;
+        }
+        return false;
+    }
+
+    public bool EnemyInRange(int fromID, int range)
+    {
+        foreach (Enemy_Base character in Enemies)
+        {
+            Vector2 dist = Helpers.CalcBlockDistance(fromID, character.CurBlock.BlockID, Builder.LevelSize);
+            if (Mathf.Abs(dist.x) < range && dist.y == 0)
+                return true;
+        }
+        return false;
     }
 
     public void GameFailed()

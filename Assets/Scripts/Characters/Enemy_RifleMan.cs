@@ -8,11 +8,6 @@ public class Enemy_RifleMan : Enemy_Base
     [SerializeField]
     protected GameObject muzzleFlashEffectPrefab = null;
 
-    void Start()
-    {
-        EvaluateState();
-    }
-
     protected override IEnumerator CombatRangeState()
     {
         anim.SetTrigger(shootParamName);

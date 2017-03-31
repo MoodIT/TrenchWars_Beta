@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class LevelBlock : MonoBehaviour
     public int Cost { get { return cost; } }
 
     public bool IsDigged { get; private set; }
+
+    public int GetBlockSortingOrder()
+    { return (int)Helpers.convBlockID_XY(BlockID, GameManager.Instance.Builder.LevelSize).y * -100; }
 
     public bool isSelected = false;
     public bool IsSelected
@@ -141,6 +145,8 @@ public class LevelBlock : MonoBehaviour
             if (obstacle)
             {
                 obstacles.Add(obstacle);
+                obstacle.SetSortingOrder(GetBlockSortingOrder());
+
                 if (obstacle.Type == LevelObstacle.obstacleType.Base)
                     GameManager.Instance.BasePlacement = this;
             }
@@ -183,6 +189,18 @@ public class LevelBlock : MonoBehaviour
         if(prefab != null)
         {
             GameObject obj = Instantiate(prefab, transform.position, transform.rotation, transform) as GameObject;
+
+            SpriteRenderer[] sprites = obj.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                if (side == LevelBuilder.Side.Up)
+                    sprite.sortingOrder = GetBlockSortingOrder() + 10;
+                else if (side == LevelBuilder.Side.Down)
+                    sprite.sortingOrder = GetBlockSortingOrder() - 10;
+                else
+                    sprite.sortingOrder = GetBlockSortingOrder();
+            }
+
             blockDecorations.Add(obj);
 //            Debug.Log("CREATE " + obj.name);
         }

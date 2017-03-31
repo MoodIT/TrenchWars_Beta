@@ -44,9 +44,17 @@ public class Enemy_Base : Character_Base
 
     public override bool IsPlayer { get { return false; } }
 
+    void Start()
+    {
+        //register
+        GameManager.Instance.AddEnemy(this);
+
+        Initialize();
+    }
+
     public override void ChangeState(CharacterState newState, bool force = false)
     {
-        if (!force && newState == state)
+        if (state == CharacterState.Dying)
             return;
 
         if (stateThread != null)
@@ -66,7 +74,7 @@ public class Enemy_Base : Character_Base
                 stateThread = StartCoroutine(CombatCloseState());
                 break;
             case CharacterState.Dying:
-                stateThread = StartCoroutine(DieState(5));
+                stateThread = StartCoroutine(DieState(delayRemoveCorpse));
                 break;
             default:
                 Debug.LogError("ERROR - Unhandled state " + newState, gameObject);
@@ -79,7 +87,7 @@ public class Enemy_Base : Character_Base
         if (state == CharacterState.Dying)
             return;
 
-        if (health <= 0)
+        if (curHealth <= 0)
         {
             ChangeState(CharacterState.Dying);
             return;
@@ -97,7 +105,7 @@ public class Enemy_Base : Character_Base
             ChangeState(CharacterState.Combat_Close);
             return;
         }
-        else if (state == CharacterState.Moving)
+        else if (state == CharacterState.Moving && GameManager.Instance.PlayerInRange(CurBlock.BlockID, range))
         {
             ChangeState(CharacterState.Combat_Ranged);
             return;
@@ -168,6 +176,8 @@ public class Enemy_Base : Character_Base
         Vector3 fromPos = CurBlock.transform.position;
         Vector3 toPos = NextBlock.transform.position;
 
+        SetSortingOrder(NextBlock.GetBlockSortingOrder() + 10);
+
         if (NextBlock.IsDigged && !CurBlock.IsDigged)
             walkCurve = jumpDown;
         else if (!NextBlock.IsDigged && CurBlock.IsDigged)
@@ -209,8 +219,10 @@ public class Enemy_Base : Character_Base
         anim.SetTrigger(dieParamName);
 
         GameManager.Instance.AddSupplies(coins);
+        GameManager.Instance.RemoveEnemy(this);
 
         yield return new WaitForSeconds(waitSec);
+
         Destroy(gameObject);
     }
 }

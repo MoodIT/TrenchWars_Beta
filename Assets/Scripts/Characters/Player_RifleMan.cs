@@ -34,15 +34,7 @@ public class Player_RifleMan : Player_Base
             bullet.Direction = transform.right;
         }
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName(ShootState))
-        {
-            while (true)
-            {
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                    break;
-                yield return null;
-            }
-        }
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - bulletFireEventTime);
 
         anim.ResetTrigger(shootParamName);
         EvaluateState();

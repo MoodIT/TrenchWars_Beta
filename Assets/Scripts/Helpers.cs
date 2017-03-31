@@ -16,6 +16,11 @@ namespace Assets.Scripts
             return (int)coords.y + ((int)coords.x * (int)levelSize.y);
         }
 
+        public static Vector2 CalcBlockDistance(int fromID, int toID, Vector2 levelSize)
+        {
+            return convBlockID_XY(toID, levelSize) - convBlockID_XY(fromID, levelSize);
+        }
+
         public static void AddEventTrigger(EventTrigger eventTrigger, UnityAction action, EventTriggerType triggerType)
         {
             // Create a nee TriggerEvent and add a listener

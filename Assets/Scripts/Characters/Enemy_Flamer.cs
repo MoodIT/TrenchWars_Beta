@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Enemy_Flamer : Enemy_Base
 {
-    [SerializeField]
-    private int range = 3;
-
-    void Start()
-    {
-        EvaluateState();
-    }
-
     protected override IEnumerator CombatRangeState()
     {
         anim.SetTrigger(shootParamName);

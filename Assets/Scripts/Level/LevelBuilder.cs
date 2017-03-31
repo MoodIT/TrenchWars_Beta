@@ -66,6 +66,8 @@ public class LevelBuilder : MonoBehaviour
 
     [SerializeField]
     private Vector2 levelSize = Vector2.zero;
+    public Vector2 LevelSize { get { return levelSize; } }
+
     [SerializeField]
     private GameObject levelBlockPrefab = null;
 
