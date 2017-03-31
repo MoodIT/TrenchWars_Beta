@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 0.5
+  moveSpeed: 1
   health: 3
   initialState: 10
   coins: 10

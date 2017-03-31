@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 1.5
+  moveSpeed: 3
   health: 8
   initialState: 10
   ShootState: Stand_Shoot

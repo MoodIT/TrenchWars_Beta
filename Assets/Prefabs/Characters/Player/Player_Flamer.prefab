@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  moveSpeed: 0.5
-  health: 10
+  moveSpeed: 2
+  health: 12
   initialState: 10
   ShootState: Stand_Shoot
   walkParamName: Walk

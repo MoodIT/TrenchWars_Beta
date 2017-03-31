@@ -53,7 +53,7 @@ Transform:
   m_GameObject: {fileID: 1543385046681690}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4885115225258418}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 6
+  speed: 9
 --- !u!135 &135614020362592956
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -143,7 +143,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c6eacb946c3625a44af351da5810c3dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5baba2967fa394228b9b3341bda84ce7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
