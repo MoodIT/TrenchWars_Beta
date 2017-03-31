@@ -133,7 +133,7 @@ MonoBehaviour:
   health: 3
   initialState: 10
   coins: 10
-  projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
+  projectilePrefab: {fileID: 114518709867718882, guid: 9e5a50406a3184e42917b01b6c5566e4,
     type: 2}
   projectileOffset: {x: -1.4, y: 1.55, z: 0}
   ShootState: Stand_Shoot

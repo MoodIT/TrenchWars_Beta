@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 9
+  speed: 13
 --- !u!135 &135614020362592956
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -143,7 +143,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5baba2967fa394228b9b3341bda84ce7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 830f6edac0d9d46ea81dd118f61d393d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

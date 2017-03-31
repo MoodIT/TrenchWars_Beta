@@ -130,9 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   moveSpeed: 0.8
-  health: 20
+  health: 5
   initialState: 10
-  coins: 30
+  coins: 20
   projectilePrefab: {fileID: 114541601012158730, guid: 48986682416d68843845415659a507fa,
     type: 2}
   projectileOffset: {x: -1.3, y: 1.2, z: 0.5}
