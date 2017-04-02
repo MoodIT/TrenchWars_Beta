@@ -220,7 +220,7 @@ MonoBehaviour:
   type: 1
   moveSpeed: 0.3
   range: 3
-  health: 10
+  health: 1
   delayRemoveCorpse: 2
   healthBar: {fileID: 212526898503776448}
   initialState: 10

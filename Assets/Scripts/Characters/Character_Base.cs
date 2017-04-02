@@ -43,7 +43,7 @@ public class Character_Base : MonoBehaviour
 
         curHealth -= amount;
 
-        healthBar.transform.localScale = new Vector3((float)curHealth / (float)health, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        healthBar.transform.localScale = new Vector3(Mathf.Clamp01((float)curHealth / (float)health), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 //        Debug.Log(name + " health: " + curHealth, gameObject);
         if (curHealth <= 0)
             Die();

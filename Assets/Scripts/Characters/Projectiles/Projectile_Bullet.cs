@@ -35,7 +35,7 @@ public class Projectile_Bullet : Projectile_Base
 
     private IEnumerator HitTarget()
     {
-        yield return new WaitForSeconds(1);
+        yield return null;// new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }

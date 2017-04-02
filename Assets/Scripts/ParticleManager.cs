@@ -12,6 +12,8 @@ public class ParticleManagerUpdater : MonoBehaviour
     {
         ParticleManager.instance.Update();
     }
+
+
 }
 
 public class ParticleManager
@@ -128,6 +130,12 @@ public class ParticleManager
                 system.Stop();
             }
         }
+    }
+
+    public void RemoveAll()
+    {
+        while(updater.transform.childCount > 0)
+            GameObject.DestroyObject(updater.transform.GetChild(0));
     }
 
     public void StopLoop(GameObject effect)

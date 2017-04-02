@@ -63,13 +63,14 @@ public class SupplyDrop : MonoBehaviour
     private void Land()
     {
         parachute.SetActive(false);
+        ParticleManager.instance.CreateEffect(landEffect, transform.position, Quaternion.identity);
         landed = true;
     }
 
     public void Pickup()
     {
         GameManager.Instance.AddSupplies(supplyAmount);
-
+        ParticleManager.instance.CreateEffect(pickupEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

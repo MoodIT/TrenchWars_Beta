@@ -244,7 +244,7 @@ public class LevelBuilder : MonoBehaviour
                             }
 
                             selectionGround.SetActive(true);
-                            selectionCharacterPlacement.SetActive(true);
+//Disable Character placements                            selectionCharacterPlacement.SetActive(true);
 
                             selectionGround.transform.position = block.transform.position;
                             selectionCharacterPlacement.transform.position = block.transform.position;
