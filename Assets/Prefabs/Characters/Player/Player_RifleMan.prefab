@@ -202,9 +202,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 1
-  range: 8
+  moveSpeed: 2.5
+  range: 11
   health: 5
+  delayRemoveCorpse: 2
   healthBar: {fileID: 212548919564914664}
   initialState: 10
   ShootState: Stand_Shoot
