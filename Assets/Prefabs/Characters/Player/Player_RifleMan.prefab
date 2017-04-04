@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 2.5
+  moveSpeed: 5
   range: 11
   health: 5
   delayRemoveCorpse: 2
