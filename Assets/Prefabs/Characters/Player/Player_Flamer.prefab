@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   moveSpeed: 1.5
-  range: 3
+  range: 5
   health: 10
   delayRemoveCorpse: 2
   healthBar: {fileID: 212298743148836884}
