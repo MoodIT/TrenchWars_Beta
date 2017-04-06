@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: b6b694770765d477090171d19d5946d0
+timeCreated: 1491493999
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ch_CookingPot_Layer_10_plane
+    100002: ch_CookingPot_Layer_11_plane
+    100004: ch_CookingPot_Layer_12_plane
+    100006: ch_CookingPot_Layer_13_plane
+    100008: ch_CookingPot_Layer_2_plane
+    100010: ch_CookingPot_Layer_3_plane
+    100012: ch_CookingPot_Layer_9_plane
+    100014: //RootNode
+    100016: joint1
+    100018: joint2
+    100020: joint3
+    100022: joint4
+    100024: joint5
+    100026: joint6
+    100028: joint7
+    100030: joint8
+    100032: pPlane1
+    400000: ch_CookingPot_Layer_10_plane
+    400002: ch_CookingPot_Layer_11_plane
+    400004: ch_CookingPot_Layer_12_plane
+    400006: ch_CookingPot_Layer_13_plane
+    400008: ch_CookingPot_Layer_2_plane
+    400010: ch_CookingPot_Layer_3_plane
+    400012: ch_CookingPot_Layer_9_plane
+    400014: //RootNode
+    400016: joint1
+    400018: joint2
+    400020: joint3
+    400022: joint4
+    400024: joint5
+    400026: joint6
+    400028: joint7
+    400030: joint8
+    400032: pPlane1
+    2300000: ch_CookingPot_Layer_2_plane
+    3300000: ch_CookingPot_Layer_2_plane
+    4300000: ch_CookingPot_Layer_2_plane
+    4300002: ch_CookingPot_Layer_9_plane
+    4300004: ch_CookingPot_Layer_12_plane
+    4300006: ch_CookingPot_Layer_11_plane
+    4300008: ch_CookingPot_Layer_13_plane
+    4300010: ch_CookingPot_Layer_3_plane
+    4300012: ch_CookingPot_Layer_10_plane
+    4300014: pPlane1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: ch_CookingPot_Layer_10_plane
+    13700002: ch_CookingPot_Layer_11_plane
+    13700004: ch_CookingPot_Layer_12_plane
+    13700006: ch_CookingPot_Layer_13_plane
+    13700008: ch_CookingPot_Layer_3_plane
+    13700010: ch_CookingPot_Layer_9_plane
+    13700012: pPlane1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ch_CookingPot_Layer_2_plane
+        weight: 1
+      - path: ch_CookingPot_Layer_3_plane
+        weight: 1
+      - path: ch_CookingPot_Layer_9_plane
+        weight: 1
+      - path: ch_CookingPot_Layer_10_plane
+        weight: 1
+      - path: ch_CookingPot_Layer_11_plane
+        weight: 1
+      - path: ch_CookingPot_Layer_13_plane
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint4
+        weight: 1
+      - path: joint1/joint4/joint5
+        weight: 1
+      - path: joint1/joint6
+        weight: 1
+      - path: joint1/joint6/joint7
+        weight: 1
+      - path: joint1/joint6/joint7/joint8
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
