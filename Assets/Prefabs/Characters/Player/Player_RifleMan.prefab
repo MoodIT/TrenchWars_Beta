@@ -246,7 +246,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
     type: 2}
   projectileOffset: {x: 1.2, y: 1.2, z: 0.6}
-  muzzleFlashEffectPrefab: {fileID: 0}
+  muzzleFlashEffectPrefab: {fileID: 1425354796890596, guid: 0515c92df5ddf4035a8e67f97e00ee86,
+    type: 2}
   bulletFireEventTime: 0.5
 --- !u!212 &212060919514404518
 SpriteRenderer:
