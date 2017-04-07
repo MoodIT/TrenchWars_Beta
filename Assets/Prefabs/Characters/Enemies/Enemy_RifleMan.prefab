@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 0.5
-  range: 10
-  health: 3
+  moveSpeed: 0.8
+  range: 12
+  health: 4
   delayRemoveCorpse: 2
   healthBar: {fileID: 212270958640682816}
   initialState: 10

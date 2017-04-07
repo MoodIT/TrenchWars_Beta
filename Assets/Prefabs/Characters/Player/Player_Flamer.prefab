@@ -216,7 +216,7 @@ MonoBehaviour:
   flameEffectPrefab: {fileID: 114541601012158730, guid: f8579327e0a79ad48ba25fe2a4165582,
     type: 2}
   flameOffset: {x: 1.2, y: 1.2, z: 0.5}
-  flameFireEventTime: 0.5
+  flameFireEventTime: 0.9
 --- !u!212 &212213432528307780
 SpriteRenderer:
   m_ObjectHideFlags: 1

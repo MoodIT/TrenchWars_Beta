@@ -50,7 +50,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559649431639030}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -24.8, y: -0.03, z: -1.57}
+  m_LocalPosition: {x: -25.6, y: 3, z: -1.6}
   m_LocalScale: {x: 1.2, y: 1.2000005, z: 1.2000005}
   m_Children: []
   m_Father: {fileID: 4646985119155028}
@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1078487319773344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.33, y: 1.22, z: 5.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4542855499149472}
@@ -77,9 +77,9 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559649431639030}
   serializedVersion: 5
-  lengthInSec: 0.2
-  simulationSpeed: 1
-  looping: 1
+  lengthInSec: 0.4
+  simulationSpeed: 0.8
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   autoRandomSeed: 1
@@ -130,7 +130,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -301,7 +301,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 2.5
+      scalar: 3.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1047,7 +1047,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 1
     startFrame:
-      scalar: 0.025
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2714,7 +2714,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 20
   m_RenderMode: 0
   m_SortMode: 0
@@ -2726,7 +2726,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
-  m_Pivot: {x: 0, y: 0.21, z: 0}
+  m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreamMask: 27
   m_Mesh: {fileID: 0}
