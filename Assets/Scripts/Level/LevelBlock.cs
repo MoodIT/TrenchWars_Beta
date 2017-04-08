@@ -135,8 +135,17 @@ public class LevelBlock : MonoBehaviour
         }
     }
 
+    public void RegisterObstacle(LevelObstacle obstacle)
+    {
+        obstacles.Add(obstacle);
+        obstacle.SetSortingOrder(GetBlockSortingOrder());
+    }
+
     public void RegisterObstacles()
     {
+        if (GameManager.Instance.Builder.IsCreatingBlocks)
+            return;
+
         Collider[] collisions = Physics.OverlapSphere(transform.position, 0.2f, 1 << GameManager.Instance.Builder.ObstacleLayer);
         for (int i = 0; i < collisions.Length; i++)
         {
@@ -161,6 +170,9 @@ public class LevelBlock : MonoBehaviour
 
     public void CreateGraphics(List<LevelBuilder.BlockSideGraphics> graphics, LevelBuilder.Side side)
     {
+        if (GameManager.Instance.Builder.IsCreatingBlocks)
+            return;
+
         int totalChance = 0;
         List<LevelBuilder.BlockSideGraphics> variations = new List<LevelBuilder.BlockSideGraphics>();
         foreach(LevelBuilder.BlockSideGraphics bside in graphics)

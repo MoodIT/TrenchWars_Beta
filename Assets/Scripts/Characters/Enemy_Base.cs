@@ -10,7 +10,10 @@ public class Enemy_Base : Character_Base
     protected CharacterState initialState = CharacterState.Moving;
 
     [SerializeField]
-    protected int coins = 10;
+    protected int supplies = 10;
+
+    [SerializeField]
+    protected int coins = 100;
 
     [Header("Projectiles")]
     [SerializeField]
@@ -22,6 +25,10 @@ public class Enemy_Base : Character_Base
     [Header("AnimStates")]
     [SerializeField]
     protected string ShootState = "Stand_Shoot";
+    [SerializeField]
+    protected string WalkState = "Walk";
+    [SerializeField]
+    protected string JumpState = "Jump";
 
     [Header("AnimParams")]
     [SerializeField]
@@ -30,6 +37,14 @@ public class Enemy_Base : Character_Base
     protected string shootParamName = "Shoot";
     [SerializeField]
     protected string dieParamName = "Die";
+    [SerializeField]
+    protected string jumpParamName = "Jump";
+    [SerializeField]
+    protected string idle = "Idle";
+    [SerializeField]
+    protected string raisedGunToLow = "RaisedToLow";
+    [SerializeField]
+    protected string raisedGunToHigh = "RaisedToHigh";
 
     [Header("AnimEvents")]
     [SerializeField]
@@ -193,6 +208,7 @@ public class Enemy_Base : Character_Base
         float stepCountTotal = toNext.magnitude / (moveSpeed * Time.fixedDeltaTime * NextBlock.WalkSpeedModifier);
         Vector3 step = toNext / stepCountTotal;
         float stepsLeft = stepCountTotal;
+        float jumpStep = stepCountTotal - Mathf.Ceil(stepCountTotal / 3.0f);
         while (stepsLeft > 0)
         {
             stepsLeft--;
@@ -202,6 +218,9 @@ public class Enemy_Base : Character_Base
             {
                 float yOffset = walkCurve.Evaluate(1f - (stepsLeft / stepCountTotal));
                 transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
+
+                if(stepsLeft == jumpStep)
+                    StartCoroutine(JumpAnim());
             }
 
             yield return null;
@@ -214,11 +233,38 @@ public class Enemy_Base : Character_Base
         EvaluateState();
     }
 
+    virtual protected IEnumerator JumpAnim()
+    {
+        anim.ResetTrigger(walkParamName);
+        anim.SetTrigger(jumpParamName);
+
+        while (true)
+        {
+            yield return null;
+
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName(WalkState))
+                break;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(JumpState))
+        {
+            while (true)
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                    break;
+                yield return null;
+            }
+        }
+        anim.ResetTrigger(jumpParamName);
+        anim.SetTrigger(walkParamName);
+    }
+
     virtual protected IEnumerator DieState(int waitSec)
     {
         anim.SetTrigger(dieParamName);
 
-        GameManager.Instance.AddSupplies(coins);
+        GameManager.Instance.AddSupplies(supplies);
+        GameManager.Instance.AddCoins(coins);
         GameManager.Instance.RemoveEnemy(this);
 
         yield return new WaitForSeconds(waitSec);

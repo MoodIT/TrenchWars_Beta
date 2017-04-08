@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     public HUDManager HUD { get { return hudManager; } }
 
     [SerializeField]
-    private GameObject winScreen = null;
+    private WinScreenManage winScreen = null;
 
     [SerializeField]
     private GameObject failScreen = null;
@@ -69,8 +69,25 @@ public class GameManager : MonoBehaviour
     public int Supplies { get { return supplies; } }
 
     [SerializeField]
+    private int coins = 0;
+    public int Coins { get { return coins; } }
+
+    [SerializeField]
     private int maxTrensies = 1;
     public int MaxTrensies { get { return maxTrensies; } }
+
+    private GameObject waitingForAbility = null;
+    public GameObject SpawningAbility { get { return waitingForAbility; } }
+    public void SpawWaitingAbility(LevelBlock block)
+    {
+        if (waitingForAbility == null)
+            return;
+
+        LevelObstacle obstacle = Instantiate(waitingForAbility, block.transform.position + (Vector3.up * .5f), Quaternion.identity, Builder.ObstacleParent).GetComponent<LevelObstacle>();
+        block.RegisterObstacle(obstacle);
+
+        waitingForAbility = null;
+    }
 
     private GameObject waitingToSpawn = null;
     public GameObject SpawningPlayer { get { return waitingToSpawn; } }
@@ -120,7 +137,7 @@ public class GameManager : MonoBehaviour
             return;
 
         timeLeft -= Time.deltaTime;
-        hudManager.UpdateTimer(timeLeft, gameTimeSec);
+        HUD.UpdateTimer(timeLeft, gameTimeSec);
 
         if (timeLeft <= 0)
         {
@@ -286,6 +303,12 @@ public class GameManager : MonoBehaviour
         HUD.UpdateSupplies();
     }
 
+    public void AddCoins(int count)
+    {
+        coins += count;
+        HUD.UpdateCoins();
+    }
+
     //Button events
     public void OnBuyTrensie(GameObject info)
     {
@@ -314,6 +337,26 @@ public class GameManager : MonoBehaviour
         waitingToSpawn = unit.CharacterPrefab;
     }
 
+    public void OnUseAbility(GameObject info)
+    {
+        if (waitingForAbility != null)
+        {
+            Debug.LogError("waiting to place");
+            return;
+        }
+
+        Ability ability = info.GetComponent<Ability>();
+        if (ability.Count == 0)
+        {
+            Debug.LogError("not enough left");
+            return;
+        }
+
+        ability.UpdateCount(ability.Count - 1);
+        waitingForAbility = ability.AbilityPrefab;
+    }
+
+    //
     public bool PlayerInRange(int fromID, int range)
     {
         foreach(Player_Base character in Trensies)
@@ -336,6 +379,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    //win/loose
     public void GameFailed()
     {
         if (failScreen != null)
@@ -346,8 +390,11 @@ public class GameManager : MonoBehaviour
 
     public void GameWon()
     {
+        winScreen.Coins = Coins;
+        winScreen.Stars = HUD.CountActiveStars();
+
         if (winScreen != null)
-            winScreen.SetActive(true);
+            winScreen.gameObject.SetActive(true);
 
         gameEnded = true;
     }

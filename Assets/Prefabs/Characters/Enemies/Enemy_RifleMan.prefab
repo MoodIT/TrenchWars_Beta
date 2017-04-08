@@ -218,20 +218,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  moveSpeed: 0.5
-  range: 8
-  health: 3
+  moveSpeed: 0.2
+  range: 10
+  health: 10
   delayRemoveCorpse: 2
   healthBar: {fileID: 212270958640682816}
   initialState: 10
-  coins: 10
-  projectilePrefab: {fileID: 114518709867718882, guid: 6d8d7756ffde1f74094b114c5c143aac,
+  supplies: 10
+  coins: 100
+  projectilePrefab: {fileID: 114518709867718882, guid: 9e5a50406a3184e42917b01b6c5566e4,
     type: 2}
   projectileOffset: {x: -1.4, y: 1.05, z: 0.75}
   ShootState: Stand_Shoot
+  WalkState: Walk
+  JumpState: Jump
   walkParamName: Walk
   shootParamName: Shoot
   dieParamName: Die
+  jumpParamName: Jump
+  idle: Idle
+  raisedGunToLow: RaisedToLow
+  raisedGunToHigh: RaisedToHigh
   bulletFireEventTime: 0.5
   jumpDown:
     serializedVersion: 2
@@ -317,7 +324,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  muzzleFlashEffectPrefab: {fileID: 0}
 --- !u!212 &212270958640682816
 SpriteRenderer:
   m_ObjectHideFlags: 1

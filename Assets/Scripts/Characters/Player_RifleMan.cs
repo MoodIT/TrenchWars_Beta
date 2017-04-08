@@ -11,9 +11,6 @@ public class Player_RifleMan : Player_Base
     [SerializeField]
     protected Vector3 projectileOffset = Vector3.zero;
 
-    [SerializeField]
-    protected GameObject muzzleFlashEffectPrefab = null;
-
     [Header("AnimEvents")]
     [SerializeField]
     protected float bulletFireEventTime = 0.5f;
@@ -23,8 +20,6 @@ public class Player_RifleMan : Player_Base
         anim.SetTrigger(shootParamName);
 
         yield return new WaitForSeconds(bulletFireEventTime);
-
-        ParticleManager.instance.CreateEffect(muzzleFlashEffectPrefab, projectileOffset, Quaternion.identity);
 
         if (projectilePrefab != null)
         {

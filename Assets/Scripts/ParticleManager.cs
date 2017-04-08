@@ -134,8 +134,9 @@ public class ParticleManager
 
     public void RemoveAll()
     {
-        while(updater.transform.childCount > 0)
-            GameObject.DestroyObject(updater.transform.GetChild(0));
+        for(int i = 0; i < updater.transform.childCount; i++)
+            GameObject.Destroy(updater.transform.GetChild(i).gameObject);
+        updater.transform.DetachChildren();
     }
 
     public void StopLoop(GameObject effect)

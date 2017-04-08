@@ -13,6 +13,11 @@ public class HUDManager : MonoBehaviour
     private Animator animSupplies = null;
 
     [SerializeField]
+    private Text uiCoins = null;
+    [SerializeField]
+    private Animator animCoins = null;
+
+    [SerializeField]
     private Text uiTrensies = null;
     [SerializeField]
     private Animator animTrensies = null;
@@ -49,6 +54,24 @@ public class HUDManager : MonoBehaviour
             uiStarsEmpty[2].enabled = true;
         else if (pctDone < 0.25f && !uiStarsEmpty[1].enabled)
             uiStarsEmpty[1].enabled = true;
+    }
+
+    public int CountActiveStars()
+    {
+        int count = 0;
+        foreach(Image star in uiStarsEmpty)
+        {
+            if (!star.enabled)
+                count++;
+        }
+        return count;
+    }
+
+    public void UpdateCoins()
+    {
+        StartCoroutine(PlayUIAnim(animCoins, "newValue", "UI_HUD_ValueIncrease"));
+
+        uiCoins.text = GameManager.Instance.Coins.ToString();
     }
 
     public void UpdateSupplies()

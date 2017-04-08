@@ -7,7 +7,18 @@ public class Projectile_Bullet : Projectile_Base
     [SerializeField]
     protected int speed = 1;
 
+    [Header("Effects")]
+    [SerializeField]
+    protected GameObject hitEffectPrefab = null;
+    [SerializeField]
+    protected GameObject muzzleEffectPrefab = null;
+
     private bool hit = false;
+
+    void Start()
+    {
+        ParticleManager.instance.CreateEffect(muzzleEffectPrefab, transform.localPosition, Quaternion.identity);
+    }
 
     void Update()
     {
@@ -15,10 +26,10 @@ public class Projectile_Bullet : Projectile_Base
             return;
 
         Vector3 step = Direction * speed * Time.fixedDeltaTime;
-        transform.position += step;
+        transform.localPosition += step;
 
         //cleanup
-        if (transform.position.x > 50 && transform.position.x < -50)
+        if (transform.localPosition.x > 50 && transform.localPosition.x < -50)
             Destroy(this);
     }
 
@@ -29,13 +40,15 @@ public class Projectile_Bullet : Projectile_Base
         {
             hit = true;
             hitChar.AddDamage(damage, Owner);
+            ParticleManager.instance.CreateEffect(hitEffectPrefab, transform.localPosition, Quaternion.identity);
+
             StartCoroutine(HitTarget());
         }
     }
 
     private IEnumerator HitTarget()
     {
-        yield return null;// new WaitForSeconds(1);
+        yield return null;
         Destroy(gameObject);
     }
 }

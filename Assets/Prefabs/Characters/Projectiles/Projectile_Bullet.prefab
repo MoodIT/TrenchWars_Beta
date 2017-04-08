@@ -100,6 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 13
+  hitEffectPrefab: {fileID: 1078487319773344, guid: e4d4c001f902f48439084964e3f9a9a0,
+    type: 2}
+  muzzleEffectPrefab: {fileID: 1425354796890596, guid: 0515c92df5ddf4035a8e67f97e00ee86,
+    type: 2}
 --- !u!135 &135614020362592956
 SphereCollider:
   m_ObjectHideFlags: 1

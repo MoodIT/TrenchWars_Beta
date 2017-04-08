@@ -97,7 +97,7 @@ public class Player_Base : Character_Base
     protected IEnumerator IdleState()
     {
         anim.SetTrigger(idleParamName);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         anim.ResetTrigger(idleParamName);
         EvaluateState();

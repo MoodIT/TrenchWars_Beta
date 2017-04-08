@@ -56,6 +56,10 @@ public class LevelBuilder : MonoBehaviour
     public Transform PlayerParent { get { return playerParent; } }
 
     [SerializeField]
+    private Transform obstacleParent = null;
+    public Transform ObstacleParent { get { return obstacleParent; } }
+
+    [SerializeField]
     private Transform projectileParent = null;
     public Transform ProjectileParent { get { return projectileParent; } }
 
@@ -199,7 +203,9 @@ public class LevelBuilder : MonoBehaviour
                 }
             }
 
-            if (GameManager.Instance.HasSelPlayer || GameManager.Instance.SpawningPlayer)
+            if (GameManager.Instance.HasSelPlayer || 
+                GameManager.Instance.SpawningPlayer ||
+                GameManager.Instance.SpawningAbility)
             {
                 RaycastHit hitInfo = new RaycastHit();
                 bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << BlockLayer);
@@ -212,6 +218,8 @@ public class LevelBuilder : MonoBehaviour
                         GameManager.Instance.SpawnWaitingTrensies(block);
                         GameManager.Instance.MoveSelPlayer(block);
                     }
+                    else
+                        GameManager.Instance.SpawWaitingAbility(block);
                 }
             }
             selectionGround.SetActive(false);
@@ -247,7 +255,7 @@ public class LevelBuilder : MonoBehaviour
 //Disable Character placements                            selectionCharacterPlacement.SetActive(true);
 
                             selectionGround.transform.position = block.transform.position;
-                            selectionCharacterPlacement.transform.position = block.transform.position;
+//Disable Character placements                            selectionCharacterPlacement.transform.position = block.transform.position;
                         }
                         else if (GameManager.Instance.HasSelPlayer)
                         {
@@ -257,9 +265,19 @@ public class LevelBuilder : MonoBehaviour
                     }
                     else
                     {
-                        selectionGround.SetActive(false);
-                        if (selectionCharacterPlacement != null)
-                            selectionCharacterPlacement.SetActive(false);
+                        if (GameManager.Instance.SpawningAbility != null)
+                        {
+                            selectionGround.SetActive(true);
+
+                            selectionGround.transform.position = block.transform.position;
+//Disable Character placements                            selectionCharacterPlacement.transform.position = block.transform.position;
+                        }
+                        else
+                        {
+                            selectionGround.SetActive(false);
+//Disable Character placements                            if (selectionCharacterPlacement != null)
+//Disable Character placements                                selectionCharacterPlacement.SetActive(false);
+                        }
                     }
 
                     if (isSelecting &&

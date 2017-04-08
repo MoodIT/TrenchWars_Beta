@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class Enemy_RifleMan : Enemy_Base
 {
-    [Header("Rifleman")]
-    [SerializeField]
-    protected GameObject muzzleFlashEffectPrefab = null;
-
     protected override IEnumerator CombatRangeState()
     {
         anim.SetTrigger(shootParamName);
 
         yield return new WaitForSeconds(bulletFireEventTime);
-
-        ParticleManager.instance.CreateEffect(muzzleFlashEffectPrefab, projectileOffset, Quaternion.identity);
 
         if (projectilePrefab != null)
         {
