@@ -12,6 +12,10 @@ public class LevelBlock : MonoBehaviour
     [SerializeField]
     private GameObject selection = null;
 
+    [SerializeField]
+    private GameObject topLayerPrefab = null;
+    private GameObject topLayer = null;
+
     [Header("BlockData")]
     [SerializeField]
     private int blockID = -1;
@@ -133,6 +137,11 @@ public class LevelBlock : MonoBehaviour
             AddNeighborGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs);
             AddNeighborGraphics(GameManager.Instance.Builder.SideGraphicPrefabs);
         }
+        else if (topLayerPrefab != null)
+        {
+            topLayer = Instantiate(topLayerPrefab, transform.position, Quaternion.identity, transform);
+            topLayer.GetComponentInChildren<SpriteRenderer>().sortingOrder = GetBlockSortingOrder() - 50;
+        }
     }
 
     public void RegisterObstacle(LevelObstacle obstacle)
@@ -243,6 +252,9 @@ public class LevelBlock : MonoBehaviour
         mesh.gameObject.SetActive(false);
         foreach (GameObject obj in blockDecorations)
             obj.SetActive(false);
+
+        if (topLayer != null)
+            topLayer.SetActive(false);
 
         //Add edge graphics to neighbors
         AddNeighborGraphics(GameManager.Instance.Builder.EdgeGraphicPrefabs);

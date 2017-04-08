@@ -45,15 +45,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1459501347682070
+--- !u!1 &1737049217519250
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4964046429670644}
-  - component: {fileID: 212707281167175156}
+  - component: {fileID: 4528699501823890}
+  - component: {fileID: 212239211630490432}
   m_Layer: 0
   m_Name: Selection
   m_TagString: Untagged
@@ -74,12 +74,12 @@ Transform:
   m_Father: {fileID: 4996031630241552}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4964046429670644
+--- !u!4 &4528699501823890
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459501347682070}
+  m_GameObject: {fileID: 1737049217519250}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.501, z: 0}
   m_LocalScale: {x: 0.195, y: 0.19500011, z: 0.19500011}
@@ -98,7 +98,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4526201939811076}
-  - {fileID: 4964046429670644}
+  - {fileID: 4528699501823890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,7 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 1251822130341542}
-  selection: {fileID: 1459501347682070}
+  selection: {fileID: 1737049217519250}
+  topLayerPrefab: {fileID: 1240687876092302, guid: 607552bb841a4ad41980c73ac4d379dc,
+    type: 2}
   blockID: -1
   cost: 15
   isSelected: 0
@@ -172,12 +174,12 @@ MonoBehaviour:
   isWalkable: 1
   isDiggable: 1
   obstacles: []
---- !u!212 &212707281167175156
+--- !u!212 &212239211630490432
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459501347682070}
+  m_GameObject: {fileID: 1737049217519250}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -201,7 +203,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: a05c0e908d5dd0b4a84b7cdd61fb4a5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
