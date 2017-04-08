@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471350924169002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.958, y: 0.63, z: 1.05}
+  m_LocalPosition: {x: 1.9580002, y: 0.63, z: 5.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4085188067999974}
@@ -79,7 +79,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508051312022074}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4d69062f01715724c83028c9b4419693, type: 2}
   m_CullingMode: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   damage: 1000
   blockWalking: 0
   blockDigging: 1
-  activateEffect: {fileID: 1078487319773344, guid: e4d4c001f902f48439084964e3f9a9a0,
+  activateEffect: {fileID: 1078487319773344, guid: 9d0a142f233ff43fd893de7f433c717f,
     type: 2}
   removeAfterActivation: 1
   canActivate: 1

@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1271403546cd4b64ca23c7b742dabeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 3
   image: {fileID: 0}
 --- !u!1 &290637387
 GameObject:
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playGameButton: {fileID: 1977416607}
   levels:
-  - 2
+  - 1
   scrollRect: {fileID: 990320518}
   levelButtonPref: {fileID: 133338, guid: 5f4837428803bce4a8cf2c189b8ca3a1, type: 2}
 --- !u!1 &320999547
@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977416605}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1991,15 +1991,16 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.71323526, g: 0.16782005, b: 0.16782005, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.19650096, b: 0.9191176, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.001
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 542404de598804747bdee2bb85074c0f,
+      type: 3}
+    m_PressedSprite: {fileID: 21300012, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
