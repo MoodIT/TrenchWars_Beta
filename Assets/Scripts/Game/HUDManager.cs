@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -33,6 +35,15 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField]
     private Image uiProgress = null;
+
+    [Header("Buttons")]
+    [SerializeField]
+    private EventTrigger pauseButton = null;
+
+    public void Start()
+    {
+        Helpers.AddEventTrigger(pauseButton, () => { GameManager.Instance.ToggleGamePause(); }, EventTriggerType.PointerClick);
+    }
 
     public void UpdateTimer(float timeLeft, float levelTime)
     {
@@ -111,11 +122,5 @@ public class HUDManager : MonoBehaviour
         }
 
         anim.SetBool(triggerName, false);
-    }
-
-    //Button events
-    public void OnGamePause()
-    {
-        Debug.LogError("PAUSE!!");
     }
 }

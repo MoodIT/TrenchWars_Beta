@@ -25,7 +25,7 @@ public class Projectile_Bullet : Projectile_Base
         if (hit)
             return;
 
-        Vector3 step = Direction * speed * Time.fixedDeltaTime;
+        Vector3 step = Direction * speed * Time.deltaTime; ;
         transform.localPosition += step;
 
         //cleanup

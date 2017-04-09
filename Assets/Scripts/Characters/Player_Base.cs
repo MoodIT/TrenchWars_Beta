@@ -148,6 +148,12 @@ public class Player_Base : Character_Base
             Vector3 step = toNext / stepCount;
             while (stepCount > 0)
             {
+                if (GameManager.Instance.IsGamePaused)
+                {
+                    yield return null;
+                    continue;
+                }
+
                 stepCount--;
                 transform.position += step;
                 yield return null;

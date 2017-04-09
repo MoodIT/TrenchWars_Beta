@@ -12,6 +12,18 @@ public class GameManager : MonoBehaviour
     private bool gameEnded = false;
     public bool IsGameRunning { get { return !gameEnded; } }
 
+    private bool gamePaused = false;
+    public bool IsGamePaused { get { return gamePaused; } }
+
+    public void ToggleGamePause()
+    {
+        if (IsGameRunning)
+        {
+            Time.timeScale = 1.0f - Time.timeScale;
+            gamePaused = !gamePaused;
+        }
+    }
+
     private Character_Base selPlayer = null;
     public bool HasSelPlayer { get { return selPlayer != null; } }
 
@@ -133,10 +145,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!IsGameRunning)
-            return;
-
-        timeLeft -= Time.deltaTime;
+        timeLeft -= Time.deltaTime; ;
         HUD.UpdateTimer(timeLeft, gameTimeSec);
 
         if (timeLeft <= 0)
@@ -145,7 +154,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        supplyDropSpawnTimeLeft -= Time.deltaTime;
+        supplyDropSpawnTimeLeft -= Time.deltaTime; ;
         if(supplyDropSpawnTimeLeft <= 0)
         {
             LevelBlock block = Builder.GetRandomBlock();
@@ -385,6 +394,13 @@ public class GameManager : MonoBehaviour
         if (failScreen != null)
             failScreen.SetActive(true);
 
+        StartCoroutine(DelayGameOver());
+    }
+
+    private IEnumerator DelayGameOver()
+    {
+        yield return null;
+        ToggleGamePause();
         gameEnded = true;
     }
 
@@ -396,6 +412,6 @@ public class GameManager : MonoBehaviour
         if (winScreen != null)
             winScreen.gameObject.SetActive(true);
 
-        gameEnded = true;
+        StartCoroutine(DelayGameOver());
     }
 }

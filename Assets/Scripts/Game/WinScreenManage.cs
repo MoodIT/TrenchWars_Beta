@@ -42,21 +42,22 @@ public class WinScreenManage : MonoBehaviour
     {
         if (Coins > 0)
         {
-            float timeDelay = maxScoreCountTime / (Coins + Mathf.Epsilon);
             for (int i = 0; i <= Coins; i+=10)
             {
                 uiScore.text = i.ToString();
-                yield return new WaitForSeconds(timeDelay);
+                yield return null;
             }
         }
         uiScore.text = Coins.ToString();
 
-        yield return new WaitForSeconds(0.5f);
-        for(int i = 0; i < Stars; i++)
+        for (int i = 0; i < Stars; i++)
         {
             uiStars[i].enabled = true;
             StartCoroutine(PlayUIAnim(animStars[i], "newValue", "UI_StarAchieved"));
-            yield return new WaitForSeconds(0.5f);
+
+            float start = Time.realtimeSinceStartup;
+            while (Time.realtimeSinceStartup < start + 0.5)
+                yield return null;
         }
     }
 
@@ -88,7 +89,10 @@ public class WinScreenManage : MonoBehaviour
     protected IEnumerator RestartGame()
     {
         ParticleManager.instance.RemoveAll();
-        yield return new WaitForSeconds(1);
+
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < start + 1)
+            yield return null;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

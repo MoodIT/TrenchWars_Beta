@@ -211,6 +211,12 @@ public class Enemy_Base : Character_Base
         float jumpStep = stepCountTotal - Mathf.Ceil(stepCountTotal / 3.0f);
         while (stepsLeft > 0)
         {
+            if (GameManager.Instance.IsGamePaused)
+            {
+                yield return null;
+                continue;
+            }
+
             stepsLeft--;
             transform.position += step;
 
