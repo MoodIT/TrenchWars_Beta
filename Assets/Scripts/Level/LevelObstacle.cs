@@ -43,6 +43,8 @@ public class LevelObstacle : MonoBehaviour
     [SerializeField]
     protected bool removeAfterActivation = false;
 
+    public LevelBlock Block { get; set; }
+
     public enum Activators
     {
         Players = 0,
@@ -85,10 +87,18 @@ public class LevelObstacle : MonoBehaviour
         character.AddDamage(Math.Abs(Damage), GetDamageType());
 
         if (removeAfterActivation)
-            Destroy(gameObject);
+            StartCoroutine(RemoveNextFrame());
 
         activated = true;
         Debug.Log(name + " Activated");
     }
 
+    private IEnumerator RemoveNextFrame()
+    {
+        yield return null;
+
+        if (Block != null)
+            Block.UnregisterObstacle(this);
+        Destroy(gameObject);
+    }
 }

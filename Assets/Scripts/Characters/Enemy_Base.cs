@@ -269,7 +269,7 @@ public class Enemy_Base : Character_Base
         anim.SetTrigger(walkParamName);
     }
 
-    virtual protected IEnumerator DieState(int waitSec)
+    virtual protected IEnumerator DieState(float waitSec)
     {
         anim.SetTrigger(dieParamName);
         
@@ -278,7 +278,7 @@ public class Enemy_Base : Character_Base
             case DamageType.Explosion:
                 anim.SetTrigger(dieMineParamName);
                 //HACK
-                waitSec = 0;
+                waitSec = 0.2f;
                 break;
             case DamageType.Fire:
                 anim.SetTrigger(dieFlamerParamName);

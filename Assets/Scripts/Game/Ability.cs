@@ -7,9 +7,21 @@ using UnityEngine.UI;
 
 public class Ability : MonoBehaviour
 {
+    public enum AbilityType
+    {
+        Mine = 1,
+    }
+
     [SerializeField]
     private GameObject abilityPrefab = null;
     public GameObject AbilityPrefab { get { return abilityPrefab; } }
+
+    [SerializeField]
+    private AbilityType type = AbilityType.Mine;
+
+    [SerializeField]
+    private GameObject placementGraphics = null;
+    public GameObject PlacementGraphics { get; }
 
     [SerializeField]
     private int count = 3;

@@ -33,7 +33,11 @@ public class WinScreenManage : MonoBehaviour
     {
         Helpers.AddEventTrigger(resetButton, () => { StartCoroutine(RestartGame()); }, EventTriggerType.PointerClick);
 
-        Helpers.AddEventTrigger(homeButton, () => { SceneManager.LoadScene(0, LoadSceneMode.Single); }, EventTriggerType.PointerClick);
+        Helpers.AddEventTrigger(homeButton, () => 
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }, EventTriggerType.PointerClick);
 
         StartCoroutine(FillInScore());
     }
@@ -94,6 +98,7 @@ public class WinScreenManage : MonoBehaviour
         while (Time.realtimeSinceStartup < start + 1)
             yield return null;
 
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

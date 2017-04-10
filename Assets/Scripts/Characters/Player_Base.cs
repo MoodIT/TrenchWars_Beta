@@ -172,7 +172,7 @@ public class Player_Base : Character_Base
         EvaluateState();
     }
 
-    protected IEnumerator DieState(int waitSec)
+    protected IEnumerator DieState(float waitSec)
     {
         anim.SetTrigger(dieParamName);
         switch (lastDamageType)
@@ -180,7 +180,7 @@ public class Player_Base : Character_Base
             case DamageType.Explosion:
                 anim.SetTrigger(dieMineParamName);
                 //HACK
-                waitSec = 0;
+                waitSec = 0.2f;
                 break;
             case DamageType.Fire:
                 anim.SetTrigger(dieFlamerParamName);

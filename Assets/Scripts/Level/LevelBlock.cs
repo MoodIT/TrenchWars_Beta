@@ -147,7 +147,13 @@ public class LevelBlock : MonoBehaviour
     public void RegisterObstacle(LevelObstacle obstacle)
     {
         obstacles.Add(obstacle);
+        obstacle.Block = this;
         obstacle.SetSortingOrder(GetBlockSortingOrder());
+    }
+
+    public void UnregisterObstacle(LevelObstacle obstacle)
+    {
+        obstacles.Remove(obstacle);
     }
 
     public void RegisterObstacles()

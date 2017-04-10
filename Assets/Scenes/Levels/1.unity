@@ -3216,6 +3216,10 @@ MonoBehaviour:
   - type: 2
     placeGraphicsPrefab: {fileID: 1925863557725744, guid: 979644c70d571a645b99db11f66eadf5,
       type: 2}
+  placeAbilityEffect:
+  - type: {fileID: 1109788788772534, guid: 746de264f5f1044a294f28c0834c9a0b, type: 2}
+    placeGraphicsPrefab: {fileID: 1925863557725744, guid: 4c40cde3e8469fa4dacac19556ed9831,
+      type: 2}
   levelBlockParent: {fileID: 801953999}
   enemyParent: {fileID: 1631339081}
   playerParent: {fileID: 1614714228}
@@ -6019,7 +6023,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4028417877568116, guid: 90a79aa92f7b46b48ba658251cf626d8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.98
+      value: 14.13
       objectReference: {fileID: 0}
     - target: {fileID: 4028417877568116, guid: 90a79aa92f7b46b48ba658251cf626d8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6630,8 +6634,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b90cfae60bc9f946aa516057f276880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 1471350924169002, guid: 06b826ee548d1dc43b5000d9e241f5b3,
+  abilityPrefab: {fileID: 1109788788772534, guid: 746de264f5f1044a294f28c0834c9a0b,
     type: 2}
+  type: 1
+  placementGraphics: {fileID: 0}
   count: 3
   uiCount: {fileID: 1315091746}
 --- !u!114 &423790223

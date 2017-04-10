@@ -24,6 +24,7 @@ public class FailScreenManager : MonoBehaviour
         while (Time.realtimeSinceStartup < start + 1)
             yield return null;
 
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
