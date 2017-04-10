@@ -36,8 +36,6 @@ public class Enemy_Base : Character_Base
     [SerializeField]
     protected string shootParamName = "Shoot";
     [SerializeField]
-    protected string dieParamName = "Die";
-    [SerializeField]
     protected string jumpParamName = "Jump";
     [SerializeField]
     protected string idle = "Idle";
@@ -45,6 +43,12 @@ public class Enemy_Base : Character_Base
     protected string raisedGunToLow = "RaisedToLow";
     [SerializeField]
     protected string raisedGunToHigh = "RaisedToHigh";
+    [SerializeField]
+    protected string dieParamName = "Die";
+    [SerializeField]
+    protected string dieMineParamName = "Die_Mine";
+    [SerializeField]
+    protected string dieFlamerParamName = "Die_Flamer";
 
     [Header("AnimEvents")]
     [SerializeField]
@@ -268,6 +272,18 @@ public class Enemy_Base : Character_Base
     virtual protected IEnumerator DieState(int waitSec)
     {
         anim.SetTrigger(dieParamName);
+        
+        switch(lastDamageType)
+        {
+            case DamageType.Explosion:
+                anim.SetTrigger(dieMineParamName);
+                //HACK
+                waitSec = 0;
+                break;
+            case DamageType.Fire:
+                anim.SetTrigger(dieFlamerParamName);
+                break;
+        }
 
         GameManager.Instance.AddSupplies(supplies);
         GameManager.Instance.AddCoins(coins);

@@ -20,9 +20,13 @@ public class Player_Base : Character_Base
     [SerializeField]
     protected string shootParamName = "Shoot";
     [SerializeField]
+    protected string idleParamName = "Idle";
+    [SerializeField]
     protected string dieParamName = "Die";
     [SerializeField]
-    protected string idleParamName = "Idle";
+    protected string dieMineParamName = "Die_Mine";
+    [SerializeField]
+    protected string dieFlamerParamName = "Die_Flamer";
 
     void Start()
     {
@@ -171,6 +175,17 @@ public class Player_Base : Character_Base
     protected IEnumerator DieState(int waitSec)
     {
         anim.SetTrigger(dieParamName);
+        switch (lastDamageType)
+        {
+            case DamageType.Explosion:
+                anim.SetTrigger(dieMineParamName);
+                //HACK
+                waitSec = 0;
+                break;
+            case DamageType.Fire:
+                anim.SetTrigger(dieFlamerParamName);
+                break;
+        }
 
         yield return new WaitForSeconds(waitSec);
 

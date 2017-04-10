@@ -56,6 +56,13 @@ public class LevelObstacle : MonoBehaviour
     protected bool activated = false;
     public bool IsActivated { get { return activated; } }
 
+    protected Character_Base.DamageType GetDamageType()
+    {
+        if (Type == obstacleType.Mine)
+            return Character_Base.DamageType.Explosion;
+        return Character_Base.DamageType.Normal;
+    }
+
     public void SetSortingOrder(int order)
     {
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
@@ -75,7 +82,7 @@ public class LevelObstacle : MonoBehaviour
 
         ParticleManager.instance.CreateEffect(activateEffect, transform.localPosition, Quaternion.identity);
 
-        character.AddDamage(Math.Abs(Damage));
+        character.AddDamage(Math.Abs(Damage), GetDamageType());
 
         if (removeAfterActivation)
             Destroy(gameObject);

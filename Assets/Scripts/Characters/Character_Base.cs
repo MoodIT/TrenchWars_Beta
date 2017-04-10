@@ -30,17 +30,27 @@ public class Character_Base : MonoBehaviour
     [SerializeField]
     protected SpriteRenderer healthBar = null;
 
+    public enum DamageType : int
+    {
+        Normal = 0,
+        Bullets = 1,
+        Fire = 2,
+        Explosion = 3,
+    }
+    protected DamageType lastDamageType = DamageType.Bullets;
+
     protected void Initialize()
     {
         curHealth = health;
         EvaluateState();
     }
 
-    public void AddDamage(int amount, Character_Base from = null)
+    virtual public void AddDamage(int amount, DamageType type, Character_Base from = null)
     {
         if (amount == 0)
             return;
 
+        lastDamageType = type;
         curHealth -= amount;
 
         healthBar.transform.localScale = new Vector3(Mathf.Clamp01((float)curHealth / (float)health), healthBar.transform.localScale.y, healthBar.transform.localScale.z);

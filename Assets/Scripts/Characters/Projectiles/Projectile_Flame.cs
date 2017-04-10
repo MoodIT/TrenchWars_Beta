@@ -30,7 +30,7 @@ public class Projectile_Flame : Projectile_Base
         if ((hitChar.IsPlayer && !Owner.IsPlayer) || (!hitChar.IsPlayer && Owner.IsPlayer))
         {
             hit = true;
-            hitChar.AddDamage(damage, Owner);
+            hitChar.AddDamage(damage, Character_Base.DamageType.Fire, Owner);
             StartCoroutine(HitTarget());
         }
     }

@@ -39,7 +39,7 @@ public class Projectile_Bullet : Projectile_Base
         if ((hitChar.IsPlayer && !Owner.IsPlayer) || (!hitChar.IsPlayer && Owner.IsPlayer))
         {
             hit = true;
-            hitChar.AddDamage(damage, Owner);
+            hitChar.AddDamage(damage, Character_Base.DamageType.Bullets, Owner);
             ParticleManager.instance.CreateEffect(hitEffectPrefab, transform.localPosition, Quaternion.identity);
 
             StartCoroutine(HitTarget());

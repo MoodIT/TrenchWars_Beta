@@ -20,6 +20,7 @@ public class LevelObstacleFlag : LevelObstacle
     public override void Activate(Character_Base character)
     {
         base.Activate(character);
+
         Destroy(initialFlag);
         GameManager.Instance.FlagActivated(this);
     }
