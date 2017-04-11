@@ -458,6 +458,7 @@ MonoBehaviour:
   playGameButton: {fileID: 1977416607}
   levels:
   - One
+  - Showcase
   scrollRect: {fileID: 990320518}
   levelButtonPref: {fileID: 133338, guid: 5f4837428803bce4a8cf2c189b8ca3a1, type: 2}
 --- !u!1 &320999547
