@@ -272,7 +272,9 @@ public class Enemy_Base : Character_Base
     virtual protected IEnumerator DieState(float waitSec)
     {
         anim.SetTrigger(dieParamName);
-        
+
+        SoundManager.instance.PlaySound(dieSound);
+
         switch(lastDamageType)
         {
             case DamageType.Explosion:

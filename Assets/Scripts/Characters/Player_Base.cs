@@ -175,6 +175,9 @@ public class Player_Base : Character_Base
     protected IEnumerator DieState(float waitSec)
     {
         anim.SetTrigger(dieParamName);
+
+        SoundManager.instance.PlaySound(dieSound);
+
         switch (lastDamageType)
         {
             case DamageType.Explosion:

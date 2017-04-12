@@ -30,6 +30,10 @@ public class Character_Base : MonoBehaviour
     [SerializeField]
     protected SpriteRenderer healthBar = null;
 
+    [Header("Sounds")]
+    [SerializeField]
+    protected AudioClip dieSound = null;
+
     public enum DamageType : int
     {
         Normal = 0,

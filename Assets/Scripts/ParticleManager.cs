@@ -12,8 +12,6 @@ public class ParticleManagerUpdater : MonoBehaviour
     {
         ParticleManager.instance.Update();
     }
-
-
 }
 
 public class ParticleManager

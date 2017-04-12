@@ -14,6 +14,10 @@ public class LevelBuilder : MonoBehaviour
     private bool isSelecting = false;
     private bool isDigging = false;
 
+    [Header("Digging")]
+    [SerializeField]
+    private int maxSelectedBlocks = 1;
+
     [Header("Effects")]
     [SerializeField]
     private GameObject shovelGraphicPrefab = null;
@@ -123,6 +127,13 @@ public class LevelBuilder : MonoBehaviour
         private int chance = 10;
         public int Chance { get { return chance; } }
     }
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioClip selectBlockSound = null;
+
+    [SerializeField]
+    private AudioClip digBlockSound = null;
 
     [Header("Block decorations")]
     [SerializeField]
@@ -318,12 +329,15 @@ public class LevelBuilder : MonoBehaviour
                         isSelecting &&
                         block.IsDiggable &&
                         !block.IsSelected &&
+                        curSelected.Count < maxSelectedBlocks &&
                         (block.Cost + selectedCost) <= GameManager.Instance.Supplies &&
                         IsNeighborDiggable(block.BlockID))
                     {
                         block.IsSelected = true;
                         curSelected.Add(block);
                         selectedCost += block.Cost;
+
+                        SoundManager.instance.PlaySound(selectBlockSound);
                     }
                 }
             }
@@ -336,6 +350,7 @@ public class LevelBuilder : MonoBehaviour
         Destroy(digShovel);
         foreach (LevelBlock block in curSelected)
         {
+            SoundManager.instance.PlaySound(digBlockSound);
             GameManager.Instance.AddSupplies(-block.Cost);
 
             block.Dig();

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,14 @@ public class WinScreenManage : MonoBehaviour
     private List<Animator> animStars = null;
 
     public int Coins { get; set; }
+    public float TimeSec { get; set; }
     public int Stars { get; set; }
 
     private int maxScoreCountTime = 5;
+
+    [Header("Sounds")]
+    [SerializeField]
+    protected AudioClip winSound = null;
 
     private void Start()
     {
@@ -42,9 +48,14 @@ public class WinScreenManage : MonoBehaviour
         StartCoroutine(FillInScore());
     }
 
+    void OnEnable()
+    {
+        SoundManager.instance.PlaySound(winSound, gameObject);
+    }
+
     protected IEnumerator FillInScore()
     {
-        if (Coins > 0)
+/*        if (Coins > 0)//set score
         {
             for (int i = 0; i <= Coins; i+=10)
             {
@@ -52,7 +63,10 @@ public class WinScreenManage : MonoBehaviour
                 yield return null;
             }
         }
-        uiScore.text = Coins.ToString();
+        uiScore.text = Coins.ToString();*/
+
+        //set time
+        uiScore.text = (int)Math.Floor(TimeSec / 60f) + ":" + ((int)(TimeSec % 60)).ToString("00");
 
         for (int i = 0; i < Stars; i++)
         {

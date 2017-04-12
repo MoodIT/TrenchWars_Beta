@@ -3198,6 +3198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc62e4baf7966a04db9769e1db2c58c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSelectedBlocks: 1
   shovelGraphicPrefab: {fileID: 1987305059819036, guid: 3372b2066de384f4daa1fabe991fdd21,
     type: 2}
   dibEffectPredab: {fileID: 1267287037930324, guid: a4377bf4949701940afc13e3f67218f5,
@@ -3229,6 +3230,8 @@ MonoBehaviour:
   levelSize: {x: 18, y: 9}
   levelBlockPrefab: {fileID: 1252032858545070, guid: 3e501649fe9e68949b9391a3bd166d3a,
     type: 2}
+  selectBlockSound: {fileID: 0}
+  digBlockSound: {fileID: 0}
   sideGraphicPrefabs:
   - side: 2
     graphics: {fileID: 1178961943129320, guid: 52374b50767926f469fe08f33749d4b0, type: 2}
@@ -4468,6 +4471,8 @@ MonoBehaviour:
   coins: 3000
   maxTrensies: 5
   gameTimeSec: 300
+  spawnTrensieSound: {fileID: 0}
+  moveTrensieSound: {fileID: 0}
 --- !u!4 &294733757
 Transform:
   m_ObjectHideFlags: 0
@@ -6065,7 +6070,7 @@ Prefab:
       objectReference: {fileID: 1631339081}
     - target: {fileID: 1454701778983794, guid: 90a79aa92f7b46b48ba658251cf626d8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114756230694117144, guid: 90a79aa92f7b46b48ba658251cf626d8,
         type: 2}
@@ -10223,11 +10228,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4029556116523948, guid: 58bcd06eec525f44db6e8491a3817e3f,
     type: 2}
   m_PrefabInternal: {fileID: 1855557493}
---- !u!95 &605990612 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95320859818790924, guid: 7d77ef473407046219e91719fc2b9ac5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1794861088}
 --- !u!1 &611181906
 GameObject:
   m_ObjectHideFlags: 0
@@ -12197,7 +12197,7 @@ Prefab:
     - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -656.0708
+      value: -655.74475
       objectReference: {fileID: 0}
     - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -12265,6 +12265,21 @@ Prefab:
       value: 
       objectReference: {fileID: 1109788788772534, guid: 746de264f5f1044a294f28c0834c9a0b,
         type: 2}
+    - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.99407524
+      objectReference: {fileID: 0}
+    - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.99407524
+      objectReference: {fileID: 0}
+    - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.99407524
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f419b3963c2f45238e34d16aa919385, type: 2}
   m_IsPrefabParent: 0
@@ -26852,11 +26867,6 @@ MonoBehaviour:
   isWalkable: 1
   isDiggable: 1
   obstacles: []
---- !u!95 &1573223467 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95931167670432972, guid: 7d77ef473407046219e91719fc2b9ac5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1794861088}
 --- !u!1 &1579606923
 GameObject:
   m_ObjectHideFlags: 0
@@ -28117,6 +28127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetButton: {fileID: 1149262934}
+  failSound: {fileID: 8300000, guid: 32ed3ff7cf32d1f479bd851394c779fe, type: 3}
 --- !u!1 &1677241722
 GameObject:
   m_ObjectHideFlags: 0
@@ -29780,11 +29791,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114569464649671980, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: animStars.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 224778679880249630, guid: 7d77ef473407046219e91719fc2b9ac5,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -29875,10 +29881,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1464141030422946, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224078600741769112, guid: 7d77ef473407046219e91719fc2b9ac5,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -29939,68 +29941,15 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
-    - target: {fileID: 1391818950318466, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
+    - target: {fileID: 1464141030422946, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114744482961387444, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114650983174278208, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1138165769737368, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114526507538751534, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1741692191599946, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114569464649671980, guid: 7d77ef473407046219e91719fc2b9ac5,
         type: 2}
-      propertyPath: animStars.Array.data[0]
+      propertyPath: winSound
       value: 
-      objectReference: {fileID: 605990612}
-    - target: {fileID: 114569464649671980, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: animStars.Array.data[1]
-      value: 
-      objectReference: {fileID: 1817494813}
-    - target: {fileID: 114569464649671980, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: animStars.Array.data[2]
-      value: 
-      objectReference: {fileID: 1573223467}
-    - target: {fileID: 95327193470719502, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95320859818790924, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95851395204231518, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95931167670432972, guid: 7d77ef473407046219e91719fc2b9ac5,
-        type: 2}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 9ba3aed16e7bb724690794a091d5c0db, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d77ef473407046219e91719fc2b9ac5, type: 2}
   m_IsPrefabParent: 0
@@ -30203,11 +30152,6 @@ MonoBehaviour:
   isWalkable: 1
   isDiggable: 1
   obstacles: []
---- !u!95 &1817494813 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95851395204231518, guid: 7d77ef473407046219e91719fc2b9ac5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1794861088}
 --- !u!1 &1821022696
 GameObject:
   m_ObjectHideFlags: 0

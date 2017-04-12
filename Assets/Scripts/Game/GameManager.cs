@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
         Character_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
         player.CurBlock = BasePlacement;
 
+        SoundManager.instance.PlaySound(spawnTrensieSound, player.gameObject);
+
         selPlayer = player;
         MoveSelPlayer(block);
 
@@ -123,6 +125,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int gameTimeSec = 100;
     private float timeLeft = float.MaxValue;
+
+    [Header("Sounds")]
+    [SerializeField]
+    protected AudioClip spawnTrensieSound = null;
+
+    [SerializeField]
+    protected AudioClip moveTrensieSound = null;
 
     public GameManager()
     {
@@ -200,6 +209,8 @@ public class GameManager : MonoBehaviour
     {
         if (selPlayer == null)
             return;
+
+        SoundManager.instance.PlaySound(moveTrensieSound, selPlayer.gameObject);
 
         List<BlockNode> newNodes = new List<BlockNode>();
         List<BlockNode> usedNodes = new List<BlockNode>();
@@ -406,7 +417,8 @@ public class GameManager : MonoBehaviour
 
     public void GameWon()
     {
-        winScreen.Coins = Coins;
+//        winScreen.Coins = Coins;
+        winScreen.TimeSec = gameTimeSec - timeLeft;
         winScreen.Stars = HUD.CountActiveStars();
 
         if (winScreen != null)

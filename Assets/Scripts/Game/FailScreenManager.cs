@@ -11,9 +11,18 @@ public class FailScreenManager : MonoBehaviour
     [SerializeField]
     private EventTrigger resetButton = null;
 
+    [Header("Sounds")]
+    [SerializeField]
+    protected AudioClip failSound = null;
+
     void Start ()
     {
         Helpers.AddEventTrigger(resetButton, () => { StartCoroutine(RestartGame()); }, EventTriggerType.PointerClick);
+    }
+
+    void OnEnable ()
+    {
+        SoundManager.instance.PlaySound(failSound, gameObject);
     }
 
     protected IEnumerator RestartGame()

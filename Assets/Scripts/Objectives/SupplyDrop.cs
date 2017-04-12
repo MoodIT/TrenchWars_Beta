@@ -28,12 +28,24 @@ public class SupplyDrop : MonoBehaviour
     [SerializeField]
     private GameObject create = null;
 
+    [Header("Sounds")]
+    [SerializeField]
+    protected AudioClip spawnedSound = null;
+
+    [SerializeField]
+    protected AudioClip pickupSound = null;
+
     private bool landed = false;
     public bool HasLanded { get { return landed; } }
 
     void Awake ()
     {
         timeLeftOnGround = timeOnGround;
+    }
+
+    void Start ()
+    {
+        SoundManager.instance.PlaySound(spawnedSound);
     }
 
 	void Update ()
@@ -69,6 +81,8 @@ public class SupplyDrop : MonoBehaviour
 
     public void Pickup()
     {
+        SoundManager.instance.PlaySound(pickupSound);
+
         GameManager.Instance.AddSupplies(supplyAmount);
         ParticleManager.instance.CreateEffect(pickupEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
