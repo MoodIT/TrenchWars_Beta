@@ -2215,8 +2215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b90cfae60bc9f946aa516057f276880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 1471350924169002, guid: 06b826ee548d1dc43b5000d9e241f5b3,
+  abilityPrefab: {fileID: 1109788788772534, guid: 746de264f5f1044a294f28c0834c9a0b,
     type: 2}
+  type: 1
+  placementGraphics: {fileID: 0}
   count: 3
   uiCount: {fileID: 114861457436373048}
 --- !u!114 &114252296162941876
@@ -2402,7 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 1050026621241564, guid: 8d9c5011cfcafa74c92b3de1bbeaaac5,
     type: 2}
-  cost: 40
+  cost: 30
   uiCost: {fileID: 114992559386676910}
 --- !u!114 &114305307193099688
 MonoBehaviour:
@@ -2598,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 1050026621241564, guid: afe1af4be2d97aa449599e5bea5049e3,
     type: 2}
-  cost: 20
+  cost: 15
   uiCost: {fileID: 114461401279261854}
 --- !u!114 &114361767741292680
 MonoBehaviour:
@@ -2813,7 +2815,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 034a7412ea566453fa6260a9fc302e59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 051e14f795be845e3ae4dd525d146301, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5002,7 +5004,7 @@ RectTransform:
   m_GameObject: {fileID: 1530468602452502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99407524, y: 0.99407524, z: 0.99407524}
   m_Children:
   - {fileID: 224297832037593848}
   - {fileID: 224270576822785802}
@@ -5205,14 +5207,14 @@ RectTransform:
   m_GameObject: {fileID: 1443969475914858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5429935, y: 1.5429933, z: 1.5429933}
   m_Children: []
   m_Father: {fileID: 224120827527310038}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 5.54}
+  m_AnchoredPosition: {x: 2, y: 12.2}
   m_SizeDelta: {x: 91.5, y: 79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224297319916369040

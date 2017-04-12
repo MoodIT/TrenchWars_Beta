@@ -156,8 +156,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156809608382072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.27, y: 2.38, z: 4.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4088969629058398}
@@ -377,7 +377,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  walkSpeedModifier: 1
+  damage: 0
+  blockWalking: 0
   blockDigging: 1
+  activateEffect: {fileID: 0}
+  removeAfterActivation: 0
+  canActivate: 3
 --- !u!212 &212118532876856582
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -407,7 +413,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -442,7 +448,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300002, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -477,7 +483,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300006, guid: 761c66f08fe244ed8b91a8c486ddf3a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
