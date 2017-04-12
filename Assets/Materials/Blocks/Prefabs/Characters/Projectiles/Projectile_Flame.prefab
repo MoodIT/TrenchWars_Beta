@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273372454075448}
   m_LocalRotation: {x: -0.0000011625337, y: 0.9238798, z: -0.38268274, w: 0.0000027258425}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.289, y: -0.416, z: 0}
   m_LocalScale: {x: 0.14254756, y: 0.09999999, z: 0.09999998}
   m_Children: []
   m_Father: {fileID: 4885115225258418}
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843766407659696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 3.59, z: 0.39999998}
+  m_LocalPosition: {x: -15.996558, y: 1.31, z: 3.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4872607350892446}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59fba0e838e29641a62eef917ca4460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 7
   flameEffect: {fileID: 198806760951786486}
 --- !u!198 &198806760951786486
 ParticleSystem:
@@ -121,7 +121,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1273372454075448}
   serializedVersion: 5
   lengthInSec: 2
-  simulationSpeed: 0.8
+  simulationSpeed: 1.5
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -168,7 +168,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1453734826
+  randomSeed: -1003035237
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2781,7 +2781,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1839803971
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
