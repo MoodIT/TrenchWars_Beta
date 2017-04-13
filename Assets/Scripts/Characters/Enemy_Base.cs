@@ -38,11 +38,11 @@ public class Enemy_Base : Character_Base
     [SerializeField]
     protected string jumpParamName = "Jump";
     [SerializeField]
-    protected string idle = "Idle";
+    protected string idleParamName = "Idle";
     [SerializeField]
-    protected string raisedGunToLow = "RaisedToLow";
+    protected string raisedGunToLowParamName = "RaisedToLow";
     [SerializeField]
-    protected string raisedGunToHigh = "RaisedToHigh";
+    protected string raisedGunToHigParamNameh = "RaisedToHigh";
     [SerializeField]
     protected string dieParamName = "Die";
     [SerializeField]

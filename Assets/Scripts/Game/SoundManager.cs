@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager
 {
     static SoundManager _instance;
     public static SoundManager instance
@@ -12,10 +12,7 @@ public class SoundManager : MonoBehaviour
         get
         {
             if (_instance == null)
-            {
                 _instance = new SoundManager();
-                _instance.Init();
-            }
             return _instance;
         }
     }
@@ -23,13 +20,9 @@ public class SoundManager : MonoBehaviour
     public int poolSize = 15;
     
     Stack<GameObject> pool = new Stack<GameObject>();
-	bool isInit = false;
 	
-	public void Init()
+	public SoundManager()
     {
-		if(isInit)
-            return;
-		isInit = true;
         FillPool();
     }
 
@@ -52,8 +45,8 @@ public class SoundManager : MonoBehaviour
 
     public GameObject PlaySound(AudioClip clip, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
     {
-        if (clip == null) return null;
-		if(owner == null) owner = gameObject;
+        if (clip == null)
+            return null;
 
         GameObject obj = pool.Pop();
         obj.name = name.Length == 0 ? "Sound_" + clip.name : name;
@@ -76,7 +69,7 @@ public class SoundManager : MonoBehaviour
         if (pool.Count < 5)
             FillPool();
 
-		if(!loop) Destroy(obj,clip.length+2f);
+		if(!loop) GameObject.Destroy(obj,clip.length+2f);
 
         return obj;
     }

@@ -239,6 +239,7 @@ MonoBehaviour:
   blockDigging: 0
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
+  activateSound: {fileID: 0}
   canActivate: 0
   activateObj: {fileID: 114796842043035986}
 --- !u!114 &114796842043035986
@@ -260,9 +261,20 @@ MonoBehaviour:
   activateEffect: {fileID: 1763341810166676, guid: d477d4697bef8964d8c3e150c6e4252b,
     type: 2}
   removeAfterActivation: 0
+  activateSound: {fileID: 0}
   canActivate: 0
   initialFlagEffect: {fileID: 1763341810166676, guid: 64fc3a457f761394c9323f5033df4c49,
     type: 2}
+  animList:
+  - timeSpanSec: {x: 2, y: 3}
+    paramName: Idle
+    sounds: {fileID: 0}
+  - timeSpanSec: {x: 6, y: 7}
+    paramName: Yell
+    sounds: {fileID: 0}
+  - timeSpanSec: {x: 3, y: 4}
+    paramName: Whisle
+    sounds: {fileID: 0}
 --- !u!135 &135628592892941964
 SphereCollider:
   m_ObjectHideFlags: 1
