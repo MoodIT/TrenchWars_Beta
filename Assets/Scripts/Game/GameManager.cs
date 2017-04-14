@@ -53,17 +53,6 @@ public class GameManager : MonoBehaviour
             GameWon();
     }
 
-    [Header("Supplies")]
-    [SerializeField]
-    private GameObject supplyDropPrefab = null;
-
-    [SerializeField]
-    private GameObject supplyDropParent = null;
-
-    [SerializeField]
-    private Vector2 supplyDropSpawnDelay = new Vector2(10, 20);
-    private float supplyDropSpawnTimeLeft = 0;
-
     [Header("HUD")]
     [SerializeField]
     private HUDManager hudManager = null;
@@ -161,16 +150,6 @@ public class GameManager : MonoBehaviour
         {
             GameFailed();
             return;
-        }
-
-        supplyDropSpawnTimeLeft -= Time.deltaTime; ;
-        if(supplyDropSpawnTimeLeft <= 0)
-        {
-            LevelBlock block = Builder.GetRandomBlock();
-            GameObject supplyDrop = Instantiate(supplyDropPrefab, block.transform.position, Quaternion.identity, supplyDropParent.transform);
-            supplyDrop.transform.localPosition += Vector3.up * 12;
-
-            supplyDropSpawnTimeLeft = UnityEngine.Random.Range(supplyDropSpawnDelay.x, supplyDropSpawnDelay.y);
         }
 
         if (Input.GetMouseButtonDown(0))

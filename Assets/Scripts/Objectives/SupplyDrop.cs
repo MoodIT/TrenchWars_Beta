@@ -41,6 +41,10 @@ public class SupplyDrop : MonoBehaviour
     void Awake ()
     {
         timeLeftOnGround = timeOnGround;
+
+        LevelBlock block = GameManager.Instance.Builder.GetRandomBlock();
+        transform.position = block.transform.position;
+        transform.localPosition += Vector3.up * 12;
     }
 
     void Start ()

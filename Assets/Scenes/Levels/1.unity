@@ -4441,6 +4441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 294733757}
   - component: {fileID: 294733756}
+  - component: {fileID: 294733758}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -4460,10 +4461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelBuilder: {fileID: 187944728}
-  supplyDropPrefab: {fileID: 1965626765161430, guid: 8b7147099b44b4e46a95ace81fa11fa8,
-    type: 2}
-  supplyDropParent: {fileID: 1177917473}
-  supplyDropSpawnDelay: {x: 10, y: 20}
   hudManager: {fileID: 52750226}
   winScreen: {fileID: 1656350564}
   failScreen: {fileID: 1676229353}
@@ -4486,6 +4483,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &294733758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294733755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaa04bfda68f1e44a99078538d2c974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentFolder: {fileID: 1177917474}
+  initialDelay: 2
+  prefabs:
+  - prefab: {fileID: 1965626765161430, guid: 8b7147099b44b4e46a95ace81fa11fa8, type: 2}
+    spawnCount: 20
+    spawnDelay: 5
+  repeatCount: 0
+  mesh: {fileID: 0}
 --- !u!1 &302761971
 GameObject:
   m_ObjectHideFlags: 0
@@ -34912,6 +34928,26 @@ Prefab:
     - target: {fileID: 4145993450538774, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
+        type: 2}
+      propertyPath: animList.Array.data[0].timeSpanSec.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
+        type: 2}
+      propertyPath: animList.Array.data[1].timeSpanSec.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
+        type: 2}
+      propertyPath: animList.Array.data[2].timeSpanSec.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
+        type: 2}
+      propertyPath: animList.Array.data[2].timeSpanSec.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236, type: 2}

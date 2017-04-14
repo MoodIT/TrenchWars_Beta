@@ -66,8 +66,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4335842865667106}
-  - component: {fileID: 65524384222418150}
   - component: {fileID: 114937018055161098}
+  - component: {fileID: 65524384222418150}
   m_Layer: 14
   m_Name: SupplyCreate
   m_TagString: Untagged
@@ -161,6 +161,8 @@ MonoBehaviour:
     type: 2}
   parachute: {fileID: 1555199478247588}
   create: {fileID: 1267130371596320}
+  spawnedSound: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!212 &212521292898412662
 SpriteRenderer:
   m_ObjectHideFlags: 1
