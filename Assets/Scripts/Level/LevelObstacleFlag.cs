@@ -14,7 +14,7 @@ public class LevelObstacleFlag : LevelObstacle
     [Serializable]
     public class FlagAnim
     {
-        public Vector2 timeSpanSec = new Vector2(2, 6);
+        public float timeSec = 4f;
         public string paramName = "";
         public AudioClip sounds = null;
     }
@@ -61,7 +61,7 @@ public class LevelObstacleFlag : LevelObstacle
         }
         anim.SetTrigger(animList[newIdx].paramName);
         SoundManager.instance.PlaySound(animList[newIdx].sounds, gameObject);
-        StartCoroutine(waitTime(newIdx, UnityEngine.Random.Range(animList[newIdx].timeSpanSec.x, animList[newIdx].timeSpanSec.y)));
+        StartCoroutine(waitTime(newIdx, animList[newIdx].timeSec));
     }
 
     public override void Activate(Character_Base character)

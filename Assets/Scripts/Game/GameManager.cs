@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private Character_Base selPlayer = null;
+    private Player_Base selPlayer = null;
     public bool HasSelPlayer { get { return selPlayer != null; } }
 
     [SerializeField]
@@ -97,13 +97,12 @@ public class GameManager : MonoBehaviour
         if (waitingToSpawn == null)
             return;
 
-        Character_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Character_Base>();
+        Player_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Player_Base>();
         player.CurBlock = BasePlacement;
 
         SoundManager.instance.PlaySound(spawnTrensieSound, player.gameObject);
 
-        selPlayer = player;
-        MoveSelPlayer(block);
+        MovePlayer(player, block);
 
         waitingToSpawn = null;
     }
@@ -158,11 +157,9 @@ public class GameManager : MonoBehaviour
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << Builder.PlayerLayer);
             if (hit)
             {
-                Character_Base player = hitInfo.collider.GetComponent<Character_Base>();
+                Player_Base player = hitInfo.collider.GetComponent<Player_Base>();
                 if (player)
-                {
                     selPlayer = player;
-                }
             }
             else
                 selPlayer = null;
@@ -186,16 +183,30 @@ public class GameManager : MonoBehaviour
 
     public void MoveSelPlayer(LevelBlock goalblock)
     {
-        if (selPlayer == null)
+        MovePlayer(selPlayer, goalblock);
+    }
+
+    public void MovePlayer(Player_Base player, LevelBlock goalblock)
+    {
+        if (player == null)
             return;
 
-        SoundManager.instance.PlaySound(moveTrensieSound, selPlayer.gameObject);
+        Player_Base playerAtBlock = GetPlayerAtBlock(goalblock);
+        if (playerAtBlock != null)
+        {
+            LevelBlock freeBlock = GetNearestFreeBlock(goalblock);
+
+            if (freeBlock != null)
+                MovePlayer(playerAtBlock, freeBlock);
+        }
+
+        SoundManager.instance.PlaySound(moveTrensieSound, player.gameObject);
 
         List<BlockNode> newNodes = new List<BlockNode>();
         List<BlockNode> usedNodes = new List<BlockNode>();
 
         BlockNode start = new BlockNode();
-        start.block = selPlayer.CurBlock;
+        start.block = player.CurBlock;
         start.dist = (goalblock.transform.position - start.block.transform.position).sqrMagnitude; ;
         newNodes.Add(start);
 
@@ -213,7 +224,7 @@ public class GameManager : MonoBehaviour
                         path.Push(nextBlock.block);
                         nextBlock = nextBlock.prev;
                     }
-                    selPlayer.MoveTo(path.ToArray());
+                    player.MoveTo(path.ToArray());
                     return;
                 }
 
@@ -268,6 +279,46 @@ public class GameManager : MonoBehaviour
             if (!skip)
                 newNodes.Add(node);
         }
+    }
+
+    private Player_Base GetPlayerAtBlock(LevelBlock block)
+    {
+        foreach (Player_Base player in Trensies)
+        {
+            if (player.CurBlock == block)
+                return player;
+        }
+        return null;
+    }
+
+    private LevelBlock GetNearestFreeBlock(LevelBlock block)
+    {
+        LevelBuilder.Side[] sides = new LevelBuilder.Side[] { LevelBuilder.Side.Down, LevelBuilder.Side.Left, LevelBuilder.Side.Right, LevelBuilder.Side.Up };
+
+        HashSet<LevelBlock> usedBlocks = new HashSet<LevelBlock>();
+        List<LevelBlock> blocks = new List<LevelBlock>();
+        blocks.Add(block);
+
+        while (blocks.Count > 0)
+        {
+            LevelBlock curBlock = blocks[0];
+            usedBlocks.Add(curBlock);
+            blocks.Remove(curBlock);
+
+            foreach (LevelBuilder.Side side in sides)
+            {
+                LevelBlock neighbor = Builder.GetNeighbor(side, curBlock.BlockID);
+                if (neighbor.IsDigged)
+                {
+                    if(!GetPlayerAtBlock(neighbor))
+                        return neighbor;
+                    
+                    if(!usedBlocks.Contains(neighbor))
+                        blocks.Add(neighbor);
+                }
+            }
+        }
+        return null;
     }
 
     public void AddPlayer(Player_Base player)
