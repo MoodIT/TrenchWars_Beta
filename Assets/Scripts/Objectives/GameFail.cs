@@ -16,6 +16,7 @@ public class GameFail : LevelObstacle
 
     public override void Activate(Character_Base character)
     {
+		Debug.Log ("active");
         if (canActivate == Activators.None || (character.IsPlayer && canActivate == Activators.Enemies) || (!character.IsPlayer && canActivate == Activators.Players))
             return;
 

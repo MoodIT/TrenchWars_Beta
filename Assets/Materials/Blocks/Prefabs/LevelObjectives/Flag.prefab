@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299750558430444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.97, y: 0.42000002, z: 5.79}
+  m_LocalPosition: {x: 12.95, y: 0.42000002, z: 5.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4075108975777794}
@@ -266,15 +266,15 @@ MonoBehaviour:
   initialFlagEffect: {fileID: 1763341810166676, guid: 64fc3a457f761394c9323f5033df4c49,
     type: 2}
   animList:
-  - timeSpanSec: {x: 2, y: 3}
+  - timeSec: 4
     paramName: Idle
     sounds: {fileID: 0}
-  - timeSpanSec: {x: 6, y: 7}
+  - timeSec: 2
     paramName: Yell
-    sounds: {fileID: 0}
-  - timeSpanSec: {x: 3, y: 4}
+    sounds: {fileID: 8300000, guid: 5cd0bc7aae6ce4f56b8cd64b877d22b3, type: 3}
+  - timeSec: 1
     paramName: Whisle
-    sounds: {fileID: 0}
+    sounds: {fileID: 8300000, guid: e9ac2b6615b2a48d8ac2656a98a72b92, type: 3}
 --- !u!135 &135628592892941964
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -388,7 +388,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839803971
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300020, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
+  m_Sprite: {fileID: 21300020, guid: 9cdc7832639724599bb33d2005150fee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -108,6 +108,7 @@ MonoBehaviour:
   activateEffect: {fileID: 1078487319773344, guid: 40554ec5c9abd406dae6ed2c35444baa,
     type: 2}
   removeAfterActivation: 1
+  activateSound: {fileID: 8300000, guid: 537bcaf99a76a4ee590fc6327985edbe, type: 3}
   canActivate: 1
 --- !u!135 &135791982010537994
 SphereCollider:

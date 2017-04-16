@@ -62,7 +62,7 @@ public class Generic_Spawner : MonoBehaviour
                 }
                 else
                 {
-                    gameObject.SetActive(false);
+//                    gameObject.SetActive(false);
                     return;
                 }
             }

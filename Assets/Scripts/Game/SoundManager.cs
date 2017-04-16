@@ -43,9 +43,9 @@ public class SoundManager
         }
     }
 
-    public GameObject PlaySound(AudioClip clip, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
+	public GameObject PlaySound(AudioClip clip, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
     {
-        if (clip == null)
+		if (clip == null)
             return null;
 
         GameObject obj = pool.Pop();
@@ -56,6 +56,7 @@ public class SoundManager
 		obj.SetActive(true);
 		
 		//hack for now to get the sounds closer to the camera
+		if(owner != null)
 		obj.transform.parent = owner.transform;
 		//obj.transform.localPosition = new Vector3(0f, obj.transform.localPosition.y, obj.transform.localPosition.z);
 		obj.transform.localPosition = new Vector3(0f, 0f, 0f);

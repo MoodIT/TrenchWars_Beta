@@ -223,6 +223,7 @@ MonoBehaviour:
   health: 6
   delayRemoveCorpse: 2
   healthBar: {fileID: 212270958640682816}
+  dieSound: {fileID: 8300000, guid: df9b469a129924b4a98a3ace81b64954, type: 3}
   initialState: 10
   supplies: 10
   coins: 100
@@ -235,9 +236,9 @@ MonoBehaviour:
   walkParamName: Walk
   shootParamName: Shoot
   jumpParamName: Jump
-  idle: Idle
-  raisedGunToLow: RaisedToLow
-  raisedGunToHigh: RaisedToHigh
+  idleParamName: Idle
+  raisedGunToLowParamName: RaisedToLow
+  raisedGunToHigParamNameh: RaisedToHigh
   dieParamName: Die
   dieMineParamName: Die_Mine
   dieFlamerParamName: Die_Flamer

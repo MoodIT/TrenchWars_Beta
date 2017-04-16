@@ -110,7 +110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LEVEL 1
+  m_Text: PLAY 1
 --- !u!114 &11449958
 MonoBehaviour:
   m_ObjectHideFlags: 1

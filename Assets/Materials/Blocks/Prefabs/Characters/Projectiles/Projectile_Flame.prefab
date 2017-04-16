@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
+  shootSound: {fileID: 8300000, guid: 232645b5e13b94498af6b5b0e26dbe0a, type: 3}
+  hitSound: {fileID: 8300000, guid: 7396171c3af044ec3bba68aa451c8665, type: 3}
   flameEffect: {fileID: 198806760951786486}
 --- !u!198 &198806760951786486
 ParticleSystem:

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         if (IsGameRunning)
         {
+			Debug.Log ("yoyo");
             Time.timeScale = 1.0f - Time.timeScale;
             gamePaused = !gamePaused;
         }
@@ -147,6 +148,7 @@ public class GameManager : MonoBehaviour
 
         if (timeLeft <= 0)
         {
+			Debug.Log ("lala");
             GameFailed();
             return;
         }
@@ -157,6 +159,7 @@ public class GameManager : MonoBehaviour
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << Builder.PlayerLayer);
             if (hit)
             {
+				Debug.Log ("playerhit");
                 Player_Base player = hitInfo.collider.GetComponent<Player_Base>();
                 if (player)
                     selPlayer = player;
@@ -167,6 +170,8 @@ public class GameManager : MonoBehaviour
             hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, 1 << Builder.SupplyDropLayer);
             if(hit)
             {
+				Debug.Log ("supplyhit");
+
                 SupplyDrop supplies = hitInfo.collider.GetComponent<SupplyDrop>();
                 if (supplies)
                     supplies.Pickup();
@@ -432,6 +437,7 @@ public class GameManager : MonoBehaviour
     //win/loose
     public void GameFailed()
     {
+		Debug.Log ("gamefail pik");
         if (failScreen != null)
             failScreen.SetActive(true);
 
