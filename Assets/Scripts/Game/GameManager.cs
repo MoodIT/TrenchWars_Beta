@@ -105,11 +105,9 @@ public class GameManager : MonoBehaviour
             return;
 
         Player_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Player_Base>();
-        player.CurBlock = BasePlacement;
+        player.Spawn(BasePlacement);
 
-        SoundManager.instance.PlayRandomSound(spawnTrensieSounds, player.gameObject);
-
-        MovePlayer(player, block);
+        MovePlayer(player, block, false);
 
         waitingToSpawn = null;
     }
@@ -124,12 +122,6 @@ public class GameManager : MonoBehaviour
     [Header("Sounds")]
     [SerializeField]
     protected List<AudioClip> gameStartedSounds = null;
-
-    [SerializeField]
-    protected List<AudioClip> spawnTrensieSounds = null;
-
-    [SerializeField]
-    protected List<AudioClip> moveTrensieSounds = null;
 
     public GameManager()
     {
@@ -203,7 +195,7 @@ public class GameManager : MonoBehaviour
         MovePlayer(selPlayer, goalblock);
     }
 
-    public void MovePlayer(Player_Base player, LevelBlock goalblock)
+    public void MovePlayer(Player_Base player, LevelBlock goalblock, bool playSound = true)
     {
         if (player == null)
             return;
@@ -217,7 +209,7 @@ public class GameManager : MonoBehaviour
                 MovePlayer(playerAtBlock, freeBlock);
         }
 
-        SoundManager.instance.PlayRandomSound(moveTrensieSounds, player.gameObject);
+        player.Move(playSound);
 
         List<BlockNode> newNodes = new List<BlockNode>();
         List<BlockNode> usedNodes = new List<BlockNode>();

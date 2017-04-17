@@ -34,6 +34,12 @@ public class Character_Base : MonoBehaviour
     [SerializeField]
     protected List<AudioClip> dieSounds = null;
 
+    [SerializeField]
+    protected List<AudioClip> spawnSounds = null;
+
+    [SerializeField]
+    protected List<AudioClip> moveSounds = null;
+
     public enum DamageType : int
     {
         Normal = 0,
@@ -113,5 +119,17 @@ public class Character_Base : MonoBehaviour
     virtual public void ChangeState(CharacterState newState, bool force = false)
     {
         state = newState;
+    }
+
+    virtual public void Spawn(LevelBlock startBlock)
+    {
+        CurBlock = startBlock;
+        SoundManager.instance.PlayRandomSound(spawnSounds, gameObject);
+    }
+
+    virtual public void Move(bool playSound)
+    {
+        if(playSound)
+            SoundManager.instance.PlayRandomSound(moveSounds, gameObject);
     }
 }
