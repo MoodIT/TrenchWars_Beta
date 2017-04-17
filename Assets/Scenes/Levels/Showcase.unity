@@ -10293,7 +10293,6 @@ Transform:
   - {fileID: 1167117022}
   - {fileID: 120782494}
   - {fileID: 1689155347}
-  - {fileID: 628127901}
   m_Father: {fileID: 876}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32037,9 +32036,9 @@ MonoBehaviour:
   supplies: 60
   coins: 0
   maxTrensies: 5
-  gameTimeSec: 170
-  spawnTrensieSound: {fileID: 8300000, guid: de1ea26e625a3406aa0a50fa5f334176, type: 3}
-  moveTrensieSound: {fileID: 8300000, guid: 3bd83fbba5d054b449d0c623b58cd650, type: 3}
+  gameTimeSec: 140
+  spawnTrensieSound: {fileID: 8300000, guid: b11dcd45a5d84419e99ebbdea1fb23aa, type: 3}
+  moveTrensieSound: {fileID: 8300000, guid: c400ed14a6b6644b290a28a33aade940, type: 3}
 --- !u!114 &2632 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114960526569669640, guid: dcec6d26b01f06f469ff5901da4179aa,
@@ -35232,82 +35231,10 @@ MonoBehaviour:
   initialDelay: 102
   prefabs:
   - prefab: {fileID: 1164801806058114, guid: d65d63f93dfc9a34ba1f8c16331a9b13, type: 2}
-    spawnCount: 1
+    spawnCount: 3
     spawnDelay: 2
   repeatCount: 0
   mesh: {fileID: 736617596}
---- !u!1 &122822033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1770882010525688, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 122822034}
-  - component: {fileID: 122822036}
-  - component: {fileID: 122822035}
-  m_Layer: 0
-  m_Name: Mesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &122822034
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4615753301345946, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 122822033}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0, z: 0.048}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 628127901}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &122822035
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23303352293594138, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 122822033}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &122822036
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33952143783087710, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 122822033}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &133083880
 Prefab:
   m_ObjectHideFlags: 0
@@ -35423,7 +35350,7 @@ Prefab:
     - target: {fileID: 224120827527310038, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -832.33453
       objectReference: {fileID: 0}
     - target: {fileID: 224888034656886594, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -35443,7 +35370,7 @@ Prefab:
     - target: {fileID: 224888034656886594, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 224728889477544306, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -35463,7 +35390,7 @@ Prefab:
     - target: {fileID: 224728889477544306, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 224633151913038720, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -35483,7 +35410,7 @@ Prefab:
     - target: {fileID: 224633151913038720, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 224841413960772746, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -35503,7 +35430,7 @@ Prefab:
     - target: {fileID: 224841413960772746, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 224916896886954614, guid: 6f419b3963c2f45238e34d16aa919385,
         type: 2}
@@ -35778,16 +35705,6 @@ Prefab:
       propertyPath: m_Name
       value: Flag (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
-        type: 2}
-      propertyPath: animList.Array.data[1].sounds
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114796842043035986, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236,
-        type: 2}
-      propertyPath: animList.Array.data[2].sounds
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5220cb78e8e8b5c4c89dcc8f7eeda236, type: 2}
   m_IsPrefabParent: 0
@@ -35883,58 +35800,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcec6d26b01f06f469ff5901da4179aa, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &628127900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1454701778983794, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 628127901}
-  - component: {fileID: 628127902}
-  m_Layer: 0
-  m_Name: Spawner_RifleMan_1 (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &628127901
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4028417877568116, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 628127900}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.94, y: 0.42000002, z: 2.982}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 122822034}
-  m_Father: {fileID: 942}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &628127902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114756230694117144, guid: 90a79aa92f7b46b48ba658251cf626d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 628127900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fef1c9b923a4844a97bcb78456085ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentFolder: {fileID: 1323}
-  initialDelay: 104
-  prefabs:
-  - prefab: {fileID: 1164801806058114, guid: d65d63f93dfc9a34ba1f8c16331a9b13, type: 2}
-    spawnCount: 1
-    spawnDelay: 2
-  repeatCount: 0
-  mesh: {fileID: 122822033}
 --- !u!1001 &659942312
 Prefab:
   m_ObjectHideFlags: 0
@@ -37065,8 +36930,7 @@ Prefab:
         type: 2}
       propertyPath: activateEffect
       value: 
-      objectReference: {fileID: 1078487319773344, guid: e4d4c001f902f48439084964e3f9a9a0,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ca7067991fe643bfbc75d3f257efb9b, type: 2}
   m_IsPrefabParent: 0
@@ -37164,7 +37028,7 @@ MonoBehaviour:
   initialDelay: 102
   prefabs:
   - prefab: {fileID: 1164801806058114, guid: e5f74d8e85064bb4caf17f01f94672dc, type: 2}
-    spawnCount: 1
+    spawnCount: 2
     spawnDelay: 5
   repeatCount: 0
   mesh: {fileID: 1247528487}
@@ -37329,6 +37193,9 @@ MonoBehaviour:
   ParentFolder: {fileID: 1323}
   initialDelay: 30
   prefabs:
+  - prefab: {fileID: 1164801806058114, guid: d65d63f93dfc9a34ba1f8c16331a9b13, type: 2}
+    spawnCount: 1
+    spawnDelay: 20
   - prefab: {fileID: 1164801806058114, guid: d65d63f93dfc9a34ba1f8c16331a9b13, type: 2}
     spawnCount: 1
     spawnDelay: 20
