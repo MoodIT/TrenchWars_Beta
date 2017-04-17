@@ -176,7 +176,7 @@ public class Player_Base : Character_Base
     {
         anim.SetTrigger(dieParamName);
 
-        SoundManager.instance.PlaySound(dieSound);
+        SoundManager.instance.PlayRandomSound(dieSounds);
 
         switch (lastDamageType)
         {

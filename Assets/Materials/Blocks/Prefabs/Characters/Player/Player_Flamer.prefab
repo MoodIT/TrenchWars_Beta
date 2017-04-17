@@ -207,7 +207,13 @@ MonoBehaviour:
   health: 14
   delayRemoveCorpse: 2
   healthBar: {fileID: 212298743148836884}
-  dieSound: {fileID: 8300000, guid: 3dc4fc07f37184c21bd4ab87628e1687, type: 3}
+  dieSound: {fileID: 0}
+  dieSounds:
+  - {fileID: 8300000, guid: eae0346eacc6c4e0cb89d05aab182a23, type: 3}
+  - {fileID: 8300000, guid: d606b246eca164620a2b60350fe5c9a3, type: 3}
+  - {fileID: 8300000, guid: fb49c81d169184afcbc9862736ee2f9c, type: 3}
+  - {fileID: 8300000, guid: 3dc4fc07f37184c21bd4ab87628e1687, type: 3}
+  - {fileID: 8300000, guid: 02120f9ffb90c470b9b379d8198ac1b4, type: 3}
   initialState: 10
   ShootState: Stand_Shoot
   walkParamName: Walk

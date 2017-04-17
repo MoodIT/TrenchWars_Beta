@@ -109,6 +109,10 @@ MonoBehaviour:
     type: 2}
   removeAfterActivation: 1
   activateSound: {fileID: 8300000, guid: 537bcaf99a76a4ee590fc6327985edbe, type: 3}
+  activateSounds:
+  - {fileID: 8300000, guid: 537bcaf99a76a4ee590fc6327985edbe, type: 3}
+  - {fileID: 8300000, guid: caf373d28d37b46c2a8ffecece7259e0, type: 3}
+  - {fileID: 8300000, guid: 1bcdedcc1d707425fa3a6b660ee463b5, type: 3}
   canActivate: 1
 --- !u!135 &135791982010537994
 SphereCollider:

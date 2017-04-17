@@ -62,7 +62,7 @@ public class Generic_Spawner : MonoBehaviour
                 }
                 else
                 {
-//                    gameObject.SetActive(false);
+                    enabled = false;
                     return;
                 }
             }
@@ -84,6 +84,5 @@ public class Generic_Spawner : MonoBehaviour
     virtual protected void Spawn(spawnDef spawn)
     {
         GameObject obj = Instantiate(spawn.prefab, Vector3.zero, Quaternion.identity, ParentFolder);
-        
     }
 }

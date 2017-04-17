@@ -130,10 +130,10 @@ public class LevelBuilder : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    private AudioClip selectBlockSound = null;
+    private List<AudioClip> selectBlockSounds = null;
 
     [SerializeField]
-    private AudioClip digBlockSound = null;
+    private List<AudioClip> digBlockSounds = null;
 
     [Header("Block decorations")]
     [SerializeField]
@@ -263,8 +263,8 @@ public class LevelBuilder : MonoBehaviour
             }
             selectionGround.SetActive(false);
 
-//Disable Character placements            if(selectionCharacterPlacement != null)
-//Disable Character placements                selectionCharacterPlacement.SetActive(false);
+            if(selectionCharacterPlacement != null)
+                selectionCharacterPlacement.SetActive(false);
             if(selectionAbilityPlacement != null)
                 selectionAbilityPlacement.SetActive(false);
         }
@@ -286,17 +286,17 @@ public class LevelBuilder : MonoBehaviour
                     {
                         if (GameManager.Instance.SpawningPlayer != null)
                         {
-/*//Disable Character placements                            if(selectionCharacterPlacement == null)
+                            if(selectionCharacterPlacement == null)
                             {
                                 Character_Base character = GameManager.Instance.SpawningPlayer.GetComponent<Character_Base>();
                                 selectionCharacterPlacement = dicPlaceCharacterEffect[character.Type];
-                            }*/
+                            }
 
                             selectionGround.SetActive(true);
-//Disable Character placements                            selectionCharacterPlacement.SetActive(true);
+                            selectionCharacterPlacement.SetActive(true);
 
                             selectionGround.transform.position = block.transform.position;
-//Disable Character placements                            selectionCharacterPlacement.transform.position = block.transform.position;
+                            selectionCharacterPlacement.transform.position = block.transform.position;
                         }
                         else if (GameManager.Instance.HasSelPlayer)
                         {
@@ -337,7 +337,7 @@ public class LevelBuilder : MonoBehaviour
                         curSelected.Add(block);
                         selectedCost += block.Cost;
 
-                        SoundManager.instance.PlaySound(selectBlockSound);
+                        SoundManager.instance.PlayRandomSound(selectBlockSounds);
                     }
                 }
             }
@@ -350,7 +350,7 @@ public class LevelBuilder : MonoBehaviour
         Destroy(digShovel);
         foreach (LevelBlock block in curSelected)
         {
-            SoundManager.instance.PlaySound(digBlockSound);
+            SoundManager.instance.PlayRandomSound(digBlockSounds);
             GameManager.Instance.AddSupplies(-block.Cost);
 
             block.Dig();
@@ -457,13 +457,18 @@ public class LevelBuilder : MonoBehaviour
 
     public LevelBlock GetRandomBlock()
     {
+        return GetRandomBlockRange(new Vector2(0, float.MaxValue));
+    }
+
+    public LevelBlock GetRandomBlockRange(Vector2 range)
+    {
         List<LevelBlock> blockList = new List<LevelBlock>();
-        foreach(LevelBlock block in levelBlockDic.Values)
+        foreach (LevelBlock block in levelBlockDic.Values)
         {
-            if (block.IsDiggable)
+            if (block.IsDiggable && block.BlockID >= Math.Min(range.x, range.y) && block.BlockID <= Math.Max(range.x, range.y))
                 blockList.Add(block);
         }
 
-        return blockList[UnityEngine.Random.Range(0, blockList.Count-1)];
+        return blockList[UnityEngine.Random.Range(0, blockList.Count - 1)];
     }
 }

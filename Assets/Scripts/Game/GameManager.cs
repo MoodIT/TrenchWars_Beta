@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -19,10 +20,15 @@ public class GameManager : MonoBehaviour
     {
         if (IsGameRunning)
         {
-			Debug.Log ("yoyo");
             Time.timeScale = 1.0f - Time.timeScale;
             gamePaused = !gamePaused;
         }
+    }
+
+    public void GotoMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     private Player_Base selPlayer = null;
@@ -101,7 +107,7 @@ public class GameManager : MonoBehaviour
         Player_Base player = Instantiate(waitingToSpawn, BasePlacement.transform.position - (Vector3.up * .5f), Quaternion.identity, Builder.PlayerParent).GetComponent<Player_Base>();
         player.CurBlock = BasePlacement;
 
-        SoundManager.instance.PlaySound(spawnTrensieSound, player.gameObject);
+        SoundManager.instance.PlayRandomSound(spawnTrensieSounds, player.gameObject);
 
         MovePlayer(player, block);
 
@@ -117,10 +123,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    protected AudioClip spawnTrensieSound = null;
+    protected List<AudioClip> gameStartedSounds = null;
 
     [SerializeField]
-    protected AudioClip moveTrensieSound = null;
+    protected List<AudioClip> spawnTrensieSounds = null;
+
+    [SerializeField]
+    protected List<AudioClip> moveTrensieSounds = null;
 
     public GameManager()
     {
@@ -139,6 +148,9 @@ public class GameManager : MonoBehaviour
         HUD.UpdateTimer(timeLeft, gameTimeSec);
         HUD.UpdateSupplies();
         HUD.UpdateTrensies(Trensies.Count, MaxTrensies);
+
+        //start game
+        SoundManager.instance.PlayRandomSound(gameStartedSounds, gameObject);
     }
 
     void Update()
@@ -205,7 +217,7 @@ public class GameManager : MonoBehaviour
                 MovePlayer(playerAtBlock, freeBlock);
         }
 
-        SoundManager.instance.PlaySound(moveTrensieSound, player.gameObject);
+        SoundManager.instance.PlayRandomSound(moveTrensieSounds, player.gameObject);
 
         List<BlockNode> newNodes = new List<BlockNode>();
         List<BlockNode> usedNodes = new List<BlockNode>();

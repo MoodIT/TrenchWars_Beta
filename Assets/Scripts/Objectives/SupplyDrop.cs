@@ -14,6 +14,9 @@ public class SupplyDrop : MonoBehaviour
     private float timeOnGround = 2;
     private float timeLeftOnGround = 2;
 
+    [SerializeField]
+    private Vector2 dropBlockRange;
+
     [Header("Effects")]
     [SerializeField]
     private GameObject landEffect = null;
@@ -30,10 +33,10 @@ public class SupplyDrop : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    protected AudioClip spawnedSound = null;
+    protected List<AudioClip> spawnedSounds = null;
 
     [SerializeField]
-    protected AudioClip pickupSound = null;
+    protected List<AudioClip> pickupSounds = null;
 
     private bool landed = false;
     public bool HasLanded { get { return landed; } }
@@ -42,14 +45,14 @@ public class SupplyDrop : MonoBehaviour
     {
         timeLeftOnGround = timeOnGround;
 
-        LevelBlock block = GameManager.Instance.Builder.GetRandomBlock();
+        LevelBlock block = GameManager.Instance.Builder.GetRandomBlockRange(dropBlockRange);
         transform.position = block.transform.position;
         transform.localPosition += Vector3.up * 12;
     }
 
     void Start ()
     {
-        SoundManager.instance.PlaySound(spawnedSound);
+        SoundManager.instance.PlayRandomSound(spawnedSounds);
     }
 
 	void Update ()
@@ -85,7 +88,7 @@ public class SupplyDrop : MonoBehaviour
 
     public void Pickup()
     {
-        SoundManager.instance.PlaySound(pickupSound);
+        SoundManager.instance.PlayRandomSound(pickupSounds);
 
         GameManager.Instance.AddSupplies(supplyAmount);
         ParticleManager.instance.CreateEffect(pickupEffect, transform.position, Quaternion.identity);

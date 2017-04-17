@@ -18,7 +18,7 @@ public class Projectile_Bullet : Projectile_Base
     void Start()
     {
         ParticleManager.instance.CreateEffect(muzzleEffectPrefab, transform.localPosition, Quaternion.identity);
-        SoundManager.instance.PlaySound(shootSound, gameObject);
+        SoundManager.instance.PlayRandomSound(shootSounds, gameObject);
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class Projectile_Bullet : Projectile_Base
         Character_Base hitChar = obj.gameObject.GetComponent<Character_Base>();
         if ((hitChar.IsPlayer && !Owner.IsPlayer) || (!hitChar.IsPlayer && Owner.IsPlayer))
         {
-            SoundManager.instance.PlaySound(hitSound, hitChar.gameObject);
+            SoundManager.instance.PlayRandomSound(hitSounds, hitChar.gameObject);
 
             hit = true;
             hitChar.AddDamage(damage, Character_Base.DamageType.Bullets, Owner);

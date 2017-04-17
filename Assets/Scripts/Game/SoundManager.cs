@@ -17,47 +17,31 @@ public class SoundManager
         }
     }
 
-    public int poolSize = 15;
-    
-    Stack<GameObject> pool = new Stack<GameObject>();
-	
-	public SoundManager()
+    public GameObject PlayRandomSound(List<AudioClip> clips, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
     {
-        FillPool();
+        if (clips.Count == 0)
+            return null;
+
+        AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Count - 1)];
+        return PlaySound(clip, owner, loop, name, starttime, volume);
     }
 
-    private void FillPool()
-    {
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject obj = new GameObject("Pooled Sound");
-
-            SoundUpdater soundUpdater = obj.AddComponent<SoundUpdater>();
-            soundUpdater.owner = obj;
-
-            obj.AddComponent<AudioSource>();
-
-            obj.SetActive(false);
-
-            pool.Push(obj);
-        }
-    }
-
-	public GameObject PlaySound(AudioClip clip, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
+    public GameObject PlaySound(AudioClip clip, GameObject owner = null, bool loop = false, string name = "", float starttime = 0, float volume = 1f)
     {
 		if (clip == null)
             return null;
 
-        GameObject obj = pool.Pop();
-        obj.name = name.Length == 0 ? "Sound_" + clip.name : name;
+        GameObject obj = new GameObject("Sound_" + clip.name);
 
-        AudioSource sound = obj.GetComponent<AudioSource>();
+        SoundUpdater soundUpdater = obj.AddComponent<SoundUpdater>();
+        soundUpdater.owner = obj;
 
-		obj.SetActive(true);
-		
+        AudioSource sound = obj.AddComponent<AudioSource>();
+
 		//hack for now to get the sounds closer to the camera
 		if(owner != null)
-		obj.transform.parent = owner.transform;
+		    obj.transform.parent = owner.transform;
+
 		//obj.transform.localPosition = new Vector3(0f, obj.transform.localPosition.y, obj.transform.localPosition.z);
 		obj.transform.localPosition = new Vector3(0f, 0f, 0f);
 		
@@ -67,10 +51,8 @@ public class SoundManager
 		sound.volume = volume;
 		sound.Play();
 
-        if (pool.Count < 5)
-            FillPool();
-
-		if(!loop) GameObject.Destroy(obj,clip.length+2f);
+		if(!loop)
+            GameObject.Destroy(obj,clip.length+2f);
 
         return obj;
     }

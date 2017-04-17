@@ -39,11 +39,7 @@ public class WinScreenManage : MonoBehaviour
     {
         Helpers.AddEventTrigger(resetButton, () => { StartCoroutine(RestartGame()); }, EventTriggerType.PointerClick);
 
-        Helpers.AddEventTrigger(homeButton, () => 
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
-        }, EventTriggerType.PointerClick);
+        Helpers.AddEventTrigger(homeButton, () =>  { GameManager.Instance.GotoMenu(); }, EventTriggerType.PointerClick);
 
         StartCoroutine(FillInScore());
     }

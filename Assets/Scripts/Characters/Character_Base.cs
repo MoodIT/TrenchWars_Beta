@@ -32,7 +32,7 @@ public class Character_Base : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    protected AudioClip dieSound = null;
+    protected List<AudioClip> dieSounds = null;
 
     public enum DamageType : int
     {

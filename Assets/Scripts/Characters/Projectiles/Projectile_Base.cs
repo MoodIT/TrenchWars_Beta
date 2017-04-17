@@ -9,10 +9,10 @@ public class Projectile_Base : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    protected AudioClip shootSound = null;
+    protected List<AudioClip> shootSounds = null;
 
     [SerializeField]
-    protected AudioClip hitSound = null;
+    protected List<AudioClip> hitSounds = null;
 
     public Character_Base Owner { get; set; }
     public Vector3 Direction { get; set; }

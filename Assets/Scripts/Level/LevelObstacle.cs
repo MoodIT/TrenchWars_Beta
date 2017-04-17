@@ -45,7 +45,7 @@ public class LevelObstacle : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField]
-    protected AudioClip activateSound = null;
+    protected List<AudioClip> activateSounds = null;
 
     public LevelBlock Block { get; set; }
 
@@ -86,7 +86,7 @@ public class LevelObstacle : MonoBehaviour
         if (canActivate == Activators.None || (character.IsPlayer && canActivate == Activators.Enemies) || (!character.IsPlayer && canActivate == Activators.Players))
             return;
 
-        SoundManager.instance.PlaySound(activateSound);
+        SoundManager.instance.PlayRandomSound(activateSounds);
 
         ParticleManager.instance.CreateEffect(activateEffect, transform.localPosition, Quaternion.identity);
 

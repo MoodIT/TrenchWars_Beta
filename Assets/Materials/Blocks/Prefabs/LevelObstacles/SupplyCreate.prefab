@@ -156,13 +156,17 @@ MonoBehaviour:
   speed: 1
   supplyAmount: 15
   timeOnGround: 2
+  dropBlockRange: {x: 25, y: 136}
   landEffect: {fileID: 0}
   pickupEffect: {fileID: 1758822433711976, guid: 1afa8bb3988d54c4a814667f02ca540f,
     type: 2}
   parachute: {fileID: 1555199478247588}
   create: {fileID: 1267130371596320}
-  spawnedSound: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: f13f0fae19ac44bcc9d263b68eb09226, type: 3}
+  spawnedSounds: []
+  pickupSounds:
+  - {fileID: 8300000, guid: f13f0fae19ac44bcc9d263b68eb09226, type: 3}
+  - {fileID: 8300000, guid: 895962e7cc4b84adbb210e1bfbe8e222, type: 3}
+  - {fileID: 8300000, guid: 9806570a317ee4153b9ee6ad972c0510, type: 3}
 --- !u!212 &212521292898412662
 SpriteRenderer:
   m_ObjectHideFlags: 1

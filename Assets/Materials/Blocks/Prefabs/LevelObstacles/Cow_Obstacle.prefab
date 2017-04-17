@@ -27,6 +27,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1688773192658158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4188019740004538}
+  - component: {fileID: 114459202730035064}
+  - component: {fileID: 65199328937571798}
+  m_Layer: 9
+  m_Name: Activator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1775666544329720
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4435192923260370}
-  - component: {fileID: 114479126107364978}
+  - component: {fileID: 114294723623259578}
   - component: {fileID: 136933365902926116}
   m_Layer: 9
   m_Name: Cow_Obstacle
@@ -61,6 +78,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4188019740004538
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688773192658158}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.56, y: -0.20999998, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4435192923260370}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4402806511276504
 Transform:
   m_ObjectHideFlags: 1
@@ -81,10 +111,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775666544329720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.5, y: 0.63, z: 2.94}
+  m_LocalPosition: {x: 10.5, y: 0.63, z: 2.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4402806511276504}
+  - {fileID: 4188019740004538}
   - {fileID: 4799317590870222}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,8 +131,20 @@ Transform:
   m_LocalScale: {x: 0.512429, y: 0.5124288, z: 0.5124288}
   m_Children: []
   m_Father: {fileID: 4435192923260370}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65199328937571798
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688773192658158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.4, z: 2}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!95 &95663905482827806
 Animator:
   serializedVersion: 3
@@ -119,7 +162,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114479126107364978
+--- !u!114 &114294723623259578
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -127,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775666544329720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceffb89b6315e6941b24419eb14c2acc, type: 3}
+  m_Script: {fileID: 11500000, guid: e4615a3170f5285489a9fd633911b092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -137,7 +180,37 @@ MonoBehaviour:
   blockDigging: 1
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
-  canActivate: 3
+  activateSounds: []
+  canActivate: 2
+  randomIdleTime: {x: 10, y: 20}
+  idleSounds:
+  - {fileID: 8300000, guid: add3ebe64b68a465fb95c9fde0ee8533, type: 3}
+  - {fileID: 8300000, guid: 06481ba4b252145e6aebc56734e6b97b, type: 3}
+  - {fileID: 8300000, guid: a995165270d85429886319cc6ceb5f1d, type: 3}
+  - {fileID: 8300000, guid: afb9444b24e3f4c94b8646f2101928ef, type: 3}
+  touchSounds:
+  - {fileID: 8300000, guid: 00b9767bdc2814e1ea34d98df790e098, type: 3}
+--- !u!114 &114459202730035064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688773192658158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebf951b2761af5478783f5469306869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 6
+  walkSpeedModifier: 1
+  damage: 0
+  blockWalking: 0
+  blockDigging: 0
+  activateEffect: {fileID: 0}
+  removeAfterActivation: 0
+  activateSounds: []
+  canActivate: 2
+  activateObj: {fileID: 114294723623259578}
 --- !u!136 &136933365902926116
 CapsuleCollider:
   m_ObjectHideFlags: 1

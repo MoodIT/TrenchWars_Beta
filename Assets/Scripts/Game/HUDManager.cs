@@ -40,9 +40,13 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     private EventTrigger pauseButton = null;
 
+    [SerializeField]
+    private EventTrigger menuButton = null;
+
     public void Start()
     {
         Helpers.AddEventTrigger(pauseButton, () => { GameManager.Instance.ToggleGamePause(); }, EventTriggerType.PointerClick);
+        Helpers.AddEventTrigger(menuButton, () => { GameManager.Instance.GotoMenu(); }, EventTriggerType.PointerClick);
     }
 
     public void UpdateTimer(float timeLeft, float levelTime)
