@@ -282,23 +282,20 @@ public class LevelBuilder : MonoBehaviour
 
                 if (block)
                 {
+                    if (GameManager.Instance.SpawningPlayer != null)
+                    {
+                        if (selectionCharacterPlacement == null)
+                        {
+                            Character_Base character = GameManager.Instance.SpawningPlayer.GetComponent<Character_Base>();
+                            selectionCharacterPlacement = dicPlaceCharacterEffect[character.Type];
+                            selectionCharacterPlacement.SetActive(true);
+                        }
+                        selectionCharacterPlacement.transform.position = block.transform.position;
+                    }
+
                     if (block.IsDigged)
                     {
-                        if (GameManager.Instance.SpawningPlayer != null)
-                        {
-                            if(selectionCharacterPlacement == null)
-                            {
-                                Character_Base character = GameManager.Instance.SpawningPlayer.GetComponent<Character_Base>();
-                                selectionCharacterPlacement = dicPlaceCharacterEffect[character.Type];
-                            }
-
-                            selectionGround.SetActive(true);
-                            selectionCharacterPlacement.SetActive(true);
-
-                            selectionGround.transform.position = block.transform.position;
-                            selectionCharacterPlacement.transform.position = block.transform.position;
-                        }
-                        else if (GameManager.Instance.HasSelPlayer)
+                        if (GameManager.Instance.SpawningPlayer != null || GameManager.Instance.HasSelPlayer)
                         {
                             selectionGround.SetActive(true);
                             selectionGround.transform.position = block.transform.position;
@@ -421,7 +418,23 @@ public class LevelBuilder : MonoBehaviour
 
         levelBlockDic.Add(block.BlockID, block);
     }
-    
+
+    public LevelBlock GetClosestBlock(Vector3 pos)
+    {
+        LevelBlock closest = null;
+        float dist = float.MaxValue;
+        foreach(LevelBlock block in levelBlockDic.Values)
+        {
+            float sqDist = (block.transform.position - pos).sqrMagnitude;
+            if(sqDist < dist)
+            {
+                dist = sqDist;
+                closest = block;
+            }
+        }
+        return closest;
+    }
+
     public LevelBlock GetNeighbor(Side side, int blockID)
     {
         Vector2 coords = Helpers.convBlockID_XY(blockID, levelSize);

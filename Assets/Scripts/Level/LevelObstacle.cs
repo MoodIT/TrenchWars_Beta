@@ -69,13 +69,25 @@ public class LevelObstacle : MonoBehaviour
         return Character_Base.DamageType.Normal;
     }
 
+    private bool hasSortingOrder = false;
     public void SetSortingOrder(int order)
     {
+        if (hasSortingOrder)
+            return;
+
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer sprite in sprites)
+
+        if (sprites.Length == 1)
+            sprites[0].sortingOrder = order;
+        else if(sprites.Length > 0)
         {
-            sprite.sortingOrder = order;
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                LevelBlock block = GameManager.Instance.Builder.GetClosestBlock(sprite.transform.position);
+                sprite.sortingOrder += block.GetBlockSortingOrder();
+            }
         }
+        hasSortingOrder = true;
     }
 
     public virtual void Activate(Character_Base character)

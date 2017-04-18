@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439178402273708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.54, y: 2.4, z: 3.77}
+  m_LocalPosition: {x: 1.54, y: 2.4, z: 3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4512711899174506}
@@ -178,6 +178,7 @@ MonoBehaviour:
   blockDigging: 1
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
+  activateSounds: []
   canActivate: 3
 --- !u!135 &135157598579048300
 SphereCollider:
@@ -221,7 +222,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839803971
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -291,7 +292,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839803971
-  m_SortingOrder: 0
+  m_SortingOrder: 75
   m_Sprite: {fileID: 21300002, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

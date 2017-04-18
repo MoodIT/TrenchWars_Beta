@@ -75,22 +75,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1432884939802274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4479913519095098}
-  - component: {fileID: 114668717108985570}
-  m_Layer: 9
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1481114457663538
 GameObject:
   m_ObjectHideFlags: 1
@@ -136,20 +120,6 @@ Transform:
   m_Father: {fileID: 4520722087585354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4479913519095098
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1432884939802274}
-  m_LocalRotation: {x: 0.000000029802322, y: 0.000000059604645, z: 0.000000074505806,
-    w: 1}
-  m_LocalPosition: {x: -16.16006, y: -2.0800085, z: -2.540011}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4520722087585354}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4520722087585354
 Transform:
   m_ObjectHideFlags: 1
@@ -161,7 +131,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4088969629058398}
-  - {fileID: 4479913519095098}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,168 +172,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.17, y: 0.2, z: 2.5}
   m_Center: {x: 0, y: -2.5, z: 0.2}
---- !u!114 &114668717108985570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1432884939802274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d0aa3a7f9d1224f8e68a9035f042c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyKeys:
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 2
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 18.630896
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 5
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 66.19772
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 2
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 62.615284
-    speed: 0
-  - name: 
-    enemyType: 1
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 5
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 66.39674
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 5
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 35.409756
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 4
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 17.199024
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 1
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 27.647806
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 1
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 9.047317
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 3
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 44.94081
-    speed: 0
-  - name: 
-    enemyType: 0
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 2
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 80.86471
-    speed: 0
-  - name: 
-    enemyType: 2
-    power: 0
-    spawnPos:
-      mWidth: 17
-      mLength: 4
-      obj: {fileID: 0}
-      unit: {fileID: 0}
-    spawned: 0
-    health: 10
-    spawnTime: 74.99349
-    speed: 0
-  _values:
-  - 8
-  - 5
-  - 1
-  waves:
-  - time: 59.23187
-    spawned: 0
-  - time: 6.529106
-    spawned: 0
-  enemiesInGame: []
-  bControl: {fileID: 0}
-  lengthInSeconds: 100
-  counter: 0
-  soldierEnemy: {fileID: 170462, guid: f4bfef2d44ed0c744a84c1ee16eddfc5, type: 2}
-  loopingSpawn: 0
-  gameStats: {fileID: 0}
-  stopSpawn: 0
-  defOrCap: 1
 --- !u!114 &114736937280475736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +190,7 @@ MonoBehaviour:
   blockDigging: 1
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
+  activateSounds: []
   canActivate: 3
 --- !u!212 &212118532876856582
 SpriteRenderer:
@@ -449,7 +257,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839803971
-  m_SortingOrder: 6
+  m_SortingOrder: 75
   m_Sprite: {fileID: 21300002, guid: 9df46deed1aa74ac39391496d1c1705f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -484,7 +292,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839803971
-  m_SortingOrder: 7
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300006, guid: 761c66f08fe244ed8b91a8c486ddf3a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
