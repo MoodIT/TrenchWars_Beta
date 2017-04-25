@@ -13,6 +13,7 @@ public class Projectile_Flame : Projectile_Base
     {
         if (flameEffect != null)
             flameEffect.Play();
+		SoundManager.instance.PlayRandomSound(shootSounds, gameObject);
     }
 
     void Update()

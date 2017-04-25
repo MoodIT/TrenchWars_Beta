@@ -472,7 +472,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Flamer
-  m_Speed: 2
+  m_Speed: 4.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -483,7 +483,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 91c34afef8e4240f3b65dedc97d76298, type: 2}
+  m_Motion: {fileID: 7400000, guid: 72d91c04867e44dc487cfe516bcd8a72, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

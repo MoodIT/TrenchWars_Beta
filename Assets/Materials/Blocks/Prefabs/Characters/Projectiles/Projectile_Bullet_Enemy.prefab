@@ -99,16 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  shootSound: {fileID: 0}
   shootSounds:
   - {fileID: 8300000, guid: b6a72d9ad6305474ca6d47920e001d67, type: 3}
-  hitSound: {fileID: 0}
   hitSounds:
-  - {fileID: 8300000, guid: 54fb4a8d7bb4e4e8fbe55f305aa8d152, type: 3}
   - {fileID: 8300000, guid: 534ff4c8b35214d2194373b836ec8c76, type: 3}
-  - {fileID: 8300000, guid: 94f35a20643774f4fbb19e8c5205cbd8, type: 3}
   speed: 13
-  hitEffectPrefab: {fileID: 1078487319773344, guid: 09597c18b94e144e29832c542e3a3826,
+  hitEffectPrefab: {fileID: 1078487319773344, guid: 439625fec6174451aa1b80386e33d09d,
     type: 2}
   muzzleEffectPrefab: {fileID: 1425354796890596, guid: 12b37cd5f208dfd41a889d30585ab63e,
     type: 2}

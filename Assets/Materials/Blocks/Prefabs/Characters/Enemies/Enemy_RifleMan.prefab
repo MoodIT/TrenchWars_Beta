@@ -223,18 +223,17 @@ MonoBehaviour:
   health: 6
   delayRemoveCorpse: 2
   healthBar: {fileID: 212270958640682816}
-  dieSound: {fileID: 0}
   dieSounds:
   - {fileID: 8300000, guid: df9b469a129924b4a98a3ace81b64954, type: 3}
   - {fileID: 8300000, guid: cdb13d760d1524d68bffa47f6e3326de, type: 3}
-  - {fileID: 8300000, guid: 2df162fe7a1b3444d85586dbf51ac8cf, type: 3}
-  - {fileID: 8300000, guid: 49d843154bd6946febea13a04f5058ba, type: 3}
+  spawnSounds: []
+  moveSounds: []
   initialState: 10
   supplies: 10
   coins: 100
   projectilePrefab: {fileID: 114518709867718882, guid: 9e5a50406a3184e42917b01b6c5566e4,
     type: 2}
-  projectileOffset: {x: -1.4, y: 1.05, z: 0.75}
+  projectileOffset: {x: -0.7, y: 1, z: 0.6}
   ShootState: Stand_Shoot
   WalkState: Walk
   JumpState: Jump

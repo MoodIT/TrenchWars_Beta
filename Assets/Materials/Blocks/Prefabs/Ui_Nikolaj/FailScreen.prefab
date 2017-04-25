@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetButton: {fileID: 114348987788477940}
-  failSound: {fileID: 8300000, guid: a7ab3532e30b9475eacb70a45157c819, type: 3}
+  failSound: {fileID: 8300000, guid: 32ed3ff7cf32d1f479bd851394c779fe, type: 3}
 --- !u!114 &114280784345253602
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -181,15 +181,12 @@ MonoBehaviour:
   activateEffect: {fileID: 0}
   removeAfterActivation: 0
   activateSounds: []
-  canActivate: 2
+  canActivate: 1
   randomIdleTime: {x: 10, y: 20}
-  idleSounds:
-  - {fileID: 8300000, guid: add3ebe64b68a465fb95c9fde0ee8533, type: 3}
-  - {fileID: 8300000, guid: 06481ba4b252145e6aebc56734e6b97b, type: 3}
-  - {fileID: 8300000, guid: a995165270d85429886319cc6ceb5f1d, type: 3}
-  - {fileID: 8300000, guid: afb9444b24e3f4c94b8646f2101928ef, type: 3}
+  idleSounds: []
   touchSounds:
-  - {fileID: 8300000, guid: 00b9767bdc2814e1ea34d98df790e098, type: 3}
+  - {fileID: 8300000, guid: 28ddc8ac8b3084f778f50d5d4b98dc70, type: 3}
+  - {fileID: 8300000, guid: 155bc007be14a4e72a3297cfd5026fa9, type: 3}
 --- !u!114 &114459202730035064
 MonoBehaviour:
   m_ObjectHideFlags: 1
