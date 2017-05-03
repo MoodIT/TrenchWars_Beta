@@ -263,8 +263,11 @@ public class LevelBuilder : MonoBehaviour
             }
             selectionGround.SetActive(false);
 
-            if(selectionCharacterPlacement != null)
+            if (selectionCharacterPlacement != null)
+            {
                 selectionCharacterPlacement.SetActive(false);
+                selectionCharacterPlacement = null;
+            }
             if(selectionAbilityPlacement != null)
                 selectionAbilityPlacement.SetActive(false);
         }
@@ -303,7 +306,7 @@ public class LevelBuilder : MonoBehaviour
                     }
                     else
                     {
-                        if (GameManager.Instance.SpawningAbility != null)
+                        if (GameManager.Instance.SpawningAbility != null && block.IsDiggable)
                         {
                             if (selectionAbilityPlacement == null)
                                 selectionAbilityPlacement = dicPlaceAbilityEffect[GameManager.Instance.SpawningAbility];
@@ -482,6 +485,6 @@ public class LevelBuilder : MonoBehaviour
                 blockList.Add(block);
         }
 
-        return blockList[UnityEngine.Random.Range(0, blockList.Count - 1)];
+        return blockList[UnityEngine.Random.Range(0, blockList.Count)];
     }
 }

@@ -22,7 +22,7 @@ public class SoundManager
         if (clips.Count == 0)
             return null;
 
-        AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Count - 1)];
+        AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Count)];
         return PlaySound(clip, owner, loop, name, starttime, volume);
     }
 
