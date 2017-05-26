@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public void GotoMenu()
     {
+        ParticleManager.instance.RemoveAll();
+
         Time.timeScale = 1;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
